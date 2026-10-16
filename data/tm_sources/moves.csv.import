@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ckywsnmihf8mr"
+
+[deps]
+
+files=["res://data/tm_sources/moves.identifier.translation", "res://data/tm_sources/moves.generation.translation", "res://data/tm_sources/moves.type.translation", "res://data/tm_sources/moves.power.translation", "res://data/tm_sources/moves.pp.translation", "res://data/tm_sources/moves.accuracy.translation", "res://data/tm_sources/moves.priority.translation", "res://data/tm_sources/moves.target.translation", "res://data/tm_sources/moves.damage.translation", "res://data/tm_sources/moves.effect.translation", "res://data/tm_sources/moves.effect.translation", "res://data/tm_sources/moves.contest.translation", "res://data/tm_sources/moves.contest.translation", "res://data/tm_sources/moves.super.translation"]
+
+source_file="res://data/tm_sources/moves.csv"
+dest_files=["res://data/tm_sources/moves.identifier.translation", "res://data/tm_sources/moves.generation.translation", "res://data/tm_sources/moves.type.translation", "res://data/tm_sources/moves.power.translation", "res://data/tm_sources/moves.pp.translation", "res://data/tm_sources/moves.accuracy.translation", "res://data/tm_sources/moves.priority.translation", "res://data/tm_sources/moves.target.translation", "res://data/tm_sources/moves.damage.translation", "res://data/tm_sources/moves.effect.translation", "res://data/tm_sources/moves.effect.translation", "res://data/tm_sources/moves.contest.translation", "res://data/tm_sources/moves.contest.translation", "res://data/tm_sources/moves.super.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

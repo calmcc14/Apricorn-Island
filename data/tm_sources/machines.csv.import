@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b2t5gntm48qrv"
+
+[deps]
+
+files=["res://data/tm_sources/machines.version.translation", "res://data/tm_sources/machines.item.translation", "res://data/tm_sources/machines.move.translation"]
+
+source_file="res://data/tm_sources/machines.csv"
+dest_files=["res://data/tm_sources/machines.version.translation", "res://data/tm_sources/machines.item.translation", "res://data/tm_sources/machines.move.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

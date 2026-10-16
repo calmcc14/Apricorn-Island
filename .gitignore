@@ -1,0 +1,22 @@
+.godot/
+.godot_profile/
+build/
+*.tmp
+
+# Generated Windows release (attach ApricornIsland.exe to GitHub Releases).
+/ApricornIsland.exe
+/export_templates/
+
+# Separate ABS engine project and distribution; preserved locally.
+/ABS-Engine-Nathen/
+/ApricornIslandABS/
+/ApricornIslandABS-For-Nathen/
+/ApricornIslandABS-For-Nathen.zip
+
+# Local Python caches, environments, and credentials.
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example

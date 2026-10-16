@@ -1,0 +1,578 @@
+[
+  {
+    "pokemon_id": "1",
+    "stat_id": "1",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "1",
+    "stat_id": "2",
+    "base_stat": "49",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "1",
+    "stat_id": "3",
+    "base_stat": "49",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "1",
+    "stat_id": "4",
+    "base_stat": "65",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "1",
+    "stat_id": "5",
+    "base_stat": "65",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "1",
+    "stat_id": "6",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "4",
+    "stat_id": "1",
+    "base_stat": "39",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "4",
+    "stat_id": "2",
+    "base_stat": "52",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "4",
+    "stat_id": "3",
+    "base_stat": "43",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "4",
+    "stat_id": "4",
+    "base_stat": "60",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "4",
+    "stat_id": "5",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "4",
+    "stat_id": "6",
+    "base_stat": "65",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "7",
+    "stat_id": "1",
+    "base_stat": "44",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "7",
+    "stat_id": "2",
+    "base_stat": "48",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "7",
+    "stat_id": "3",
+    "base_stat": "65",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "7",
+    "stat_id": "4",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "7",
+    "stat_id": "5",
+    "base_stat": "64",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "7",
+    "stat_id": "6",
+    "base_stat": "43",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "10",
+    "stat_id": "1",
+    "base_stat": "45",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "10",
+    "stat_id": "2",
+    "base_stat": "30",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "10",
+    "stat_id": "3",
+    "base_stat": "35",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "10",
+    "stat_id": "4",
+    "base_stat": "20",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "10",
+    "stat_id": "5",
+    "base_stat": "20",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "10",
+    "stat_id": "6",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "16",
+    "stat_id": "1",
+    "base_stat": "40",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "16",
+    "stat_id": "2",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "16",
+    "stat_id": "3",
+    "base_stat": "40",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "16",
+    "stat_id": "4",
+    "base_stat": "35",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "16",
+    "stat_id": "5",
+    "base_stat": "35",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "16",
+    "stat_id": "6",
+    "base_stat": "56",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "19",
+    "stat_id": "1",
+    "base_stat": "30",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "19",
+    "stat_id": "2",
+    "base_stat": "56",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "19",
+    "stat_id": "3",
+    "base_stat": "35",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "19",
+    "stat_id": "4",
+    "base_stat": "25",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "19",
+    "stat_id": "5",
+    "base_stat": "35",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "19",
+    "stat_id": "6",
+    "base_stat": "72",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "25",
+    "stat_id": "1",
+    "base_stat": "35",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "25",
+    "stat_id": "2",
+    "base_stat": "55",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "25",
+    "stat_id": "3",
+    "base_stat": "40",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "25",
+    "stat_id": "4",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "25",
+    "stat_id": "5",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "25",
+    "stat_id": "6",
+    "base_stat": "90",
+    "effort": "2"
+  },
+  {
+    "pokemon_id": "27",
+    "stat_id": "1",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "27",
+    "stat_id": "2",
+    "base_stat": "75",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "27",
+    "stat_id": "3",
+    "base_stat": "85",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "27",
+    "stat_id": "4",
+    "base_stat": "20",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "27",
+    "stat_id": "5",
+    "base_stat": "30",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "27",
+    "stat_id": "6",
+    "base_stat": "40",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "39",
+    "stat_id": "1",
+    "base_stat": "115",
+    "effort": "2"
+  },
+  {
+    "pokemon_id": "39",
+    "stat_id": "2",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "39",
+    "stat_id": "3",
+    "base_stat": "20",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "39",
+    "stat_id": "4",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "39",
+    "stat_id": "5",
+    "base_stat": "25",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "39",
+    "stat_id": "6",
+    "base_stat": "20",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "43",
+    "stat_id": "1",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "43",
+    "stat_id": "2",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "43",
+    "stat_id": "3",
+    "base_stat": "55",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "43",
+    "stat_id": "4",
+    "base_stat": "75",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "43",
+    "stat_id": "5",
+    "base_stat": "65",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "43",
+    "stat_id": "6",
+    "base_stat": "30",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "52",
+    "stat_id": "1",
+    "base_stat": "40",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "52",
+    "stat_id": "2",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "52",
+    "stat_id": "3",
+    "base_stat": "35",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "52",
+    "stat_id": "4",
+    "base_stat": "40",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "52",
+    "stat_id": "5",
+    "base_stat": "40",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "52",
+    "stat_id": "6",
+    "base_stat": "90",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "54",
+    "stat_id": "1",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "54",
+    "stat_id": "2",
+    "base_stat": "52",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "54",
+    "stat_id": "3",
+    "base_stat": "48",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "54",
+    "stat_id": "4",
+    "base_stat": "65",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "54",
+    "stat_id": "5",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "54",
+    "stat_id": "6",
+    "base_stat": "55",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "58",
+    "stat_id": "1",
+    "base_stat": "55",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "58",
+    "stat_id": "2",
+    "base_stat": "70",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "58",
+    "stat_id": "3",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "58",
+    "stat_id": "4",
+    "base_stat": "70",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "58",
+    "stat_id": "5",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "58",
+    "stat_id": "6",
+    "base_stat": "60",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "81",
+    "stat_id": "1",
+    "base_stat": "25",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "81",
+    "stat_id": "2",
+    "base_stat": "35",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "81",
+    "stat_id": "3",
+    "base_stat": "70",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "81",
+    "stat_id": "4",
+    "base_stat": "95",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "81",
+    "stat_id": "5",
+    "base_stat": "55",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "81",
+    "stat_id": "6",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "95",
+    "stat_id": "1",
+    "base_stat": "35",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "95",
+    "stat_id": "2",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "95",
+    "stat_id": "3",
+    "base_stat": "160",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "95",
+    "stat_id": "4",
+    "base_stat": "30",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "95",
+    "stat_id": "5",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "95",
+    "stat_id": "6",
+    "base_stat": "70",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "133",
+    "stat_id": "1",
+    "base_stat": "55",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "133",
+    "stat_id": "2",
+    "base_stat": "55",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "133",
+    "stat_id": "3",
+    "base_stat": "50",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "133",
+    "stat_id": "4",
+    "base_stat": "45",
+    "effort": "0"
+  },
+  {
+    "pokemon_id": "133",
+    "stat_id": "5",
+    "base_stat": "65",
+    "effort": "1"
+  },
+  {
+    "pokemon_id": "133",
+    "stat_id": "6",
+    "base_stat": "55",
+    "effort": "0"
+  }
+]

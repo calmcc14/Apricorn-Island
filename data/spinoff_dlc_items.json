@@ -1,0 +1,17 @@
+{
+  "dlc": "spinoff",
+  "items": {
+    "item_dreamy_ball": {
+      "id": "item_dreamy_ball",
+      "name": "Dreamy Ball",
+      "category": "Pokeballs",
+      "rarity": "rare",
+      "kind": "ball",
+      "status": "implemented",
+      "description": "Guaranteed capture only in special Entree Forest encounters. Standard capture power elsewhere. Reserved for the spinoff DLC; excluded from base-game loot.",
+      "bonus": 0.2,
+      "requirement": "",
+      "source": "Approved spinoff DLC item"
+    }
+  }
+}

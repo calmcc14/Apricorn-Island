@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bn4k70dn6ffup"
+
+[deps]
+
+files=["res://data/tm_sources/move_names.local.translation", "res://data/tm_sources/move_names.name.translation"]
+
+source_file="res://data/tm_sources/move_names.csv"
+dest_files=["res://data/tm_sources/move_names.local.translation", "res://data/tm_sources/move_names.name.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

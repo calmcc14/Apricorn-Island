@@ -1,0 +1,4532 @@
+{
+  "move_flags": {
+    "1": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "2": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "3": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "4": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "5": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "6": [
+      "protect",
+      "mirror"
+    ],
+    "7": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "8": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "9": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "10": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "11": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "12": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "13": [
+      "charge",
+      "protect",
+      "mirror"
+    ],
+    "14": [
+      "snatch",
+      "dance"
+    ],
+    "15": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "16": [
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "17": [
+      "contact",
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "18": [
+      "reflectable",
+      "mirror",
+      "authentic"
+    ],
+    "19": [
+      "contact",
+      "charge",
+      "protect",
+      "mirror",
+      "gravity",
+      "distance"
+    ],
+    "20": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "21": [
+      "contact",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "22": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "23": [
+      "contact",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "24": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "25": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "26": [
+      "contact",
+      "protect",
+      "mirror",
+      "gravity"
+    ],
+    "27": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "28": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "29": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "30": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "31": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "32": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "33": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "34": [
+      "contact",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "35": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "36": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "37": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "38": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "39": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "40": [
+      "protect",
+      "mirror"
+    ],
+    "41": [
+      "protect",
+      "mirror"
+    ],
+    "42": [
+      "protect",
+      "mirror"
+    ],
+    "43": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "44": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "45": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "46": [
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "47": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "48": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "49": [
+      "protect",
+      "mirror"
+    ],
+    "50": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic",
+      "mental"
+    ],
+    "51": [
+      "protect",
+      "mirror"
+    ],
+    "52": [
+      "protect",
+      "mirror"
+    ],
+    "53": [
+      "protect",
+      "mirror"
+    ],
+    "54": [
+      "snatch"
+    ],
+    "55": [
+      "protect",
+      "mirror"
+    ],
+    "56": [
+      "protect",
+      "mirror"
+    ],
+    "57": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "58": [
+      "protect",
+      "mirror"
+    ],
+    "59": [
+      "protect",
+      "mirror"
+    ],
+    "60": [
+      "protect",
+      "mirror"
+    ],
+    "61": [
+      "protect",
+      "mirror"
+    ],
+    "62": [
+      "protect",
+      "mirror"
+    ],
+    "63": [
+      "recharge",
+      "protect",
+      "mirror"
+    ],
+    "64": [
+      "contact",
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "65": [
+      "contact",
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "66": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "67": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "68": [
+      "contact",
+      "protect"
+    ],
+    "69": [
+      "contact",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "70": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "71": [
+      "protect",
+      "mirror",
+      "heal"
+    ],
+    "72": [
+      "protect",
+      "mirror",
+      "heal"
+    ],
+    "73": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "74": [
+      "snatch"
+    ],
+    "75": [
+      "protect",
+      "mirror"
+    ],
+    "76": [
+      "charge",
+      "protect",
+      "mirror"
+    ],
+    "77": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "powder"
+    ],
+    "78": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "powder"
+    ],
+    "79": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "powder"
+    ],
+    "80": [
+      "contact",
+      "protect",
+      "mirror",
+      "dance"
+    ],
+    "81": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "82": [
+      "protect",
+      "mirror"
+    ],
+    "83": [
+      "protect",
+      "mirror"
+    ],
+    "84": [
+      "protect",
+      "mirror"
+    ],
+    "85": [
+      "protect",
+      "mirror"
+    ],
+    "86": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "87": [
+      "protect",
+      "mirror"
+    ],
+    "88": [
+      "protect",
+      "mirror"
+    ],
+    "89": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "90": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "91": [
+      "contact",
+      "charge",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "92": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "93": [
+      "protect",
+      "mirror"
+    ],
+    "94": [
+      "protect",
+      "mirror"
+    ],
+    "95": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "96": [
+      "snatch"
+    ],
+    "97": [
+      "snatch"
+    ],
+    "98": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "99": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "101": [
+      "protect",
+      "mirror"
+    ],
+    "102": [
+      "protect",
+      "authentic"
+    ],
+    "103": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "104": [
+      "snatch"
+    ],
+    "105": [
+      "snatch",
+      "heal"
+    ],
+    "106": [
+      "snatch"
+    ],
+    "107": [
+      "snatch"
+    ],
+    "108": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "109": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "110": [
+      "snatch"
+    ],
+    "111": [
+      "snatch"
+    ],
+    "112": [
+      "snatch"
+    ],
+    "113": [
+      "snatch"
+    ],
+    "114": [
+      "authentic"
+    ],
+    "115": [
+      "snatch"
+    ],
+    "116": [
+      "snatch"
+    ],
+    "117": [
+      "contact",
+      "protect"
+    ],
+    "120": [
+      "protect",
+      "mirror"
+    ],
+    "121": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "122": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "123": [
+      "protect",
+      "mirror"
+    ],
+    "124": [
+      "protect",
+      "mirror"
+    ],
+    "125": [
+      "protect",
+      "mirror"
+    ],
+    "126": [
+      "protect",
+      "mirror"
+    ],
+    "127": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "128": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "129": [
+      "protect",
+      "mirror"
+    ],
+    "130": [
+      "contact",
+      "charge",
+      "protect",
+      "mirror"
+    ],
+    "131": [
+      "protect",
+      "mirror"
+    ],
+    "132": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "133": [
+      "snatch"
+    ],
+    "134": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "135": [
+      "snatch",
+      "heal"
+    ],
+    "136": [
+      "contact",
+      "protect",
+      "mirror",
+      "gravity"
+    ],
+    "137": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "138": [
+      "protect",
+      "mirror",
+      "heal"
+    ],
+    "139": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "140": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "141": [
+      "contact",
+      "protect",
+      "mirror",
+      "heal"
+    ],
+    "142": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "143": [
+      "charge",
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "145": [
+      "protect",
+      "mirror"
+    ],
+    "146": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "147": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "powder"
+    ],
+    "148": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "149": [
+      "protect",
+      "mirror"
+    ],
+    "150": [
+      "gravity"
+    ],
+    "151": [
+      "snatch"
+    ],
+    "152": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "153": [
+      "protect",
+      "mirror"
+    ],
+    "154": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "155": [
+      "protect",
+      "mirror"
+    ],
+    "156": [
+      "snatch",
+      "heal"
+    ],
+    "157": [
+      "protect",
+      "mirror"
+    ],
+    "158": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "159": [
+      "snatch"
+    ],
+    "160": [
+      "snatch"
+    ],
+    "161": [
+      "protect",
+      "mirror"
+    ],
+    "162": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "163": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "164": [
+      "snatch",
+      "non-sky-battle"
+    ],
+    "165": [
+      "contact",
+      "protect"
+    ],
+    "166": [
+      "authentic"
+    ],
+    "167": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "168": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "169": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "170": [
+      "protect",
+      "mirror"
+    ],
+    "171": [
+      "protect",
+      "mirror"
+    ],
+    "172": [
+      "contact",
+      "protect",
+      "mirror",
+      "defrost"
+    ],
+    "173": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "174": [
+      "authentic"
+    ],
+    "175": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "176": [
+      "authentic"
+    ],
+    "177": [
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "178": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "powder"
+    ],
+    "179": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "180": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic"
+    ],
+    "181": [
+      "protect",
+      "mirror"
+    ],
+    "183": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "184": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "185": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "186": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "187": [
+      "snatch"
+    ],
+    "188": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "189": [
+      "protect",
+      "mirror"
+    ],
+    "190": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "191": [
+      "reflectable",
+      "non-sky-battle"
+    ],
+    "192": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "193": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic"
+    ],
+    "194": [
+      "authentic"
+    ],
+    "195": [
+      "sound",
+      "distance",
+      "authentic"
+    ],
+    "196": [
+      "protect",
+      "mirror"
+    ],
+    "198": [
+      "protect",
+      "mirror"
+    ],
+    "199": [
+      "protect",
+      "mirror"
+    ],
+    "200": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "202": [
+      "protect",
+      "mirror",
+      "heal"
+    ],
+    "204": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "205": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "206": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "207": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "208": [
+      "snatch",
+      "heal"
+    ],
+    "209": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "210": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "211": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "212": [
+      "reflectable",
+      "mirror"
+    ],
+    "213": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic",
+      "mental"
+    ],
+    "215": [
+      "snatch",
+      "sound",
+      "distance",
+      "authentic"
+    ],
+    "216": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "217": [
+      "protect",
+      "mirror"
+    ],
+    "218": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "219": [
+      "snatch"
+    ],
+    "220": [
+      "protect",
+      "mirror"
+    ],
+    "221": [
+      "protect",
+      "mirror",
+      "defrost"
+    ],
+    "222": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "223": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "224": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "225": [
+      "protect",
+      "mirror"
+    ],
+    "227": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic",
+      "mental"
+    ],
+    "228": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "229": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "230": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "231": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "232": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "233": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "234": [
+      "snatch",
+      "heal"
+    ],
+    "235": [
+      "snatch",
+      "heal"
+    ],
+    "236": [
+      "snatch",
+      "heal"
+    ],
+    "237": [
+      "protect",
+      "mirror"
+    ],
+    "238": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "239": [
+      "protect",
+      "mirror"
+    ],
+    "242": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "243": [
+      "protect"
+    ],
+    "244": [
+      "authentic"
+    ],
+    "245": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "246": [
+      "protect",
+      "mirror"
+    ],
+    "247": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "249": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "250": [
+      "protect",
+      "mirror"
+    ],
+    "251": [
+      "protect",
+      "mirror"
+    ],
+    "252": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "253": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "254": [
+      "snatch"
+    ],
+    "255": [
+      "protect"
+    ],
+    "256": [
+      "snatch",
+      "heal"
+    ],
+    "257": [
+      "protect",
+      "mirror"
+    ],
+    "259": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic",
+      "mental"
+    ],
+    "260": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "261": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "262": [
+      "protect",
+      "mirror"
+    ],
+    "263": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "264": [
+      "contact",
+      "protect",
+      "punch"
+    ],
+    "265": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "268": [
+      "snatch"
+    ],
+    "269": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic",
+      "mental"
+    ],
+    "270": [
+      "authentic"
+    ],
+    "271": [
+      "protect",
+      "mirror"
+    ],
+    "272": [
+      "authentic"
+    ],
+    "273": [
+      "snatch",
+      "heal"
+    ],
+    "275": [
+      "snatch",
+      "non-sky-battle"
+    ],
+    "276": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "278": [
+      "snatch"
+    ],
+    "279": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "280": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "281": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "282": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "283": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "284": [
+      "protect",
+      "mirror"
+    ],
+    "285": [
+      "protect",
+      "mirror",
+      "authentic"
+    ],
+    "286": [
+      "snatch",
+      "authentic"
+    ],
+    "287": [
+      "snatch"
+    ],
+    "288": [
+      "authentic"
+    ],
+    "289": [
+      "authentic"
+    ],
+    "290": [
+      "protect",
+      "mirror"
+    ],
+    "291": [
+      "contact",
+      "charge",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "292": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "293": [
+      "snatch"
+    ],
+    "294": [
+      "snatch"
+    ],
+    "295": [
+      "protect",
+      "mirror"
+    ],
+    "296": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "297": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "dance"
+    ],
+    "298": [
+      "protect",
+      "mirror",
+      "dance"
+    ],
+    "299": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "300": [
+      "non-sky-battle"
+    ],
+    "301": [
+      "contact",
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "302": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "303": [
+      "snatch",
+      "heal"
+    ],
+    "304": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "305": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "306": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "307": [
+      "recharge",
+      "protect",
+      "mirror"
+    ],
+    "308": [
+      "recharge",
+      "protect",
+      "mirror"
+    ],
+    "309": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "310": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "311": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "312": [
+      "snatch",
+      "distance"
+    ],
+    "313": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "314": [
+      "protect",
+      "mirror"
+    ],
+    "315": [
+      "protect",
+      "mirror"
+    ],
+    "316": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic"
+    ],
+    "317": [
+      "protect",
+      "mirror"
+    ],
+    "318": [
+      "protect",
+      "mirror"
+    ],
+    "319": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "320": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "321": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "322": [
+      "snatch"
+    ],
+    "323": [
+      "protect",
+      "mirror"
+    ],
+    "324": [
+      "protect",
+      "mirror"
+    ],
+    "325": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "326": [
+      "protect",
+      "mirror"
+    ],
+    "327": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "328": [
+      "protect",
+      "mirror"
+    ],
+    "329": [
+      "protect",
+      "mirror"
+    ],
+    "330": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "331": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "332": [
+      "contact",
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "333": [
+      "protect",
+      "mirror"
+    ],
+    "334": [
+      "snatch"
+    ],
+    "335": [
+      "reflectable",
+      "mirror"
+    ],
+    "336": [
+      "snatch",
+      "sound"
+    ],
+    "337": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "338": [
+      "recharge",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "339": [
+      "snatch"
+    ],
+    "340": [
+      "contact",
+      "charge",
+      "protect",
+      "mirror",
+      "gravity",
+      "distance"
+    ],
+    "341": [
+      "protect",
+      "mirror"
+    ],
+    "342": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "343": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "344": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "345": [
+      "protect",
+      "mirror"
+    ],
+    "346": [
+      "non-sky-battle"
+    ],
+    "347": [
+      "snatch"
+    ],
+    "348": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "349": [
+      "snatch",
+      "dance"
+    ],
+    "350": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "351": [
+      "protect",
+      "mirror"
+    ],
+    "352": [
+      "protect",
+      "mirror",
+      "distance",
+      "pulse"
+    ],
+    "354": [
+      "protect",
+      "mirror"
+    ],
+    "355": [
+      "snatch",
+      "heal"
+    ],
+    "356": [
+      "non-sky-battle"
+    ],
+    "357": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic"
+    ],
+    "358": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "359": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "360": [
+      "contact",
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "361": [
+      "snatch",
+      "heal"
+    ],
+    "362": [
+      "protect",
+      "mirror"
+    ],
+    "363": [
+      "protect",
+      "mirror"
+    ],
+    "364": [
+      "mirror"
+    ],
+    "365": [
+      "contact",
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "366": [
+      "snatch"
+    ],
+    "368": [
+      "protect",
+      "mirror"
+    ],
+    "369": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "370": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "371": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "372": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "373": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "374": [
+      "protect",
+      "mirror"
+    ],
+    "375": [
+      "protect",
+      "mirror"
+    ],
+    "376": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "377": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "mental"
+    ],
+    "378": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "379": [
+      "snatch"
+    ],
+    "380": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "381": [
+      "snatch"
+    ],
+    "382": [
+      "protect",
+      "authentic"
+    ],
+    "384": [
+      "protect",
+      "mirror",
+      "authentic"
+    ],
+    "385": [
+      "protect",
+      "mirror",
+      "authentic"
+    ],
+    "386": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "387": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "388": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "389": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "390": [
+      "reflectable",
+      "non-sky-battle"
+    ],
+    "391": [
+      "protect",
+      "mirror",
+      "authentic"
+    ],
+    "392": [
+      "snatch"
+    ],
+    "393": [
+      "snatch",
+      "gravity"
+    ],
+    "394": [
+      "contact",
+      "protect",
+      "mirror",
+      "defrost"
+    ],
+    "395": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "396": [
+      "protect",
+      "mirror",
+      "distance",
+      "pulse",
+      "ballistics"
+    ],
+    "397": [
+      "snatch"
+    ],
+    "398": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "399": [
+      "protect",
+      "mirror",
+      "distance",
+      "pulse"
+    ],
+    "400": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "401": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "402": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "403": [
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "404": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "405": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "406": [
+      "protect",
+      "mirror",
+      "distance",
+      "pulse"
+    ],
+    "407": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "408": [
+      "protect",
+      "mirror"
+    ],
+    "409": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch",
+      "heal"
+    ],
+    "410": [
+      "protect",
+      "mirror"
+    ],
+    "411": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "412": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "413": [
+      "contact",
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "414": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "415": [
+      "protect",
+      "mirror"
+    ],
+    "416": [
+      "contact",
+      "recharge",
+      "protect",
+      "mirror"
+    ],
+    "417": [
+      "snatch"
+    ],
+    "418": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "419": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "420": [
+      "protect",
+      "mirror"
+    ],
+    "421": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "422": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "423": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "424": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "425": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "426": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "427": [
+      "protect",
+      "mirror"
+    ],
+    "428": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "429": [
+      "protect",
+      "mirror"
+    ],
+    "430": [
+      "protect",
+      "mirror"
+    ],
+    "431": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "432": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic"
+    ],
+    "433": [
+      "mirror"
+    ],
+    "434": [
+      "protect",
+      "mirror"
+    ],
+    "435": [
+      "protect",
+      "mirror"
+    ],
+    "436": [
+      "protect",
+      "mirror"
+    ],
+    "437": [
+      "protect",
+      "mirror"
+    ],
+    "438": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "439": [
+      "recharge",
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "440": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "441": [
+      "protect",
+      "mirror"
+    ],
+    "442": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "443": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "444": [
+      "protect",
+      "mirror"
+    ],
+    "445": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "446": [
+      "reflectable"
+    ],
+    "447": [
+      "contact",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "448": [
+      "protect",
+      "mirror",
+      "sound",
+      "distance",
+      "authentic"
+    ],
+    "449": [
+      "protect",
+      "mirror"
+    ],
+    "450": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "451": [
+      "protect",
+      "mirror"
+    ],
+    "452": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "453": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "454": [
+      "protect",
+      "mirror"
+    ],
+    "455": [
+      "snatch"
+    ],
+    "456": [
+      "snatch",
+      "heal"
+    ],
+    "457": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "458": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "459": [
+      "recharge",
+      "protect",
+      "mirror"
+    ],
+    "460": [
+      "protect",
+      "mirror"
+    ],
+    "461": [
+      "snatch",
+      "heal",
+      "dance"
+    ],
+    "462": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "463": [
+      "protect",
+      "mirror"
+    ],
+    "464": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "465": [
+      "protect",
+      "mirror"
+    ],
+    "466": [
+      "protect",
+      "mirror"
+    ],
+    "467": [
+      "contact",
+      "charge",
+      "mirror"
+    ],
+    "468": [
+      "snatch"
+    ],
+    "469": [
+      "snatch"
+    ],
+    "470": [
+      "protect"
+    ],
+    "471": [
+      "protect"
+    ],
+    "472": [
+      "mirror"
+    ],
+    "473": [
+      "protect",
+      "mirror"
+    ],
+    "474": [
+      "protect",
+      "mirror"
+    ],
+    "475": [
+      "snatch"
+    ],
+    "476": [
+      "powder"
+    ],
+    "477": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "gravity"
+    ],
+    "478": [
+      "mirror"
+    ],
+    "479": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "480": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "481": [
+      "protect",
+      "mirror"
+    ],
+    "482": [
+      "protect",
+      "mirror"
+    ],
+    "483": [
+      "snatch",
+      "dance"
+    ],
+    "484": [
+      "contact",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "485": [
+      "protect",
+      "mirror"
+    ],
+    "486": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "487": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "488": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "489": [
+      "snatch"
+    ],
+    "490": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "491": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "492": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "493": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "494": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "495": [
+      "authentic"
+    ],
+    "496": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "497": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "498": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "499": [
+      "protect",
+      "mirror"
+    ],
+    "500": [
+      "protect",
+      "mirror"
+    ],
+    "501": [
+      "snatch"
+    ],
+    "503": [
+      "protect",
+      "mirror",
+      "defrost"
+    ],
+    "504": [
+      "snatch"
+    ],
+    "505": [
+      "protect",
+      "reflectable",
+      "distance",
+      "heal",
+      "pulse"
+    ],
+    "506": [
+      "protect",
+      "mirror"
+    ],
+    "507": [
+      "contact",
+      "charge",
+      "protect",
+      "mirror",
+      "gravity",
+      "distance"
+    ],
+    "508": [
+      "snatch"
+    ],
+    "509": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "510": [
+      "protect",
+      "mirror"
+    ],
+    "511": [
+      "protect",
+      "mirror"
+    ],
+    "512": [
+      "contact",
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "513": [
+      "protect",
+      "authentic"
+    ],
+    "514": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "515": [
+      "protect"
+    ],
+    "516": [
+      "mirror",
+      "authentic"
+    ],
+    "517": [
+      "protect",
+      "mirror"
+    ],
+    "518": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "519": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "520": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "521": [
+      "protect",
+      "mirror"
+    ],
+    "522": [
+      "protect",
+      "mirror"
+    ],
+    "523": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "524": [
+      "protect",
+      "mirror"
+    ],
+    "525": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "526": [
+      "snatch"
+    ],
+    "527": [
+      "protect",
+      "mirror"
+    ],
+    "528": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "529": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "530": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "531": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "532": [
+      "contact",
+      "protect",
+      "mirror",
+      "heal"
+    ],
+    "533": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "534": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "535": [
+      "contact",
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "536": [
+      "protect",
+      "mirror"
+    ],
+    "537": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "538": [
+      "snatch"
+    ],
+    "539": [
+      "protect",
+      "mirror"
+    ],
+    "540": [
+      "protect",
+      "mirror"
+    ],
+    "541": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "542": [
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "543": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "544": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "545": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "546": [
+      "protect",
+      "mirror"
+    ],
+    "547": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "548": [
+      "protect",
+      "mirror"
+    ],
+    "549": [
+      "protect",
+      "mirror"
+    ],
+    "550": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "551": [
+      "protect",
+      "mirror"
+    ],
+    "552": [
+      "protect",
+      "mirror",
+      "dance"
+    ],
+    "553": [
+      "charge",
+      "protect",
+      "mirror"
+    ],
+    "554": [
+      "charge",
+      "protect",
+      "mirror"
+    ],
+    "555": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "556": [
+      "protect",
+      "mirror"
+    ],
+    "557": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "558": [
+      "protect",
+      "mirror",
+      "defrost"
+    ],
+    "559": [
+      "protect",
+      "mirror"
+    ],
+    "560": [
+      "contact",
+      "protect",
+      "mirror",
+      "gravity",
+      "distance",
+      "non-sky-battle"
+    ],
+    "561": [
+      "snatch",
+      "non-sky-battle"
+    ],
+    "562": [
+      "protect"
+    ],
+    "563": [
+      "distance",
+      "non-sky-battle"
+    ],
+    "564": [
+      "reflectable"
+    ],
+    "565": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "566": [
+      "contact",
+      "charge",
+      "mirror"
+    ],
+    "567": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "568": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "570": [
+      "protect",
+      "mirror",
+      "heal"
+    ],
+    "571": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "572": [
+      "protect",
+      "mirror"
+    ],
+    "573": [
+      "protect",
+      "mirror"
+    ],
+    "574": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "575": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "576": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "577": [
+      "contact",
+      "protect",
+      "mirror",
+      "heal"
+    ],
+    "579": [
+      "distance"
+    ],
+    "580": [
+      "non-sky-battle"
+    ],
+    "581": [
+      "non-sky-battle"
+    ],
+    "582": [
+      "protect",
+      "mirror"
+    ],
+    "583": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "584": [
+      "protect",
+      "mirror"
+    ],
+    "585": [
+      "protect",
+      "mirror"
+    ],
+    "586": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "587": [
+      "mirror",
+      "authentic"
+    ],
+    "589": [
+      "reflectable",
+      "mirror",
+      "authentic"
+    ],
+    "590": [
+      "reflectable",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "591": [
+      "protect",
+      "mirror"
+    ],
+    "592": [
+      "protect",
+      "mirror",
+      "defrost"
+    ],
+    "593": [
+      "mirror",
+      "authentic"
+    ],
+    "594": [
+      "protect",
+      "mirror"
+    ],
+    "595": [
+      "protect",
+      "mirror"
+    ],
+    "597": [
+      "authentic"
+    ],
+    "598": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "599": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "600": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "authentic",
+      "powder"
+    ],
+    "601": [
+      "charge",
+      "non-sky-battle"
+    ],
+    "602": [
+      "snatch",
+      "distance",
+      "authentic"
+    ],
+    "604": [
+      "non-sky-battle"
+    ],
+    "605": [
+      "protect",
+      "mirror"
+    ],
+    "607": [
+      "authentic"
+    ],
+    "608": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "609": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "610": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "611": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "612": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "613": [
+      "protect",
+      "mirror",
+      "distance",
+      "heal"
+    ],
+    "614": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "615": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "616": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "617": [
+      "protect",
+      "mirror"
+    ],
+    "618": [
+      "protect",
+      "mirror",
+      "pulse"
+    ],
+    "619": [
+      "protect",
+      "mirror",
+      "non-sky-battle"
+    ],
+    "620": [
+      "contact",
+      "protect",
+      "mirror",
+      "distance"
+    ],
+    "621": [
+      "mirror",
+      "authentic"
+    ],
+    "658": [
+      "contact"
+    ],
+    "659": [
+      "snatch",
+      "heal"
+    ],
+    "660": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "662": [
+      "protect",
+      "mirror"
+    ],
+    "663": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "664": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "665": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "666": [
+      "protect",
+      "reflectable",
+      "heal"
+    ],
+    "667": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "668": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "heal"
+    ],
+    "669": [
+      "contact",
+      "charge",
+      "protect",
+      "mirror"
+    ],
+    "670": [
+      "protect",
+      "mirror"
+    ],
+    "671": [
+      "protect",
+      "reflectable"
+    ],
+    "672": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "673": [
+      "snatch"
+    ],
+    "674": [
+      "snatch",
+      "authentic"
+    ],
+    "675": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "676": [
+      "protect",
+      "mirror",
+      "ballistics"
+    ],
+    "677": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "678": [
+      "non-sky-battle"
+    ],
+    "679": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "680": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "681": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "682": [
+      "protect",
+      "mirror",
+      "defrost"
+    ],
+    "683": [
+      "protect",
+      "mirror",
+      "authentic"
+    ],
+    "684": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "685": [
+      "protect",
+      "reflectable",
+      "heal"
+    ],
+    "686": [
+      "protect",
+      "mirror",
+      "dance"
+    ],
+    "687": [
+      "protect",
+      "mirror"
+    ],
+    "688": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "689": [
+      "protect",
+      "authentic"
+    ],
+    "690": [
+      "protect",
+      "ballistics"
+    ],
+    "691": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "692": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "693": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "694": [
+      "snatch"
+    ],
+    "696": [
+      "contact"
+    ],
+    "699": [
+      "contact"
+    ],
+    "701": [
+      "contact"
+    ],
+    "704": [
+      "protect"
+    ],
+    "705": [
+      "protect",
+      "mirror"
+    ],
+    "706": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "707": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "708": [
+      "protect",
+      "mirror"
+    ],
+    "709": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "710": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "711": [
+      "recharge",
+      "protect",
+      "mirror"
+    ],
+    "712": [
+      "contact",
+      "protect",
+      "mirror",
+      "authentic"
+    ],
+    "713": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "714": [
+      "protect",
+      "mirror"
+    ],
+    "715": [
+      "reflectable",
+      "mirror"
+    ],
+    "716": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "717": [
+      "protect",
+      "mirror"
+    ],
+    "718": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "720": [
+      "protect",
+      "mirror"
+    ],
+    "721": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "722": [
+      "protect",
+      "mirror"
+    ],
+    "724": [
+      "contact"
+    ],
+    "726": [
+      "contact"
+    ],
+    "728": [
+      "sound",
+      "authentic"
+    ],
+    "729": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "730": [
+      "protect",
+      "mirror"
+    ],
+    "731": [
+      "contact",
+      "protect",
+      "mirror",
+      "gravity"
+    ],
+    "732": [
+      "protect",
+      "mirror"
+    ],
+    "733": [
+      "protect",
+      "mirror",
+      "heal"
+    ],
+    "734": [
+      "protect",
+      "mirror"
+    ],
+    "735": [
+      "contact",
+      "protect",
+      "mirror",
+      "defrost"
+    ],
+    "736": [
+      "protect",
+      "mirror"
+    ],
+    "737": [
+      "protect",
+      "mirror"
+    ],
+    "738": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "739": [
+      "protect",
+      "mirror"
+    ],
+    "740": [
+      "protect",
+      "mirror"
+    ],
+    "741": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "742": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "744": [
+      "protect"
+    ],
+    "745": [
+      "protect",
+      "mirror"
+    ],
+    "746": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "747": [
+      "snatch"
+    ],
+    "748": [
+      "snatch"
+    ],
+    "749": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "750": [
+      "protect",
+      "reflectable",
+      "mirror",
+      "powder"
+    ],
+    "751": [
+      "protect",
+      "mirror"
+    ],
+    "752": [
+      "authentic"
+    ],
+    "753": [
+      "protect",
+      "mirror"
+    ],
+    "754": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "755": [
+      "contact",
+      "protect",
+      "mirror",
+      "bite"
+    ],
+    "756": [
+      "mirror"
+    ],
+    "775": [
+      "snatch",
+      "sound",
+      "dance"
+    ],
+    "776": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "778": [
+      "protect",
+      "mirror"
+    ],
+    "779": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "780": [
+      "protect",
+      "mirror",
+      "defrost",
+      "ballistics"
+    ],
+    "781": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "782": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "783": [
+      "protect",
+      "mirror"
+    ],
+    "784": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "785": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "786": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "787": [
+      "protect",
+      "mirror"
+    ],
+    "788": [
+      "protect",
+      "mirror"
+    ],
+    "789": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "790": [
+      "protect",
+      "mirror"
+    ],
+    "791": [
+      "snatch",
+      "heal",
+      "authentic"
+    ],
+    "793": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "794": [
+      "recharge",
+      "protect",
+      "mirror"
+    ],
+    "795": [
+      "recharge",
+      "protect",
+      "mirror"
+    ],
+    "796": [
+      "protect",
+      "mirror"
+    ],
+    "797": [
+      "protect",
+      "mirror"
+    ],
+    "798": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "799": [
+      "protect",
+      "mirror"
+    ],
+    "800": [
+      "charge",
+      "protect",
+      "mirror"
+    ],
+    "801": [
+      "protect",
+      "mirror"
+    ],
+    "802": [
+      "protect",
+      "mirror"
+    ],
+    "803": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "804": [
+      "protect",
+      "mirror"
+    ],
+    "805": [
+      "protect",
+      "mirror",
+      "pulse"
+    ],
+    "806": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "807": [
+      "protect",
+      "mirror"
+    ],
+    "808": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "809": [
+      "protect",
+      "mirror"
+    ],
+    "810": [
+      "protect",
+      "reflectable",
+      "mirror"
+    ],
+    "811": [
+      "authentic"
+    ],
+    "812": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "813": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "814": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "815": [
+      "protect",
+      "mirror",
+      "defrost"
+    ],
+    "816": [
+      "heal",
+      "authentic"
+    ],
+    "817": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "818": [
+      "contact",
+      "protect",
+      "mirror",
+      "punch"
+    ],
+    "819": [
+      "protect",
+      "mirror"
+    ],
+    "820": [
+      "protect",
+      "mirror"
+    ],
+    "821": [
+      "protect",
+      "mirror"
+    ],
+    "822": [
+      "protect",
+      "mirror"
+    ],
+    "823": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "824": [
+      "protect",
+      "mirror"
+    ],
+    "825": [
+      "protect",
+      "mirror"
+    ],
+    "826": [
+      "protect",
+      "mirror",
+      "sound",
+      "authentic"
+    ],
+    "10001": [
+      "contact",
+      "protect"
+    ],
+    "10002": [
+      "protect"
+    ],
+    "10003": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "10004": [
+      "protect"
+    ],
+    "10005": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "10006": [
+      "protect",
+      "mirror"
+    ],
+    "10007": [
+      "contact",
+      "protect",
+      "mirror"
+    ],
+    "10008": [
+      "protect",
+      "mirror"
+    ],
+    "10009": [
+      "protect",
+      "mirror"
+    ],
+    "10010": [
+      "protect"
+    ],
+    "10011": [
+      "protect"
+    ],
+    "10012": [
+      "protect",
+      "mirror"
+    ],
+    "10013": [
+      "recharge",
+      "protect"
+    ],
+    "10014": [
+      "protect",
+      "mirror"
+    ],
+    "10015": [
+      "protect",
+      "mirror"
+    ],
+    "10016": [
+      "protect",
+      "mirror",
+      "sound"
+    ],
+    "10017": [
+      "protect"
+    ],
+    "10018": [
+      "protect"
+    ]
+  },
+  "move_ids": {
+    "pound": 1,
+    "karate_chop": 2,
+    "double_slap": 3,
+    "comet_punch": 4,
+    "mega_punch": 5,
+    "pay_day": 6,
+    "fire_punch": 7,
+    "ice_punch": 8,
+    "thunder_punch": 9,
+    "scratch": 10,
+    "vice_grip": 11,
+    "guillotine": 12,
+    "razor_wind": 13,
+    "swords_dance": 14,
+    "cut": 15,
+    "gust": 16,
+    "wing_attack": 17,
+    "whirlwind": 18,
+    "fly": 19,
+    "bind": 20,
+    "slam": 21,
+    "vine_whip": 22,
+    "stomp": 23,
+    "double_kick": 24,
+    "mega_kick": 25,
+    "jump_kick": 26,
+    "rolling_kick": 27,
+    "sand_attack": 28,
+    "headbutt": 29,
+    "horn_attack": 30,
+    "fury_attack": 31,
+    "horn_drill": 32,
+    "tackle": 33,
+    "body_slam": 34,
+    "wrap": 35,
+    "take_down": 36,
+    "thrash": 37,
+    "double_edge": 38,
+    "tail_whip": 39,
+    "poison_sting": 40,
+    "twineedle": 41,
+    "pin_missile": 42,
+    "leer": 43,
+    "bite": 44,
+    "growl": 45,
+    "roar": 46,
+    "sing": 47,
+    "supersonic": 48,
+    "sonic_boom": 49,
+    "disable": 50,
+    "acid": 51,
+    "ember": 52,
+    "flamethrower": 53,
+    "mist": 54,
+    "water_gun": 55,
+    "hydro_pump": 56,
+    "surf": 57,
+    "ice_beam": 58,
+    "blizzard": 59,
+    "psybeam": 60,
+    "bubble_beam": 61,
+    "aurora_beam": 62,
+    "hyper_beam": 63,
+    "peck": 64,
+    "drill_peck": 65,
+    "submission": 66,
+    "low_kick": 67,
+    "counter": 68,
+    "seismic_toss": 69,
+    "strength": 70,
+    "absorb": 71,
+    "mega_drain": 72,
+    "leech_seed": 73,
+    "growth": 74,
+    "razor_leaf": 75,
+    "solar_beam": 76,
+    "poison_powder": 77,
+    "stun_spore": 78,
+    "sleep_powder": 79,
+    "petal_dance": 80,
+    "string_shot": 81,
+    "dragon_rage": 82,
+    "fire_spin": 83,
+    "thunder_shock": 84,
+    "thunderbolt": 85,
+    "thunder_wave": 86,
+    "thunder": 87,
+    "rock_throw": 88,
+    "earthquake": 89,
+    "fissure": 90,
+    "dig": 91,
+    "toxic": 92,
+    "confusion": 93,
+    "psychic": 94,
+    "hypnosis": 95,
+    "meditate": 96,
+    "agility": 97,
+    "quick_attack": 98,
+    "rage": 99,
+    "teleport": 100,
+    "night_shade": 101,
+    "mimic": 102,
+    "screech": 103,
+    "double_team": 104,
+    "recover": 105,
+    "harden": 106,
+    "minimize": 107,
+    "smokescreen": 108,
+    "confuse_ray": 109,
+    "withdraw": 110,
+    "defense_curl": 111,
+    "barrier": 112,
+    "light_screen": 113,
+    "haze": 114,
+    "reflect": 115,
+    "focus_energy": 116,
+    "bide": 117,
+    "metronome": 118,
+    "mirror_move": 119,
+    "self_destruct": 120,
+    "egg_bomb": 121,
+    "lick": 122,
+    "smog": 123,
+    "sludge": 124,
+    "bone_club": 125,
+    "fire_blast": 126,
+    "waterfall": 127,
+    "clamp": 128,
+    "swift": 129,
+    "skull_bash": 130,
+    "spike_cannon": 131,
+    "constrict": 132,
+    "amnesia": 133,
+    "kinesis": 134,
+    "soft_boiled": 135,
+    "high_jump_kick": 136,
+    "glare": 137,
+    "dream_eater": 138,
+    "poison_gas": 139,
+    "barrage": 140,
+    "leech_life": 141,
+    "lovely_kiss": 142,
+    "sky_attack": 143,
+    "transform": 144,
+    "bubble": 145,
+    "dizzy_punch": 146,
+    "spore": 147,
+    "flash": 148,
+    "psywave": 149,
+    "splash": 150,
+    "acid_armor": 151,
+    "crabhammer": 152,
+    "explosion": 153,
+    "fury_swipes": 154,
+    "bonemerang": 155,
+    "rest": 156,
+    "rock_slide": 157,
+    "hyper_fang": 158,
+    "sharpen": 159,
+    "conversion": 160,
+    "tri_attack": 161,
+    "super_fang": 162,
+    "slash": 163,
+    "substitute": 164,
+    "struggle": 165,
+    "sketch": 166,
+    "triple_kick": 167,
+    "thief": 168,
+    "spider_web": 169,
+    "mind_reader": 170,
+    "nightmare": 171,
+    "flame_wheel": 172,
+    "snore": 173,
+    "curse": 174,
+    "flail": 175,
+    "conversion_2": 176,
+    "aeroblast": 177,
+    "cotton_spore": 178,
+    "reversal": 179,
+    "spite": 180,
+    "powder_snow": 181,
+    "protect": 182,
+    "mach_punch": 183,
+    "scary_face": 184,
+    "feint_attack": 185,
+    "sweet_kiss": 186,
+    "belly_drum": 187,
+    "sludge_bomb": 188,
+    "mud_slap": 189,
+    "octazooka": 190,
+    "spikes": 191,
+    "zap_cannon": 192,
+    "foresight": 193,
+    "destiny_bond": 194,
+    "perish_song": 195,
+    "icy_wind": 196,
+    "detect": 197,
+    "bone_rush": 198,
+    "lock_on": 199,
+    "outrage": 200,
+    "sandstorm": 201,
+    "giga_drain": 202,
+    "endure": 203,
+    "charm": 204,
+    "rollout": 205,
+    "false_swipe": 206,
+    "swagger": 207,
+    "milk_drink": 208,
+    "spark": 209,
+    "fury_cutter": 210,
+    "steel_wing": 211,
+    "mean_look": 212,
+    "attract": 213,
+    "sleep_talk": 214,
+    "heal_bell": 215,
+    "return": 216,
+    "present": 217,
+    "frustration": 218,
+    "safeguard": 219,
+    "pain_split": 220,
+    "sacred_fire": 221,
+    "magnitude": 222,
+    "dynamic_punch": 223,
+    "megahorn": 224,
+    "dragon_breath": 225,
+    "baton_pass": 226,
+    "encore": 227,
+    "pursuit": 228,
+    "rapid_spin": 229,
+    "sweet_scent": 230,
+    "iron_tail": 231,
+    "metal_claw": 232,
+    "vital_throw": 233,
+    "morning_sun": 234,
+    "synthesis": 235,
+    "moonlight": 236,
+    "hidden_power": 237,
+    "cross_chop": 238,
+    "twister": 239,
+    "rain_dance": 240,
+    "sunny_day": 241,
+    "crunch": 242,
+    "mirror_coat": 243,
+    "psych_up": 244,
+    "extreme_speed": 245,
+    "ancient_power": 246,
+    "shadow_ball": 247,
+    "future_sight": 248,
+    "rock_smash": 249,
+    "whirlpool": 250,
+    "beat_up": 251,
+    "fake_out": 252,
+    "uproar": 253,
+    "stockpile": 254,
+    "spit_up": 255,
+    "swallow": 256,
+    "heat_wave": 257,
+    "hail": 258,
+    "torment": 259,
+    "flatter": 260,
+    "will_o_wisp": 261,
+    "memento": 262,
+    "facade": 263,
+    "focus_punch": 264,
+    "smelling_salts": 265,
+    "follow_me": 266,
+    "nature_power": 267,
+    "charge": 268,
+    "taunt": 269,
+    "helping_hand": 270,
+    "trick": 271,
+    "role_play": 272,
+    "wish": 273,
+    "assist": 274,
+    "ingrain": 275,
+    "superpower": 276,
+    "magic_coat": 277,
+    "recycle": 278,
+    "revenge": 279,
+    "brick_break": 280,
+    "yawn": 281,
+    "knock_off": 282,
+    "endeavor": 283,
+    "eruption": 284,
+    "skill_swap": 285,
+    "imprison": 286,
+    "refresh": 287,
+    "grudge": 288,
+    "snatch": 289,
+    "secret_power": 290,
+    "dive": 291,
+    "arm_thrust": 292,
+    "camouflage": 293,
+    "tail_glow": 294,
+    "luster_purge": 295,
+    "mist_ball": 296,
+    "feather_dance": 297,
+    "teeter_dance": 298,
+    "blaze_kick": 299,
+    "mud_sport": 300,
+    "ice_ball": 301,
+    "needle_arm": 302,
+    "slack_off": 303,
+    "hyper_voice": 304,
+    "poison_fang": 305,
+    "crush_claw": 306,
+    "blast_burn": 307,
+    "hydro_cannon": 308,
+    "meteor_mash": 309,
+    "astonish": 310,
+    "weather_ball": 311,
+    "aromatherapy": 312,
+    "fake_tears": 313,
+    "air_cutter": 314,
+    "overheat": 315,
+    "odor_sleuth": 316,
+    "rock_tomb": 317,
+    "silver_wind": 318,
+    "metal_sound": 319,
+    "grass_whistle": 320,
+    "tickle": 321,
+    "cosmic_power": 322,
+    "water_spout": 323,
+    "signal_beam": 324,
+    "shadow_punch": 325,
+    "extrasensory": 326,
+    "sky_uppercut": 327,
+    "sand_tomb": 328,
+    "sheer_cold": 329,
+    "muddy_water": 330,
+    "bullet_seed": 331,
+    "aerial_ace": 332,
+    "icicle_spear": 333,
+    "iron_defense": 334,
+    "block": 335,
+    "howl": 336,
+    "dragon_claw": 337,
+    "frenzy_plant": 338,
+    "bulk_up": 339,
+    "bounce": 340,
+    "mud_shot": 341,
+    "poison_tail": 342,
+    "covet": 343,
+    "volt_tackle": 344,
+    "magical_leaf": 345,
+    "water_sport": 346,
+    "calm_mind": 347,
+    "leaf_blade": 348,
+    "dragon_dance": 349,
+    "rock_blast": 350,
+    "shock_wave": 351,
+    "water_pulse": 352,
+    "doom_desire": 353,
+    "psycho_boost": 354,
+    "roost": 355,
+    "gravity": 356,
+    "miracle_eye": 357,
+    "wake_up_slap": 358,
+    "hammer_arm": 359,
+    "gyro_ball": 360,
+    "healing_wish": 361,
+    "brine": 362,
+    "natural_gift": 363,
+    "feint": 364,
+    "pluck": 365,
+    "tailwind": 366,
+    "acupressure": 367,
+    "metal_burst": 368,
+    "u_turn": 369,
+    "close_combat": 370,
+    "payback": 371,
+    "assurance": 372,
+    "embargo": 373,
+    "fling": 374,
+    "psycho_shift": 375,
+    "trump_card": 376,
+    "heal_block": 377,
+    "wring_out": 378,
+    "power_trick": 379,
+    "gastro_acid": 380,
+    "lucky_chant": 381,
+    "me_first": 382,
+    "copycat": 383,
+    "power_swap": 384,
+    "guard_swap": 385,
+    "punishment": 386,
+    "last_resort": 387,
+    "worry_seed": 388,
+    "sucker_punch": 389,
+    "toxic_spikes": 390,
+    "heart_swap": 391,
+    "aqua_ring": 392,
+    "magnet_rise": 393,
+    "flare_blitz": 394,
+    "force_palm": 395,
+    "aura_sphere": 396,
+    "rock_polish": 397,
+    "poison_jab": 398,
+    "dark_pulse": 399,
+    "night_slash": 400,
+    "aqua_tail": 401,
+    "seed_bomb": 402,
+    "air_slash": 403,
+    "x_scissor": 404,
+    "bug_buzz": 405,
+    "dragon_pulse": 406,
+    "dragon_rush": 407,
+    "power_gem": 408,
+    "drain_punch": 409,
+    "vacuum_wave": 410,
+    "focus_blast": 411,
+    "energy_ball": 412,
+    "brave_bird": 413,
+    "earth_power": 414,
+    "switcheroo": 415,
+    "giga_impact": 416,
+    "nasty_plot": 417,
+    "bullet_punch": 418,
+    "avalanche": 419,
+    "ice_shard": 420,
+    "shadow_claw": 421,
+    "thunder_fang": 422,
+    "ice_fang": 423,
+    "fire_fang": 424,
+    "shadow_sneak": 425,
+    "mud_bomb": 426,
+    "psycho_cut": 427,
+    "zen_headbutt": 428,
+    "mirror_shot": 429,
+    "flash_cannon": 430,
+    "rock_climb": 431,
+    "defog": 432,
+    "trick_room": 433,
+    "draco_meteor": 434,
+    "discharge": 435,
+    "lava_plume": 436,
+    "leaf_storm": 437,
+    "power_whip": 438,
+    "rock_wrecker": 439,
+    "cross_poison": 440,
+    "gunk_shot": 441,
+    "iron_head": 442,
+    "magnet_bomb": 443,
+    "stone_edge": 444,
+    "captivate": 445,
+    "stealth_rock": 446,
+    "grass_knot": 447,
+    "chatter": 448,
+    "judgment": 449,
+    "bug_bite": 450,
+    "charge_beam": 451,
+    "wood_hammer": 452,
+    "aqua_jet": 453,
+    "attack_order": 454,
+    "defend_order": 455,
+    "heal_order": 456,
+    "head_smash": 457,
+    "double_hit": 458,
+    "roar_of_time": 459,
+    "spacial_rend": 460,
+    "lunar_dance": 461,
+    "crush_grip": 462,
+    "magma_storm": 463,
+    "dark_void": 464,
+    "seed_flare": 465,
+    "ominous_wind": 466,
+    "shadow_force": 467,
+    "hone_claws": 468,
+    "wide_guard": 469,
+    "guard_split": 470,
+    "power_split": 471,
+    "wonder_room": 472,
+    "psyshock": 473,
+    "venoshock": 474,
+    "autotomize": 475,
+    "rage_powder": 476,
+    "telekinesis": 477,
+    "magic_room": 478,
+    "smack_down": 479,
+    "storm_throw": 480,
+    "flame_burst": 481,
+    "sludge_wave": 482,
+    "quiver_dance": 483,
+    "heavy_slam": 484,
+    "synchronoise": 485,
+    "electro_ball": 486,
+    "soak": 487,
+    "flame_charge": 488,
+    "coil": 489,
+    "low_sweep": 490,
+    "acid_spray": 491,
+    "foul_play": 492,
+    "simple_beam": 493,
+    "entrainment": 494,
+    "after_you": 495,
+    "round": 496,
+    "echoed_voice": 497,
+    "chip_away": 498,
+    "clear_smog": 499,
+    "stored_power": 500,
+    "quick_guard": 501,
+    "ally_switch": 502,
+    "scald": 503,
+    "shell_smash": 504,
+    "heal_pulse": 505,
+    "hex": 506,
+    "sky_drop": 507,
+    "shift_gear": 508,
+    "circle_throw": 509,
+    "incinerate": 510,
+    "quash": 511,
+    "acrobatics": 512,
+    "reflect_type": 513,
+    "retaliate": 514,
+    "final_gambit": 515,
+    "bestow": 516,
+    "inferno": 517,
+    "water_pledge": 518,
+    "fire_pledge": 519,
+    "grass_pledge": 520,
+    "volt_switch": 521,
+    "struggle_bug": 522,
+    "bulldoze": 523,
+    "frost_breath": 524,
+    "dragon_tail": 525,
+    "work_up": 526,
+    "electroweb": 527,
+    "wild_charge": 528,
+    "drill_run": 529,
+    "dual_chop": 530,
+    "heart_stamp": 531,
+    "horn_leech": 532,
+    "sacred_sword": 533,
+    "razor_shell": 534,
+    "heat_crash": 535,
+    "leaf_tornado": 536,
+    "steamroller": 537,
+    "cotton_guard": 538,
+    "night_daze": 539,
+    "psystrike": 540,
+    "tail_slap": 541,
+    "hurricane": 542,
+    "head_charge": 543,
+    "gear_grind": 544,
+    "searing_shot": 545,
+    "techno_blast": 546,
+    "relic_song": 547,
+    "secret_sword": 548,
+    "glaciate": 549,
+    "bolt_strike": 550,
+    "blue_flare": 551,
+    "fiery_dance": 552,
+    "freeze_shock": 553,
+    "ice_burn": 554,
+    "snarl": 555,
+    "icicle_crash": 556,
+    "v_create": 557,
+    "fusion_flare": 558,
+    "fusion_bolt": 559,
+    "flying_press": 560,
+    "mat_block": 561,
+    "belch": 562,
+    "rototiller": 563,
+    "sticky_web": 564,
+    "fell_stinger": 565,
+    "phantom_force": 566,
+    "trick_or_treat": 567,
+    "noble_roar": 568,
+    "ion_deluge": 569,
+    "parabolic_charge": 570,
+    "forests_curse": 571,
+    "petal_blizzard": 572,
+    "freeze_dry": 573,
+    "disarming_voice": 574,
+    "parting_shot": 575,
+    "topsy_turvy": 576,
+    "draining_kiss": 577,
+    "crafty_shield": 578,
+    "flower_shield": 579,
+    "grassy_terrain": 580,
+    "misty_terrain": 581,
+    "electrify": 582,
+    "play_rough": 583,
+    "fairy_wind": 584,
+    "moonblast": 585,
+    "boomburst": 586,
+    "fairy_lock": 587,
+    "kings_shield": 588,
+    "play_nice": 589,
+    "confide": 590,
+    "diamond_storm": 591,
+    "steam_eruption": 592,
+    "hyperspace_hole": 593,
+    "water_shuriken": 594,
+    "mystical_fire": 595,
+    "spiky_shield": 596,
+    "aromatic_mist": 597,
+    "eerie_impulse": 598,
+    "venom_drench": 599,
+    "powder": 600,
+    "geomancy": 601,
+    "magnetic_flux": 602,
+    "happy_hour": 603,
+    "electric_terrain": 604,
+    "dazzling_gleam": 605,
+    "celebrate": 606,
+    "hold_hands": 607,
+    "baby_doll_eyes": 608,
+    "nuzzle": 609,
+    "hold_back": 610,
+    "infestation": 611,
+    "power_up_punch": 612,
+    "oblivion_wing": 613,
+    "thousand_arrows": 614,
+    "thousand_waves": 615,
+    "lands_wrath": 616,
+    "light_of_ruin": 617,
+    "origin_pulse": 618,
+    "precipice_blades": 619,
+    "dragon_ascent": 620,
+    "hyperspace_fury": 621,
+    "breakneck_blitz__physical": 622,
+    "breakneck_blitz__special": 623,
+    "all_out_pummeling__physical": 624,
+    "all_out_pummeling__special": 625,
+    "supersonic_skystrike__physical": 626,
+    "supersonic_skystrike__special": 627,
+    "acid_downpour__physical": 628,
+    "acid_downpour__special": 629,
+    "tectonic_rage__physical": 630,
+    "tectonic_rage__special": 631,
+    "continental_crush__physical": 632,
+    "continental_crush__special": 633,
+    "savage_spin_out__physical": 634,
+    "savage_spin_out__special": 635,
+    "never_ending_nightmare__physical": 636,
+    "never_ending_nightmare__special": 637,
+    "corkscrew_crash__physical": 638,
+    "corkscrew_crash__special": 639,
+    "inferno_overdrive__physical": 640,
+    "inferno_overdrive__special": 641,
+    "hydro_vortex__physical": 642,
+    "hydro_vortex__special": 643,
+    "bloom_doom__physical": 644,
+    "bloom_doom__special": 645,
+    "gigavolt_havoc__physical": 646,
+    "gigavolt_havoc__special": 647,
+    "shattered_psyche__physical": 648,
+    "shattered_psyche__special": 649,
+    "subzero_slammer__physical": 650,
+    "subzero_slammer__special": 651,
+    "devastating_drake__physical": 652,
+    "devastating_drake__special": 653,
+    "black_hole_eclipse__physical": 654,
+    "black_hole_eclipse__special": 655,
+    "twinkle_tackle__physical": 656,
+    "twinkle_tackle__special": 657,
+    "catastropika": 658,
+    "shore_up": 659,
+    "first_impression": 660,
+    "baneful_bunker": 661,
+    "spirit_shackle": 662,
+    "darkest_lariat": 663,
+    "sparkling_aria": 664,
+    "ice_hammer": 665,
+    "floral_healing": 666,
+    "high_horsepower": 667,
+    "strength_sap": 668,
+    "solar_blade": 669,
+    "leafage": 670,
+    "spotlight": 671,
+    "toxic_thread": 672,
+    "laser_focus": 673,
+    "gear_up": 674,
+    "throat_chop": 675,
+    "pollen_puff": 676,
+    "anchor_shot": 677,
+    "psychic_terrain": 678,
+    "lunge": 679,
+    "fire_lash": 680,
+    "power_trip": 681,
+    "burn_up": 682,
+    "speed_swap": 683,
+    "smart_strike": 684,
+    "purify": 685,
+    "revelation_dance": 686,
+    "core_enforcer": 687,
+    "trop_kick": 688,
+    "instruct": 689,
+    "beak_blast": 690,
+    "clanging_scales": 691,
+    "dragon_hammer": 692,
+    "brutal_swing": 693,
+    "aurora_veil": 694,
+    "sinister_arrow_raid": 695,
+    "malicious_moonsault": 696,
+    "oceanic_operetta": 697,
+    "guardian_of_alola": 698,
+    "soul_stealing_7_star_strike": 699,
+    "stoked_sparksurfer": 700,
+    "pulverizing_pancake": 701,
+    "extreme_evoboost": 702,
+    "genesis_supernova": 703,
+    "shell_trap": 704,
+    "fleur_cannon": 705,
+    "psychic_fangs": 706,
+    "stomping_tantrum": 707,
+    "shadow_bone": 708,
+    "accelerock": 709,
+    "liquidation": 710,
+    "prismatic_laser": 711,
+    "spectral_thief": 712,
+    "sunsteel_strike": 713,
+    "moongeist_beam": 714,
+    "tearful_look": 715,
+    "zing_zap": 716,
+    "natures_madness": 717,
+    "multi_attack": 718,
+    "10_000_000_volt_thunderbolt": 719,
+    "mind_blown": 720,
+    "plasma_fists": 721,
+    "photon_geyser": 722,
+    "light_that_burns_the_sky": 723,
+    "searing_sunraze_smash": 724,
+    "menacing_moonraze_maelstrom": 725,
+    "lets_snuggle_forever": 726,
+    "splintered_stormshards": 727,
+    "clangorous_soulblaze": 728,
+    "zippy_zap": 729,
+    "splishy_splash": 730,
+    "floaty_fall": 731,
+    "pika_papow": 732,
+    "bouncy_bubble": 733,
+    "buzzy_buzz": 734,
+    "sizzly_slide": 735,
+    "glitzy_glow": 736,
+    "baddy_bad": 737,
+    "sappy_seed": 738,
+    "freezy_frost": 739,
+    "sparkly_swirl": 740,
+    "veevee_volley": 741,
+    "double_iron_bash": 742,
+    "max_guard": 743,
+    "dynamax_cannon": 744,
+    "snipe_shot": 745,
+    "jaw_lock": 746,
+    "stuff_cheeks": 747,
+    "no_retreat": 748,
+    "tar_shot": 749,
+    "magic_powder": 750,
+    "dragon_darts": 751,
+    "teatime": 752,
+    "octolock": 753,
+    "bolt_beak": 754,
+    "fishious_rend": 755,
+    "court_change": 756,
+    "max_flare": 757,
+    "max_flutterby": 758,
+    "max_lightning": 759,
+    "max_strike": 760,
+    "max_knuckle": 761,
+    "max_phantasm": 762,
+    "max_hailstorm": 763,
+    "max_ooze": 764,
+    "max_geyser": 765,
+    "max_airstream": 766,
+    "max_starfall": 767,
+    "max_wyrmwind": 768,
+    "max_mindstorm": 769,
+    "max_rockfall": 770,
+    "max_quake": 771,
+    "max_darkness": 772,
+    "max_overgrowth": 773,
+    "max_steelspike": 774,
+    "clangorous_soul": 775,
+    "body_press": 776,
+    "decorate": 777,
+    "drum_beating": 778,
+    "snap_trap": 779,
+    "pyro_ball": 780,
+    "behemoth_blade": 781,
+    "behemoth_bash": 782,
+    "aura_wheel": 783,
+    "breaking_swipe": 784,
+    "branch_poke": 785,
+    "overdrive": 786,
+    "apple_acid": 787,
+    "grav_apple": 788,
+    "spirit_break": 789,
+    "strange_steam": 790,
+    "life_dew": 791,
+    "obstruct": 792,
+    "false_surrender": 793,
+    "meteor_assault": 794,
+    "eternabeam": 795,
+    "steel_beam": 796,
+    "expanding_force": 797,
+    "steel_roller": 798,
+    "scale_shot": 799,
+    "meteor_beam": 800,
+    "shell_side_arm": 801,
+    "misty_explosion": 802,
+    "grassy_glide": 803,
+    "rising_voltage": 804,
+    "terrain_pulse": 805,
+    "skitter_smack": 806,
+    "burning_jealousy": 807,
+    "lash_out": 808,
+    "poltergeist": 809,
+    "corrosive_gas": 810,
+    "coaching": 811,
+    "flip_turn": 812,
+    "triple_axel": 813,
+    "dual_wingbeat": 814,
+    "scorching_sands": 815,
+    "jungle_healing": 816,
+    "wicked_blow": 817,
+    "surging_strikes": 818,
+    "thunder_cage": 819,
+    "dragon_energy": 820,
+    "freezing_glare": 821,
+    "fiery_wrath": 822,
+    "thunderous_kick": 823,
+    "glacial_lance": 824,
+    "astral_barrage": 825,
+    "eerie_spell": 826,
+    "dire_claw": 827,
+    "psyshield_bash": 828,
+    "power_shift": 829,
+    "stone_axe": 830,
+    "springtide_storm": 831,
+    "mystical_power": 832,
+    "raging_fury": 833,
+    "wave_crash": 834,
+    "chloroblast": 835,
+    "mountain_gale": 836,
+    "victory_dance": 837,
+    "headlong_rush": 838,
+    "barb_barrage": 839,
+    "esper_wing": 840,
+    "bitter_malice": 841,
+    "shelter": 842,
+    "triple_arrows": 843,
+    "infernal_parade": 844,
+    "ceaseless_edge": 845,
+    "bleakwind_storm": 846,
+    "wildbolt_storm": 847,
+    "sandsear_storm": 848,
+    "lunar_blessing": 849,
+    "take_heart": 850,
+    "tera_blast": 851,
+    "silk_trap": 852,
+    "axe_kick": 853,
+    "last_respects": 854,
+    "lumina_crash": 855,
+    "order_up": 856,
+    "jet_punch": 857,
+    "spicy_extract": 858,
+    "spin_out": 859,
+    "population_bomb": 860,
+    "ice_spinner": 861,
+    "glaive_rush": 862,
+    "revival_blessing": 863,
+    "salt_cure": 864,
+    "triple_dive": 865,
+    "mortal_spin": 866,
+    "doodle": 867,
+    "fillet_away": 868,
+    "kowtow_cleave": 869,
+    "flower_trick": 870,
+    "torch_song": 871,
+    "aqua_step": 872,
+    "raging_bull": 873,
+    "make_it_rain": 874,
+    "psyblade": 875,
+    "hydro_steam": 876,
+    "ruination": 877,
+    "collision_course": 878,
+    "electro_drift": 879,
+    "shed_tail": 880,
+    "chilly_reception": 881,
+    "tidy_up": 882,
+    "snowscape": 883,
+    "pounce": 884,
+    "trailblaze": 885,
+    "chilling_water": 886,
+    "hyper_drill": 887,
+    "twin_beam": 888,
+    "rage_fist": 889,
+    "armor_cannon": 890,
+    "bitter_blade": 891,
+    "double_shock": 892,
+    "gigaton_hammer": 893,
+    "comeuppance": 894,
+    "aqua_cutter": 895,
+    "blazing_torque": 896,
+    "wicked_torque": 897,
+    "noxious_torque": 898,
+    "combat_torque": 899,
+    "magical_torque": 900,
+    "blood_moon": 901,
+    "matcha_gotcha": 902,
+    "syrup_bomb": 903,
+    "ivy_cudgel": 904,
+    "electro_shot": 905,
+    "tera_starstorm": 906,
+    "fickle_beam": 907,
+    "burning_bulwark": 908,
+    "thunderclap": 909,
+    "mighty_cleave": 910,
+    "tachyon_cutter": 911,
+    "hard_press": 912,
+    "dragon_cheer": 913,
+    "alluring_voice": 914,
+    "temper_flare": 915,
+    "supercell_slam": 916,
+    "psychic_noise": 917,
+    "upper_hand": 918,
+    "malignant_chain": 919,
+    "shadow_rush": 10001,
+    "shadow_blast": 10002,
+    "shadow_blitz": 10003,
+    "shadow_bolt": 10004,
+    "shadow_break": 10005,
+    "shadow_chill": 10006,
+    "shadow_end": 10007,
+    "shadow_fire": 10008,
+    "shadow_rave": 10009,
+    "shadow_storm": 10010,
+    "shadow_wave": 10011,
+    "shadow_down": 10012,
+    "shadow_half": 10013,
+    "shadow_hold": 10014,
+    "shadow_mist": 10015,
+    "shadow_panic": 10016,
+    "shadow_shed": 10017,
+    "shadow_sky": 10018
+  },
+  "species": {
+    "bulbasaur": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "overgrow",
+        "hidden": "chlorophyll"
+      }
+    },
+    "charmander": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "blaze",
+        "hidden": "solar-power"
+      }
+    },
+    "squirtle": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "torrent",
+        "hidden": "rain-dish"
+      }
+    },
+    "caterpie": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "shield-dust",
+        "hidden": "run-away"
+      }
+    },
+    "pidgey": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "keen-eye",
+        "2": "tangled-feet",
+        "hidden": "big-pecks"
+      }
+    },
+    "rattata": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "run-away",
+        "2": "guts",
+        "hidden": "hustle"
+      }
+    },
+    "pikachu": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "static",
+        "hidden": "lightning-rod"
+      }
+    },
+    "sandshrew": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "sand-veil",
+        "hidden": "sand-rush"
+      }
+    },
+    "jigglypuff": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "cute-charm",
+        "2": "competitive",
+        "hidden": "friend-guard"
+      }
+    },
+    "oddish": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "chlorophyll",
+        "hidden": "run-away"
+      }
+    },
+    "meowth": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "pickup",
+        "2": "technician",
+        "hidden": "unnerve"
+      }
+    },
+    "psyduck": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "damp",
+        "2": "cloud-nine",
+        "hidden": "swift-swim"
+      }
+    },
+    "growlithe": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "intimidate",
+        "2": "flash-fire",
+        "hidden": "justified"
+      }
+    },
+    "magnemite": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "magnet-pull",
+        "2": "sturdy",
+        "hidden": "analytic"
+      }
+    },
+    "onix": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "rock-head",
+        "2": "sturdy",
+        "hidden": "weak-armor"
+      }
+    },
+    "eevee": {
+      "can_evolve": true,
+      "abilities": {
+        "1": "run-away",
+        "2": "adaptability",
+        "hidden": "anticipation"
+      }
+    }
+  },
+  "source": "https://github.com/PokeAPI/pokeapi/tree/master/data/v2/csv"
+}

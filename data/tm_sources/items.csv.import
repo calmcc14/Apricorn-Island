@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://37b2wh5prah6"
+
+[deps]
+
+files=["res://data/tm_sources/items.identifier.translation", "res://data/tm_sources/items.category.translation", "res://data/tm_sources/items.cost.translation", "res://data/tm_sources/items.fling.translation", "res://data/tm_sources/items.fling.translation"]
+
+source_file="res://data/tm_sources/items.csv"
+dest_files=["res://data/tm_sources/items.identifier.translation", "res://data/tm_sources/items.category.translation", "res://data/tm_sources/items.cost.translation", "res://data/tm_sources/items.fling.translation", "res://data/tm_sources/items.fling.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
