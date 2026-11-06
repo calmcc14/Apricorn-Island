@@ -1,0 +1,270 @@
+{
+  "item_cheri_berry": {
+    "type": "fire",
+    "power": 60
+  },
+  "item_chesto_berry": {
+    "type": "water",
+    "power": 60
+  },
+  "item_pecha_berry": {
+    "type": "electric",
+    "power": 60
+  },
+  "item_rawst_berry": {
+    "type": "grass",
+    "power": 60
+  },
+  "item_aspear_berry": {
+    "type": "ice",
+    "power": 60
+  },
+  "item_leppa_berry": {
+    "type": "fighting",
+    "power": 60
+  },
+  "item_oran_berry": {
+    "type": "poison",
+    "power": 60
+  },
+  "item_persim_berry": {
+    "type": "ground",
+    "power": 60
+  },
+  "item_lum_berry": {
+    "type": "flying",
+    "power": 60
+  },
+  "item_sitrus_berry": {
+    "type": "psychic",
+    "power": 60
+  },
+  "item_figy_berry": {
+    "type": "bug",
+    "power": 60
+  },
+  "item_wiki_berry": {
+    "type": "rock",
+    "power": 60
+  },
+  "item_mago_berry": {
+    "type": "ghost",
+    "power": 60
+  },
+  "item_aguav_berry": {
+    "type": "dragon",
+    "power": 60
+  },
+  "item_iapapa_berry": {
+    "type": "dark",
+    "power": 60
+  },
+  "item_razz_berry": {
+    "type": "steel",
+    "power": 60
+  },
+  "item_bluk_berry": {
+    "type": "fire",
+    "power": 70
+  },
+  "item_nanab_berry": {
+    "type": "water",
+    "power": 70
+  },
+  "item_wepear_berry": {
+    "type": "electric",
+    "power": 70
+  },
+  "item_pinap_berry": {
+    "type": "grass",
+    "power": 70
+  },
+  "item_pomeg_berry": {
+    "type": "ice",
+    "power": 70
+  },
+  "item_kelpsy_berry": {
+    "type": "fighting",
+    "power": 70
+  },
+  "item_qualot_berry": {
+    "type": "poison",
+    "power": 70
+  },
+  "item_hondew_berry": {
+    "type": "ground",
+    "power": 70
+  },
+  "item_grepa_berry": {
+    "type": "flying",
+    "power": 70
+  },
+  "item_tamato_berry": {
+    "type": "psychic",
+    "power": 70
+  },
+  "item_cornn_berry": {
+    "type": "bug",
+    "power": 70
+  },
+  "item_magost_berry": {
+    "type": "rock",
+    "power": 70
+  },
+  "item_rabuta_berry": {
+    "type": "ghost",
+    "power": 70
+  },
+  "item_nomel_berry": {
+    "type": "dragon",
+    "power": 70
+  },
+  "item_spelon_berry": {
+    "type": "dark",
+    "power": 70
+  },
+  "item_pamtre_berry": {
+    "type": "steel",
+    "power": 70
+  },
+  "item_watmel_berry": {
+    "type": "fire",
+    "power": 80
+  },
+  "item_durin_berry": {
+    "type": "water",
+    "power": 80
+  },
+  "item_belue_berry": {
+    "type": "electric",
+    "power": 80
+  },
+  "item_occa_berry": {
+    "type": "fire",
+    "power": 60
+  },
+  "item_passho_berry": {
+    "type": "water",
+    "power": 60
+  },
+  "item_wacan_berry": {
+    "type": "electric",
+    "power": 60
+  },
+  "item_rindo_berry": {
+    "type": "grass",
+    "power": 60
+  },
+  "item_yache_berry": {
+    "type": "ice",
+    "power": 60
+  },
+  "item_chople_berry": {
+    "type": "fighting",
+    "power": 60
+  },
+  "item_kebia_berry": {
+    "type": "poison",
+    "power": 60
+  },
+  "item_shuca_berry": {
+    "type": "ground",
+    "power": 60
+  },
+  "item_coba_berry": {
+    "type": "flying",
+    "power": 60
+  },
+  "item_payapa_berry": {
+    "type": "psychic",
+    "power": 60
+  },
+  "item_tanga_berry": {
+    "type": "bug",
+    "power": 60
+  },
+  "item_charti_berry": {
+    "type": "rock",
+    "power": 60
+  },
+  "item_kasib_berry": {
+    "type": "ghost",
+    "power": 60
+  },
+  "item_haban_berry": {
+    "type": "dragon",
+    "power": 60
+  },
+  "item_colbur_berry": {
+    "type": "dark",
+    "power": 60
+  },
+  "item_babiri_berry": {
+    "type": "steel",
+    "power": 60
+  },
+  "item_chilan_berry": {
+    "type": "normal",
+    "power": 60
+  },
+  "item_liechi_berry": {
+    "type": "grass",
+    "power": 80
+  },
+  "item_ganlon_berry": {
+    "type": "ice",
+    "power": 80
+  },
+  "item_salac_berry": {
+    "type": "fighting",
+    "power": 80
+  },
+  "item_petaya_berry": {
+    "type": "poison",
+    "power": 80
+  },
+  "item_apicot_berry": {
+    "type": "ground",
+    "power": 80
+  },
+  "item_lansat_berry": {
+    "type": "flying",
+    "power": 80
+  },
+  "item_starf_berry": {
+    "type": "psychic",
+    "power": 80
+  },
+  "item_enigma_berry": {
+    "type": "bug",
+    "power": 80
+  },
+  "item_micle_berry": {
+    "type": "rock",
+    "power": 80
+  },
+  "item_custap_berry": {
+    "type": "ghost",
+    "power": 80
+  },
+  "item_jaboca_berry": {
+    "type": "dragon",
+    "power": 80
+  },
+  "item_rowap_berry": {
+    "type": "dark",
+    "power": 80
+  },
+  "item_roseli_berry": {
+    "type": "fairy",
+    "power": 80
+  },
+  "item_kee_berry": {
+    "type": "fairy",
+    "power": 80
+  },
+  "item_maranga_berry": {
+    "type": "dark",
+    "power": 80
+  }
+}

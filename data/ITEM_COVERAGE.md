@@ -237,7 +237,7 @@ Generated from the offline catalog. All rows are obtainable from chests.
 | Cyber Ball | item_cyber_ball | awaiting_mechanics | Crafting and economy |
 | Cyclizar Scales | item_cyclizar_scales | awaiting_mechanics | Crafting and economy |
 | Damp Mulch | item_damp_mulch | awaiting_mechanics | Crafting and economy |
-| Damp Rock | item_damp_rock | awaiting_mechanics | Held items and abilities |
+| Damp Rock | item_damp_rock | implemented | |
 | Dark Gem | item_dark_gem | implemented |  |
 | Dark Memory | item_dark_memory | awaiting_mechanics | Held items and abilities |
 | Dark Powder | item_dark_powder | implemented |  |
@@ -538,7 +538,7 @@ Generated from the offline catalog. All rows are obtainable from chests.
 | Health Mochi | item_health_mochi | awaiting_mechanics | Progression, evolution, forms and move teaching |
 | Heart Scale | item_heart_scale | awaiting_mechanics | Crafting and economy |
 | Hearty Grains | item_hearty_grains | awaiting_mechanics | Crafting and economy |
-| Heat Rock | item_heat_rock | awaiting_mechanics | Held items and abilities |
+| Heat Rock | item_heat_rock | implemented | |
 | Heavy Ball | item_heavy_ball | awaiting_mechanics | Capture formula, species conditions and version review |
 | Heavy-Duty Boots | item_heavy_duty_boots | implemented |  |
 | Helix Fossil | item_helix_fossil | awaiting_mechanics | Crafting and economy |
@@ -582,7 +582,7 @@ Generated from the offline catalog. All rows are obtainable from chests.
 | Iceroot Carrot | item_iceroot_carrot | awaiting_mechanics | Crafting and economy |
 | Icicle Plate | item_icicle_plate | awaiting_mechanics | Held items and abilities |
 | Icium Z | item_icium_z | awaiting_mechanics | Held items and abilities |
-| Icy Rock | item_icy_rock | awaiting_mechanics | Held items and abilities |
+| Icy Rock | item_icy_rock | implemented | |
 | Igglybuff Fluff | item_igglybuff_fluff | awaiting_mechanics | Crafting and economy |
 | Ilima's Normalium Z | item_ilima_s_normalium_z | awaiting_mechanics | Key-item interactions |
 | Impidimp Hair | item_impidimp_hair | awaiting_mechanics | Crafting and economy |
@@ -1164,7 +1164,7 @@ Generated from the offline catalog. All rows are obtainable from chests.
 | Smoke-Poke Tail | item_smoke_poke_tail | awaiting_mechanics | Breeding, cooking and contests |
 | Smoked Fillet | item_smoked_fillet | awaiting_mechanics | Breeding, cooking and contests |
 | Smoliv Oil | item_smoliv_oil | awaiting_mechanics | Crafting and economy |
-| Smooth Rock | item_smooth_rock | awaiting_mechanics | Held items and abilities |
+| Smooth Rock | item_smooth_rock | implemented | |
 | Sneasel Claw | item_sneasel_claw | awaiting_mechanics | Crafting and economy |
 | Snom Thread | item_snom_thread | awaiting_mechanics | Crafting and economy |
 | Snorlium Z | item_snorlium_z | awaiting_mechanics | Held items and abilities |

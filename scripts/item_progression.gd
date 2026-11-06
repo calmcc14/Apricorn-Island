@@ -6,7 +6,10 @@ const FORMS := {"giratina":"giratina-origin","dialga":"dialga-origin","palkia":"
 const CORES := {"item_griseous_core":"giratina","item_adamant_crystal":"dialga","item_lustrous_globe":"palkia"}
 
 static func data() -> Dictionary:
-	if reference.is_empty(): reference = JSON.parse_string(FileAccess.get_file_as_string("res://data/item_species.json"))
+	if reference.is_empty():
+		reference = JSON.parse_string(FileAccess.get_file_as_string("res://data/item_species.json"))
+		for row in reference.species.values():
+			for slot in row.get("abilities",{}): row.abilities[slot] = str(row.abilities[slot]).replace("-","_")
 	return reference
 
 static func info(name: String) -> Dictionary:

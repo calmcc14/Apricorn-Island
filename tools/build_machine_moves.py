@@ -8,8 +8,12 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     catalog = json.loads((ROOT/'data/item_catalog.json').read_text(encoding='utf-8'))
     wanted = {int(i['move_index']) for i in catalog['items'] if i['kind']=='machine'}
-    dependent = {'transform','struggle','gastro-acid','worry-seed','simple-beam','entrainment','role-play','geomancy','disable','heal-block'}
+    dependent = {'transform','struggle','gastro-acid','worry-seed','simple-beam','entrainment','role-play','geomancy','disable','heal-block','rapid-spin','leech-seed'}
     wanted.update(int(r['id']) for r in rows('moves') if r['identifier'] in dependent)
+    species = json.loads((ROOT/'data/item_species.json').read_text())['species']
+    learned = {m['move'] for s in species.values() for m in s['learnset']}
+    learned.update(['tackle','scratch','ember','vine_whip','razor_leaf','growl','bubble','gust','absorb','rock_throw','thunder_shock','quick_attack','water_gun','bite'])
+    wanted.update(int(r['id']) for r in rows('moves') if r['identifier'].replace('-','_') in learned)
     def source(name): return json.loads((ROOT/f'data/battle_sources/{name}.json').read_text())
     meta = {int(r['move_id']):r for r in source('move_meta')}
     prose = {int(r['move_effect_id']):r['short_effect'] for r in source('move_effect_prose') if r['local_language_id']=='9'}

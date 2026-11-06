@@ -16,7 +16,7 @@ func run() -> void:
 	game = load("res://scenes/Main.tscn").instantiate()
 	root.add_child(game)
 	await capture("title")
-	game.start_new_game()
+	game.start_new_game("bulbasaur")
 	await capture("intro")
 	game.intro_page = 1
 	game.show_intro()

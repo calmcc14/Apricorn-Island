@@ -124,6 +124,454 @@ Verified references: [Super Potion](https://pokemondb.net/item/super-potion), [H
 
 These are review gates, not defaults chosen on your behalf. The per-item checklist is `ITEM_COVERAGE.md`. New differences found during later effect research must join this review before implementation.
 
+- Item-review presentation update: present 50 items per batch. Use consistent response codes: 1 = Original, 2 = New, 3 = Custom; add further numbered options only when needed and explain them explicitly. Describe the actual original/new effects for each item when presenting its choices; these codes do not approve any effects by themselves. Custom (3) marks an item for a user-defined custom effect. After the user submits the batch numbers, show a clearly named list of every item selected as 3, keeping those items visible while the user decides and explains their custom effects. Ask for and record each custom definition afterward; selecting 3 alone does not define or approve an effect. Do not infer or implement unspecified custom behavior.
+
+- Item-review filtering correction: automatically use verified standard effects for items with only one meaningful effect/version; do not mention them in choice batches or request approval again. Before presenting any item, reconcile all saved approvals and latest corrections, regardless of whether its implementation status is pending. Exclude already-decided items unless newly researched information reveals a genuinely unresolved difference, which must be explained. The previously presented alphabetical 50-item batch was not a valid unresolved-choice batch and received no numbered selections; do not treat it as new approval or reset earlier decisions. Batches contain up to 50 genuinely unresolved meaningful original-versus-new differences or items needing user-defined effects; do not pad with single-effect or already-approved entries.
+
+- Current 11-item batch selections received in order: 3, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3. Nest Ball: approve original Generation III-IV multiplier max(1, (40 - target level) / 10). Metal Coat, Protector, Electirizer, Magmarizer, Upgrade, Dubious Disc and Reaper Cloth: approve Legends: Arceus direct bag-use evolution, consuming the corresponding item on successful evolution without requiring a trade. Preserve the previously approved Metal Coat battle boost. Heavy Ball, Razor Claw evolution and Razor Fang evolution are marked Custom with definitions still pending; selecting 3 alone approves no custom effect. Preserve previously approved Razor Claw and Razor Fang battle effects. Present these three pending custom items by name while the user defines them. Gameplay implementation is not completed by recording these decisions.
+- Custom definitions for the current 11-item batch approved: Heavy Ball adds -20 to the target species catch rate below 100 kg; 0 at 100 kg to below 200 kg; +20 at 200 kg to below 300 kg; +30 at 300 kg to below 400 kg; +40 at 400 kg or above. These are additive catch-rate adjustments, not capture multipliers. Razor Claw and Razor Fang evolution: use directly from the bag at any time, without a held-item requirement, level-up, or day/night restriction. Razor Claw evolves ordinary Sneasel into Weavile and Hisuian Sneasel into Sneasler; Razor Fang evolves Gligar into Gliscor. Consume the corresponding item only on successful evolution. Preserve their previously approved held battle effects. These definitions resolve all three pending custom selections in this batch; recording approval does not mean gameplay implementation is complete.
+- Review flow reaffirmed: after acknowledging and recording a batch or its custom definitions, immediately include the next researched unresolved batch in the same response. Aim for 50 items when enough genuinely unresolved choices are available; never pad with single-effect items or repeat settled decisions. When custom definitions are pending, show the named custom list first and obtain those definitions before advancing.
+
+- Explicit blanket approval reaffirmed: ALL items with only one verified meaningful standard effect are approved automatically, including items not researched yet once research confirms there is no meaningful alternative. Do not list, mention or request individual approval for those items in review batches. No separate numbered response is required. This is approval of effects, not a claim of completed gameplay implementation. Preserve existing approved custom effects and latest decisions; do not overwrite them with defaults. Missing descriptions or pending implementation do not establish that an item has only one effect. Only genuinely unresolved meaningful version differences or user-defined custom effects belong in future questions.
+- Grouped 21-item review approved with responses 1, 2, 3, 2, 1 and immediate Custom definition "both": all 17 type Plates use original held behavior, boosting matching move power by 20% and changing eligible Arceus/Judgment to the matching type while held; no reusable bag form-change mode is approved for these Plates. Oval Stone uses Legends: Arceus direct bag-use evolution of Happiny into Chansey DURING DAYTIME, without holding or level-up; consume on success. Rage Candy Bar combines BOTH reviewed medicine effects in one item: restore 20 HP AND cure all major status conditions and confusion on the same successful use; consume one candy, permit use when either component can benefit the target, and do not require both HP loss and status simultaneously. No Darmanitan awakening or TM exchange is inferred. Dire Hit uses Generation III onward +2 critical-hit stages, consumed on successful use, with standard no-stacking/withdrawal restrictions. Poke Flute uses original reusable battle sleep cure affecting both sides' active Pokemon, with applicable Soundproof restrictions, plus its Snorlax field-waking interaction. Implementation remains separate from these recorded approvals. This resolves all choices in the grouped 21-item batch.
+- Response-code update: 1=Original, 2=New, 3=Custom (user defines after selections), 4=Later, 5=third explicitly presented effect option, 6=both Original and New effects together. Explain the third option when available. For 6, combine compatible effects; when two values or mutually exclusive rules cannot coexist, clarify the combination rather than silently sum, multiply or pick one.
+- Safari Ball / Sport Ball / Shiny Charm batch responses 1,1,1 approved: Safari Ball uses Generation I 2x capture modifier; Sport Ball uses earlier 1.5x capture modifier. These decisions concern capture strength, not new location/event restrictions. Shiny Charm provides TWO additional independent shiny checks for eligible wild encounters using the island's base shiny probability; do not change the base probability or add a third extra check. Breeding and special-encounter eligibility remain separate. Recording decisions does not complete pending gameplay implementation.
+- Dragon Scale approved Original (response 1): reusable held Dragon-type move power boost of 10%, preserving the Generation II effect even though it originated as an oversight. Retain its standard Seadra-to-Kingdra evolution use, consumed when a successful held-item trade evolution occurs. No direct bag evolution is inferred. Implementation remains pending. Batch-size correction: the user explicitly reiterated a request for large batches (target 50); do not keep issuing one-item or three-item follow-ups merely because only a few differences have been researched so far. Conduct a broader audit before presenting the next substantial batch; do not fabricate differences or repeat decisions to reach 50.
+
+- Field/form batch responses approved in order: 1,2,2,2,1,1,1,1. Coin Case: original 9,999-coin capacity. Dowsing Machine: newer Generation V directional indicator and standing-over-item indicator. Town Map: newer Sword/Shield-style location display with weather, objective marker and available Flying Taxi destinations; island mapping and destination eligibility require implementation specification. Bike: newer X/Y-style movement in any direction, not the separately offered Sinnoh two-gear option. Poke Radar: original Diamond/Pearl/Platinum chaining and shiny-patch system, including its approximately 1/200 maximum shiny check at chain length 40 and the associated patch-generation/continuation gating; do not substitute the BDSP 1/99 system. Explorer Kit: original Underground mining, traps and flag-capture Secret Bases, not Grand Underground hideaways/statues; island layout and multiplayer scope remain unspecified. Zygarde Cube: original Generation VII cell/core storage and reassembly support, five-move teaching with Sun/Moon core eligibility, and 10%/50% form switching for Power Construct Zygarde; no later direct ability toggle is approved. Prison Bottle: original temporary Hoopa Unbound transformation lasting three days, retaining the reviewed original form/storage reset behavior; exact original-generation storage-reset differences must be resolved before implementing those resets rather than silently choosing between deposit and withdrawal. These are effect approvals, not completed gameplay implementation. All eight choices in this batch are resolved; no Custom selections remain pending.
+- Partial Apricorn/berry batch response received: 5,3,3,3, mapped in order ONLY to rows1-4. Black Apricorn approves option5: HGSS-style deterministic Heavy Ball crafting plus its standard Aprijuice/Pokeathlon ingredient use. Preserve the already approved Heavy Ball capture effect; blending details and crafting timing/access still require exact subsystem specification. Blue Apricorn, Green Apricorn and Pink Apricorn are marked Custom with definitions pending; present all three by name while the user decides. No custom effect is inferred. Rows5-10 (Red Apricorn, White Apricorn, Yellow Apricorn, Razz Berry, Nanab Berry and Pinap Berry) have not received selections and remain undecided. Do not treat the four-number response as ten selections or as a repeated pattern.
+- Apricorn/berry batch selections: option 5 for ALL seven colored Apricorns (Black, Blue, Green, Pink, Red, White, Yellow), then 3,3,3 for Razz, Nanab and Pinap Berries. Approve HeartGold/SoulSilver-style deterministic corresponding-ball crafting PLUS Aprijuice ingredient uses for Pokeathlon performance. Correspondence: Black->Heavy Ball, Blue->Lure Ball family, Green->Friend Ball, Pink->Love Ball, Red->Level Ball, White->Fast Ball, Yellow->Moon Ball. Preserve all existing approved ball effects and variants; exact Lure variant output, recipe quantities/timing, Aprijuice formulas and island craft/Pokeathlon integration still require specification/research. Do not enable SwSh randomized four-Apricorn crafting from this choice. Razz Berry, Nanab Berry and Pinap Berry are marked Custom with definitions pending; no proposed original/new/third-option berry effect is approved by selecting 3 alone. Present these three by name for the user to define before advancing. Recording approval does not complete gameplay implementation.
+- Razz/Nanab/Pinap follow-up responses 2,2,2 replace their pending Custom selections with option 2, Legends: Arceus effects. Each berry restores one third of a party Pokemon's maximum HP on successful bag use. Feeding Razz Berry to a wild Pokemon makes that target easier to catch; feeding Nanab Berry slows that target's overworld movement; feeding Pinap Berry increases experience awarded when that target is caught. Healing a party Pokemon and feeding a wild target are contextual uses, not simultaneous effects from one use. Successful use consumes one berry. Exact original field multipliers, durations, feeding eligibility, healing rounding and island integration require research before implementation; no invented numerical capture, movement or experience bonus is approved. Do not substitute Let's Go item rewards or Pokemon GO Candy effects for Pinap. All three pending Custom definitions are now resolved; the preceding option 5 approval for all seven colored Apricorns remains unchanged. Recording approval does not mean gameplay code is complete.
+- Shared 50-berry cooking review approved with response6 (both). For ALL50 normal Berry ingredients listed in CURRENT_ITEM_REVIEW_BATCH.md (Cheri through Colbur), support BOTH older Sinnoh Generation IV Poffin cooking and newer ORAS Pokeblock cooking as separate recipes. Poffins use berry flavors/smoothness, cooking quality and the standard permanent255 Sheen feeding limit. Newer Pokeblocks use automatic2-4berry color-based blending, standard/+ output and their standard condition effects without a Sheen feeding limit; contest condition caps remain255. The two recipes consume their own ingredients and produce their respective food, not both foods or doubled benefits from one consumption. Preserve every previously approved berry healing, held, capture and custom-variant effect. This choice covers normal Berry ingredients only; no unreviewed Expired/Ripe ingredient profiles are inferred. Exact per-berry food values, tier probabilities, cooking interface and coexistence need implementation research; do not invent values where references are incomplete. This does not approve breeding or imply completed cooking/gameplay implementation. All50 cooking selections are resolved; no Custom definitions remain pending.
+- Review response flow explicitly reaffirmed by the user: in the SAME reply that confirms saved decisions, include the next researched unresolved questions. Do not repeatedly end with only a confirmation and require the user to say next. If Custom definitions are pending, the next questions are the named Custom-definition questions; otherwise advance to the next meaningful unresolved batch or shared subsystem decision. Preserve the requested large-batch preference without manufacturing differences or repeating settled effects.
+
+- Berry cultivation custom combination approved: combine original GenIV-style gradually drying soil, regular watering protecting harvest size, unpicked ripe berries eventually falling and plants regrowing, and applicable mulch-modified growth WITH XY-style watering/weeding/pest-removal harvest benefits and verified neighboring-plant berry mutations. This is a custom combination of options1 and5, not option6 (Original+New BDSP) or two separate garden modes. Do not apply BDSP single-watering-through-harvest or indefinitely preserved ripe-crop rules. Do not infer aging/degradation for inventory berries or custom Expired/Ripe variants from plant growth. Exact combined yield arithmetic, crop timers/yields, regrowth limits, soil-drain rates, mulch compatibility, mutation recipes/chances and pest encounter tables remain implementation specifications; preserve the approved features without inventing their numerical interactions. Cultivation approval is separate from the previously approved both-food cooking systems and all berry medicine/held/capture decisions. No Custom definition is pending for this combined growing-system choice; gameplay implementation is not complete merely from recording approval.
+- Meteorite custom combination approved: ONE Meteorite item supports an NPC exchange that removes the exchanged copy (the presented original exchange reward is TM Return), reusable bag use cycling Deoxys Normal/Attack/Defense/Speed without removing the Meteorite, and being eaten by Rayquaza to unlock its Mega Evolution, removing the eaten copy. Do not grant both a trade reward and Rayquaza unlock from the same consumed copy. Rayquaza MUST currently know Dragon Ascent before it can eat the Meteorite; eating it does not itself teach Dragon Ascent. To Mega Evolve, that same Rayquaza must BOTH have eaten a Meteorite and currently know Dragon Ascent. No Mega Stone is required. Track Meteorite consumption/unlock per individual Rayquaza; do not grant a party-wide/species-wide unlock. The user requests Pokemon GO-style Rayquaza Mega Evolution, but the exact intended timer, Mega Energy, cooldown/rest, Mega Levels and activation behavior are not specified yet; ask which GO mechanics they intend and do not infer numeric costs/durations or implement them without that clarification. Existing ordinary Mega eligibility and other species' Mega rules are not changed by this Rayquaza-specific choice. Recording approval does not implement these mechanics.
+- Mega Rayquaza timing approved: its Mega form lasts ONE hour, followed by a ONE-day rest period. These are custom durations replacing Pokemon GO timing for this Rayquaza-specific system. Preserve the requirements that the individual Rayquaza has eaten a consumed Meteorite and currently knows Dragon Ascent, and must know Dragon Ascent before eating a Meteorite. No additional Meteorite per subsequent Mega Evolution is inferred. Mega Energy cost/requirement remains undecided and must be asked separately; no default energy currency or paid cooldown bypass is approved. Exact timer accounting across offline/closed-game time and persistence requires specification before implementation; do not silently reset active duration/rest on loading. Rest-start timing and any early reversion behavior remain implementation details to clarify if necessary. Approval recording does not complete gameplay implementation.
+- Mega Rayquaza energy requirement approved: require Mega Energy in addition to the individual Meteorite-eaten unlock and currently knowing Dragon Ascent. Retain the one-hour Mega duration and one-day rest. The amount charged, first-use versus repeat-use costs, whether a completed rest removes or merely permits the energy charge, energy acquisition/storage, and any cooldown bypass are NOT specified. Do not import Pokemon GO numerical costs or waive energy after rest without user choice. Next clarify first and repeat activation costs together with the post-rest energy rule; do not infer resource amounts from the word Mega Energy. Recording this decision does not implement the system.
+- Mega Rayquaza energy-meter clarification supersedes the earlier open currency-cost questions: use a PER-INDIVIDUAL percentage meter, initially0% before that Rayquaza eats a Meteorite. Consuming the Meteorite immediately fills the meter to100% and unlocks a "Mega Evolve" action on that Rayquaza. Eating still requires currently knowing Dragon Ascent, and Mega Evolution also requires currently knowing it. Mega form still lasts the approved1hour. When Mega Evolution STARTS, begin gradual energy refill, reaching100%24hours after activation. The24hour refill therefore starts at activation, not after the one-hour Mega duration; do not append a further24hour wait after reversion. This replaces unspecified first/repeat GO currency costs with the stated percentage-meter design; no GO-style numerical Mega Energy charges, purchases or cooldown bypasses are approved. Activation is understood to spend the filled meter, but exact activation debit and whether partial-meter activation is allowed still need explicit confirmation before implementation. Whether refill/active duration advance while the game is closed remains unspecified. No independent additional one-day lock should be imposed on top of the recharge without clarification. Preserve reusable Deoxys use and consumable exchange/Rayquaza feeding rules for Meteorite. Recording approval does not implement these mechanics.
+- Mega Rayquaza activation/offline rules explicitly approved (yes/yes): Mega Evolution requires100%energy and spends the meter to0%; both the one-hour Mega duration and the energy recharge timer advance while the game is closed. Persist per-individual unlock, energy, active form expiration, recharge timestamp/rate and Meteorite-eaten progression; loading must account for elapsed real time rather than reset progress. Energy recharge starts at activation and is the wait for reuse, not an additional separate one-day lock.
+- Additional Meteorites for an already-unlocked Rayquaza: user approves recharge acceleration. Interpret cumulative progression as first Meteorite=1x recharge (24hours empty-to-full), second Meteorite=2x (12hours), third Meteorite=2.5x (9hours36minutes), and each further Meteorite adds0.5x (fourth=3x/8hours, etc.). This is an additive0.5 increase to the SPEED MULTIPLIER after the second Meteorite, not multiplying existing speed by0.5 or halving a previous duration. Consuming each further Meteorite removes that copy and still requires Rayquaza currently knowing Dragon Ascent. The one-hour Mega duration is unchanged by recharge-speed upgrades. No upgrade cap or species-wide sharing is approved. Whether extra Meteorites also instantly refill the meter, as the first one does, is unresolved and must be asked before implementing additional-consumption effects; do not assume a refill or assign partial-progress conversion rules yet. Recording decisions does not implement gameplay mechanics.
+- Additional-Meteorite refill clarified: every additional Meteorite that an already-unlocked Rayquaza eats ALSO instantly refills its individual Mega Energy meter to100%, in addition to applying the approved recharge-speed upgrade. The eaten Meteorite is consumed; Rayquaza must currently know Dragon Ascent. Retain cumulative rates: first1x, second2x, third2.5x, each further+0.5x. Retain100%activation requirement, activation drain to0%, recharge starting on activation, one-hour Mega duration, and real-time/offline progression. Do not impose a separate one-day cooldown after an instant refill: the energy meter governs readiness. Eating another Meteorite during an active Mega form has no approved extension/restart of the one-hour duration or stacking of Mega forms; ask about that active-form interaction if needed before implementing it. All previously pending refill questions are resolved. Recording decisions does not complete gameplay implementation.
+- Active Mega Rayquaza feeding interaction explicitly approved: eating another Meteorite while already Mega Evolved RESTARTS the Mega duration to a full ONE hour measured from that feeding, as well as instantly refilling energy to100%and applying the approved cumulative recharge-speed upgrade. Consume the Meteorite and require currently knowing Dragon Ascent, as with other Meteorite feeding. Restart means replace the active expiration with feeding-time+1hour, not add1hour onto remaining duration or stack multiple Mega forms. Retain per-individual progression and real-time/offline timing. This resolves the active-form feeding duration question; gameplay implementation remains separate from the recorded approval.
+- Latest Mega Rayquaza progression request: continue Meteorite upgrades until the individual Rayquaza becomes PERMANENTLY Mega Evolved. Starting with the SECOND Meteorite eaten, each additional Meteorite reduces refill TIME by0.5%and increases Mega DURATION by0.5%; repeat toward permanent Mega Evolution. Preserve consumed Meteorites, Dragon Ascent feeding prerequisite, instant100%refill, active-duration restart, individual progression and offline persistence unless subsequently changed. The final mathematical formula is UNRESOLVED: user said "also", so clarify whether these0.5%time changes replace the prior second-Meteorite2x/then+0.5x recharge-speed progression or stack on top. Also clarify whether0.5%means fixed percentages of original24hour refill/1hour duration, or compound percentages of current values. Do not silently choose either, count the upgrades twice or claim a permanent-Mega Meteorite threshold before this is resolved. Permanent-Mega transition criterion and how Dragon Ascent removal affects that state require specification before implementation. Earlier uncapped-speed interpretation alone is no longer an adequate complete progression specification. No game code changed by this decision record.
+- User replied "yes and the second option" to the two latest progression questions. The second answer unambiguously selects CURRENT UPGRADED TIMES, so compound each additional Meteorite's time changes: current refill duration times0.995 and current Mega duration times1.005, starting with the second Meteorite. The first answer "yes" does NOT resolve the either/or question of replacing versus stacking the older2x/+0.5x speed upgrades; retain that as unresolved and ask explicitly. Compounding alone never mathematically reaches zero recharge or infinite duration, so a finite permanent-Mega trigger must be chosen; propose Mega duration reaching/exceeding recharge time for approval, do not mark it approved yet. Existing instant refill, active-form duration restart, Meteorite consumption, per-individual tracking and Dragon Ascent prerequisites remain as approved. Gameplay implementation remains pending.
+- FINAL Rayquaza progression correction: the user explicitly chooses REPLACE the old second-Meteorite2x/then+0.5x recharge-speed rules, and corrects their earlier current-times answer to ORIGINAL BASE TIMES. Supersede all prior compounding and speed-multiplier interpretations. First Meteorite unlocks the individual Rayquaza, instant100%energy, original24hour recharge and1hour Mega duration. Each further Meteorite (starting with the second) subtracts0.5%of ORIGINAL24hours=432seconds (7minutes12seconds) from recharge duration and adds0.5%of ORIGINAL1hour=18seconds to finite Mega duration. For n total Meteorites eaten before permanence: recharge_seconds=max(0,86400-432*(n-1)); mega_duration_seconds=3600+18*(n-1). At201total Meteorites eaten,200upgrades reduce recharge exactly to0; transition that Rayquaza to permanently Mega Evolved per the approved eventual-permanence goal. User also wants negligible near-zero waits treated as0; fixed arithmetic reaches exact0without an arbitrary positive cutoff, so do not invent a larger early-unlock threshold. At200total Meteorites, recharge is still432seconds and finite Mega duration7182seconds; at201the duration formula would be7200seconds but permanent state supersedes finite expiry. Do not use duration>=recharge as the permanence criterion; the user instead specified essentially-zero recharge. Retain all Meteorite consumption, Dragon Ascent requirements, instant100%refill for every feeding, restart-to-full-current-duration when fed while Mega, per-individual persistence and offline timing. Permanent form's optional manual reversion/toggle behavior remains unspecified. Recording approval does not complete implementation.
+- LATEST FINAL Rayquaza correction supersedes the0.5%/201-Meteorite progression: user meant0.5 as a FRACTION=50%, using ORIGINAL BASE TIMES (24hour recharge,1hour Mega duration), not0.5%and not compounding. Retain replacement of the earlier2x/+0.5x speed rules. Each additional Meteorite after the first reduces recharge by50%of original24hours=12hours and increases finite Mega duration by50%of original1hour=30minutes. First Meteorite:24hour recharge/1hour Mega duration. Second:12hour recharge/1hour30minutes Mega duration. Third:recharge reaches0and permanent Mega status unlocks (the finite duration formula would give2hours, but permanence supersedes the expiry). General pre-permanence formula: recharge=max(0,86400-43200*(n-1)),finite_duration=3600+1800*(n-1). User explicitly approves switching between normal and Mega forms at permanent/full Mega status AND clarifies that switching was intended to be available even before permanent status. Do not lock the Pokemon in Mega form. How switching back into Mega before permanence interacts with the active timer and earlier100%energy activation rule remains unclear: ask whether it resumes the remaining already-unlocked active window, or requires a new full-energy activation; do not infer unlimited free fresh activations or timer resets from form switching. Preserve consumed Meteorites, instant100%on feeding, Dragon Ascent feeding/Mega prerequisites, active-form feeding restart, individual progression and offline persistence. No game implementation is completed by recording this correction.
+- Latest explicit Rayquaza correction: permanent Mega access unlocks at FIVE total Meteorites eaten, superseding the prior derived third-Meteorite threshold. Preserve normal/Mega switching before and after permanence. This threshold change alone does NOT specify a replacement recharge formula: prior fixed50%-of-original24hour reductions reach0at3, conflicting with a zero-recharge-trigger at5. Ask whether to reduce refill time by6hours per additional Meteorite (25%of original, giving24h/18h/12h/6h/0at totals1-5); this is a proposed reconciliation, not yet approved. Do not silently change the approved finite Mega-duration increment of30minutes per additional Meteorite; it remains the last explicit duration rule unless revised. Pre-permanence form-switch-back timer/energy question remains unanswered. All Meteorite consumption, initial/extra instant100%refill, Dragon Ascent prerequisites and offline persistence remain as approved. Gameplay implementation remains separate.
+- Latest recharge correction after the five-Meteorite threshold: halve CURRENT recharge time for each additional Meteorite, rather than subtract a fraction of the original24hours. Approved recharge progression before permanence is first24hours, second12hours, third6hours, fourth3hours; fifth explicitly unlocks permanent Mega access and overrides the otherwise1.5hour mathematical next step. Halving by itself never reaches0, so the explicit five-total unlock is the permanence trigger; do not claim the fifth halving mathematically yields0. The proposed24/18/12/6/0linear schedule was not approved. User wording "half of what the thing is now" follows the recharge question; whether Mega duration should also increase by50%of CURRENT duration (1h,1h30m,2h15m,3h22m30s before permanent) rather than the last explicit fixed+30minutes remains ambiguous and must be asked. Preserve instant100%refill per eaten Meteorite, consumed copies, Dragon Ascent eligibility, offline timers and form-switch capability. Earlier pre-permanence switch-back energy/window interaction remains pending. Recording approval does not implement gameplay mechanics.
+- Latest Rayquaza recharge/permanence correction supersedes the five-total unlock: continue halving after3hours to1.5hours and then half of1.5hours=0.75hours=45minutes BEFORE becoming permanent. With one upgrade per additional eaten Meteorite, this yields totals1=24h,2=12h,3=6h,4=3h,5=1h30m,6=45m,7=permanent Mega access. Seventh-total unlock is derived from the user-specified sequence; clearly present the mapping so the user can correct it if intended otherwise. Do not make the fifth permanent and do not skip the45minute tier. The explicit final permanent tier overrides the otherwise next22m30s recharge; halving itself does not yield0. Preserve per-individual unlock/progression, consumed Meteorites, instant100%energy with every feeding, Dragon Ascent requirements, active-duration restart, offline timers and normal/Mega switching. Mega-duration compounding versus fixed increment and pre-permanence switch-back energy/window behavior remain unanswered; no new duration formula approved by this recharge correction. Recording approval does not implement the system.
+- Mega Rayquaza DURATION compounding explicitly approved (yes): each additional Meteorite increases CURRENT finite Mega duration by50%, multiplying by1.5. This supersedes fixed+30minute or original-base duration increments. Combined latest progression by TOTAL Meteorites eaten:1 recharge24h/Mega1h;2 recharge12h/Mega1h30m;3 recharge6h/Mega2h15m;4 recharge3h/Mega3h22m30s;5 recharge1h30m/Mega5h3m45s;6 recharge45m/Mega7h35m37.5s;7 permanent Mega access with free normal/Mega switching. Keep exact fractional-second math internally if needed; display rounding must not alter progression. Permanence is the explicit seventh-Meteorite milestone, not duration>=recharge (which occurs earlier). Recharge halves current time until the final permanent tier. Preserve instant100%refill per Meteorite, consumption, current Dragon Ascent requirement, active-duration restart using newly upgraded duration, per-individual progression and offline timers. Pre-permanence switch-back energy/window behavior remains unresolved; do not silently reset duration or grant a free new activation. Recording approval is separate from gameplay implementation.
+- User reviewed the full seven-Meteorite recharge/Mega-duration table and confirmed "looks good". The table is approved as presented: current recharge halves, current finite duration multiplies1.5, seventh total grants permanent access. Their "next" does not answer the separately pending pre-permanence form-switch interaction. Present that as the next question: resume the same active window without resetting its timer versus a new activation requiring100%energy, with Custom available. Do not infer a form-switch rule from approval of the progression table.
+
+- Rayquaza form-switch custom rule approved: switching from Mega back to normal gives back unused Mega Energy, and switching back into Mega is FREE. This supersedes the proposed forced fresh100%-energy activation on every switch-back and the earlier no-refund assumption. Do not infer what "unused" numerically means or silently duplicate energy across repeated toggles. Refund amount/formula, combination with independently regenerated stored energy, cap behavior, whether the current active window pauses or continues while normal, and free-return duration accounting remain unspecified. Ask a concrete refund example (half of active Mega duration remaining ->50%energy refund?) before implementing arithmetic; distinguish stored rechargeable meter from the active Mega-time budget and preserve both correctly. Preserve seventh-Meteorite permanent access, Meteorite-induced instant100%refill and upgraded-duration restart, current Dragon Ascent prerequisites, per-individual progression and offline timing. Earlier100%-energy gate/drain applies to initial fresh activation; it does not charge the explicitly free return toggle. Recording approval is not gameplay implementation.
+- LATEST Rayquaza switch correction supersedes the previously recorded free-return-to-Mega rule: switching FROM Mega TO normal is free; every activation FROM normal TO Mega still requires100%energy and spends the meter under the approved activation rule. Voluntary Mega-to-normal reversion refunds the unused energy MINUS a15%penalty. The penalty formula is not yet unambiguous: clarify subtract15 percentage points of the full meter (50%unused ->35%refund) versus deduct15%of the unused amount (50%unused ->42.5%refund). User rejected the prior proposed unpenalized proportional refund+cap rule as a whole; do not treat its exact proportional-time formula, stacking with independently regenerated energy, or cap behavior as expressly approved. Use no negative refunds, resource duplication or free fresh Mega activation; arithmetic needs clarification before implementation. Preserve seven-Meteorite progression/permanent access and other approved prerequisites/offline timers. Recording approval does not implement gameplay mechanics.
+- Mega Rayquaza voluntary-reversion penalty clarified: subtract FIFTEEN PERCENTAGE POINTS from unused Mega Energy, not15%of the unused amount. Example50%unused ->35%refund. Refund amount cannot be negative: max(0,unused_energy_percentage-15); no energy debit beyond the forfeited refund is inferred. Returning Mega->normal is free; every normal->Mega activation still requires100%. This resolves the penalty interpretation only. Whether refund is ADDED to independently regenerated energy already in the meter (with a100%cap) or REPLACES the current meter remains undecided; ask explicitly before implementing resource arithmetic. The mapping of remaining Mega duration to unused energy and permanent-state treatment remain implementation details requiring exact specification if needed. Preserve all other latest approved Rayquaza rules. Recording approval does not complete gameplay implementation.
+- Rayquaza refund accumulation approved: choose FIRST option, ADD the penalized unused-energy refund to the energy already regenerated, capped at100%. Formula for voluntary Mega->normal reversion: refund=max(0,unused_percentage-15); new_stored_energy=min(100,current_recharged_energy+refund). Never replace the stored meter with the refund or apply the15point penalty to already regenerated energy. Every normal->Mega activation still requires100%and drains to0%; returning to normal is free. Pending exact definition of unused_percentage: propose proportional remaining active Mega time / that activation total duration *100, with fractional values preserved internally and clamped0..100; this proportional-time mapping has not yet been explicitly approved. Permanent-state reversions must not silently incur a timer-based penalty (permanent has no finite unused duration); ask separately when implementing if necessary. Preserve Meteorite progression and all other latest rules. Recording approval does not implement gameplay mechanics.
+- Rayquaza unused-energy definition explicitly approved: unused_percentage=100*(remaining active Mega duration / full duration allocated to that activation), clamped0..100. On voluntary normal reversion, refund=max(0,unused_percentage-15percentagepoints), added to independently regenerated stored energy with total capped100%. Half the active duration remaining ->50%unused ->35%refund. Mark each activation ended after applying its refund; never refund the same active allocation twice. Every fresh Mega activation requires100%, spends meter to0%, and starts its full current unlocked duration; previous approval of free Mega re-entry was superseded. The full current duration grows by1.5per additional Meteorite through the sixth; recharge halves24h->12h->6h->3h->1.5h->45m, seventh unlocks permanent access. Retain all latest prerequisites, offline timers, Meteorite instantfill/upgrades/restarts and normal/Mega toggle capability. This resolves the finite-duration refund definition; no gameplay implementation is implied.
+- Berry crop base-table response2 approved: use Omega Ruby/Alpha Sapphire growth times and minimum/maximum harvest ranges for normal berry species with verified ORAS data, while retaining the previously approved custom hybrid cultivation features (graded drying soil, watering, crop drop/regrowth, mulch, weeds, pests and adjacent-plant mutations). Cheri example16hours and4-20berries. This does not replace hybrid care with unmodified ORAS watering-only rules or authorize invented historical tables for unsupported/custom variants. Preserve all direct/held/capture/cooking approvals. Exact combined yield arithmetic and any supported-species exceptions require research/specification before implementation. No Custom definition pending for base growth/harvest table selection.
+- Blue Apricorn deterministic crafting output clarified: CLEAN LURE BALL. Preserve its approved capture modifiers5xfor fishing and4xfor eligible in/on-water targets, using applicable encounter condition rather than stacking bonuses. This resolves the previously unspecified Lure variant output for the option5Apricorn crafting system; Worn/Dirty variants remain their existing separate items and no aging/cleaning mechanic is implied. Preserve approved Aprijuice ingredient use and all other Apricorn-to-ball mappings. Recipe quantities, crafting wait/access and economy implementation remain separate; recording approval does not implement gameplay.
+- Apricorn ball crafting timing approved: INSTANT. Successful crafting immediately consumes the recipe Apricorn(s) and grants the corresponding ball(s), with no next-day wait, real-time crafting queue or cooldown inferred. Preserve deterministic color-to-ball mappings, Blue->Clean Lure Ball, previously approved ball effects and the separate Aprijuice ingredient uses. This custom timing overrides original HGSS overnight processing. Recipe yield/quantities and interface/access must follow verified standard recipe behavior or later explicit choices; do not infer batch bonuses. Approval recording is separate from gameplay implementation.
+- Crafting access/location approved: use a CRAFTING TABLE for ALL crafting recipes, including Apricorn-to-ball recipes; do not expose a separate direct-from-bag crafting flow. Preserve instant Apricorn-ball crafting and standard1Apricorn->1correspondingball quantities, with Blue->Clean Lure Ball and all earlier approved mappings/effects. Ordinary item use (medicine, feeding Meteorites, reusable form items) is not automatically reclassified as crafting. Dedicated cooking/blending minigames versus the crafting-table recipe menu need clarification if applicable: do not remove approved Poffin/Pokeblock/Aprijuice systems. Table placement, unlocks and recipes remain implementation work; no completed build/export is implied by recording this preference.
+- Crafting versus other activity distinction explicitly clarified: if an activity is CRAFTING, it belongs at the crafting table; if it is NOT crafting, it belongs at its own appropriate equipment/interface. Poffin cooking, Pokeblock blending and Aprijuice making are separate cooking/blending activities, not crafting-table recipes merely because they consume ingredients. Preserve their approved distinct systems and ordinary item-use interfaces. Apricorn-to-ball crafting remains instant at the crafting table. This resolves the dedicated-equipment question; no need to request the same distinction again for each recipe. Specific equipment presentation/placement remains implementation work, not an unapproved new item effect.
+- Crafting access UI clarified: provide a BUTTON to access the crafting-table screen, alongside/like the existing Box and Dex buttons. Do not require physically finding a home-base/island crafting table from the earlier location question. All crafting recipes belong in this crafting-table screen; ordinary medicine/item use and separate cooking/blending systems remain their appropriate activities. Apricorn-to-ball crafting remains instant with approved recipes and variants. Availability during active battles is not specified by "like Box and Dex"; default implementation should inspect existing button availability and follow the established access pattern unless the user states a different battle rule, rather than inventing a new restriction. Button implementation and Windows export remain pending; recording preference does not mean an updated executable exists.
+- Cooking/blending access approved: ONE shared button named KITCHEN. Kitchen opens access to the separate approved Poffin cooking, Pokeblock blending and Aprijuice-making activities; do not create individual top-level buttons for each. Keep the Crafting button separate and use its crafting-table screen for crafting recipes, including instant Apricorn balls. This is a navigation/access preference, not a merger of the recipes or their distinct mechanics. Match established Box/Dex button access conventions; implementation and updated Windows export remain pending.
+- Three battle-item responses2,2,2 approved: Guard Spec. uses GenIII+five-turn allied-side Mist, preventing other Pokemon's move/Ability stat reductions and persisting across switches, without preventing self-inflicted drops; consume on successful use. Iron Ball suppression uses GenV+behavior: Klutz/Embargo/MagicRoom negate all applicable effects including its halved-Speed penalty; this choice specifically resolves suppression, not unreviewed historical Ground-damage anomalies. Eject Button pivot interaction uses Pokemon Champions behavior: when Uturn/VoltSwitch/FlipTurn triggers EjectButton, its eligible surviving holder switches and the attacker also switches; preserve ordinary consumed-on-activation and replacement eligibility. Exact ordering/dependent battle systems require implementation research; do not recreate unrelated Symbiosis glitches. All three questions resolved with no Custom selections. Recording approval is not gameplay implementation.
+- Natural Gift power review response "1 and2": user selects BOTH older GenIV-V60/70/80and newer GenVI-VII80/90/100berry-dependent power tables. Both tables are desired, but combination/selection behavior is UNRESOLVED because each shared berry has two conflicting base-power values. Do not sum powers, deal two attacks, select randomly, overwrite one choice, create berry variants or duplicate move entries without clarification. Ask whether to expose two separate move versions or a selectable original/newer mode when using NaturalGift (or another user-defined rule). Preserve the move's ordinary berry-dependent type and consumption; do not alter previously approved berry effects. Disabled-move option5was not selected. Recording this preference does not implement the move.
+- Natural Gift/Unnatural Gift custom combination defined: retain move name NATURAL GIFT with original GenIV-Vberry-dependent base powers60/70/80. Add the user-named UNNATURAL GIFT using newer GenVI-VIIberry-dependent base powers80/90/100. Each attempted use of NaturalGift has a15%chance to use UnnaturalGift INSTEAD (85%ordinary NaturalGift). This is a replacement of that use, not a second attack or simultaneous power stacking. UnnaturalGift ALSO receives an extra damage buff when the resulting move deals damage, but the buff amount/formula is unspecified and must be asked before implementing. Do not invent a multiplier or assume the newer+20basepower is itself the requested additional buff. The user's exact phrase is "chance to use ... instead"; roll timing relative to move eligibility/miss and PP/berry consumption requires standard execution specification, not extra rewards or duplicate consumption. Both variants retain the reviewed berry-dependent type and ordinary NaturalGift berry use unless changed. Whether UnnaturalGift is independently learnable/selectable or only a15%transformation remains unspecified; do not grant independent learnability from the name alone. Preserve previously approved berry effects. Recording approval is not implementation.
+- Unnatural Gift extra damage buff approved: +15%DAMAGE (multiply otherwise applicable move damage by1.15 with appropriate final damage rounding), in addition to its newer berry-dependent base-power table80/90/100. Do not treat this as+15basepower or replace the newer table with the old one. NaturalGift retains original60/70/80powers and its15%chance to be replaced by UnnaturalGift for that use. These are two distinct15%rules: replacement probability15%, extra UnnaturalGift damage15%; do not conflate them. No extra simultaneous attack or second berry consumption is approved. Pending only whether UnnaturalGift can be separately learned/selected or is exclusively a triggered version of NaturalGift. Recording approval does not implement move mechanics.
+- Unnatural Gift availability clarified: ONLY through the15%chance when using NaturalGift. It cannot be separately learned, selected, taught by machine, or occupy its own learned-move slot. NaturalGift uses originalberry-dependent60/70/80power; its15%replacement uses UnnaturalGift's newer80/90/100power plus15%damage. Execute as a single move-use resolution, without a second attack or duplicate PP/berry consumption. Display the triggered move name appropriately. This resolves the power/variant/learnability questions, not all historical execution differences: GenerationIVNormalize versus later type-changing-Ability interactions still require a separate choice if not already covered by approved battle-system rules. Preserve approved berry effects. Recording approval does not implement gameplay mechanics.
+- NaturalGift/triggeredUnnaturalGift Normalize interaction response2 approved: preserve the held berry's move type despite Normalize, using the reviewed newer type-preservation behavior for both variants. Keep approved originalversusnewerpowertables,15%triggeronlyUnnaturalGift and its+15%damage. Do not change berry types toNormal fromNormalize or infer separatelylearnableUnnaturalGift. No pending customdefinition for this typechoice; implementation remains separate.
+- Weather duration shared response2 approved: ordinary weather created by moves or Abilities lasts5turns, extended to8when its creator holds the matching item (DampRock rain,HeatRock sunlight,SmoothRock sandstorm,IcyRock applicable hail/snow). Use newer GenVI+finite Abilityweather behavior, not original indefinite Drizzle/Drought/SandStream/SnowWarning weather. Preserve standard trigger eligibility and replacement rules; do not apply this finite5/8rule to primordial/extreme or forced environmental weather without separate research. Hail-versus-snow battle EFFECTS remain undecided; this answer approves duration only. Standard weather rocks remain reusable held items, not consumed merely when extending weather. Recording approval does not implement weather mechanics.
+- Hail/Snow correction: user explicitly states these are DIFFERENT things. Keep HAIL and SNOW as distinct weather conditions, not a replacement selection or one merged hybrid. Hail retains its standard1/16maxHPendturnchipagainsteligible non-IcePokemon and applicable protections; Snow retains its standardIce-typeDefense*1.5andno weatherchip. Do not add SnowDefense toHail or HailchiptoSnow from the previous proposedoption6. Preserve separately approvedfinite5turn/8matchingrockduration; appropriateIcyRockextensionappliestothesupportedcoldweathercondition. The abilitySnowWarninghistoricallycreatesHailversusnewerSnow, which is a genuinely unresolved triggerchoice nowthatbothweathersexist; ask separately rather than infer from the fact they are separate. No simultaneoustwo-weatherstackingisapproved. Recording decisions does not implement weather mechanics.
+- Custom snow-move escalation approved: when a MOVE that would create SNOW is successfully used while the current battle weather is alreadySNOW, change the weather toHAIL instead. This is a weather replacement, not simultaneousSnow+Hailoraddingtheir effects. Preserve the weather-settingmove's other applicable effects and normal eligibility; do not treat this approvedsnow-on-snowuse as an automaticalready-snowingfailure. Ordinary move-createdSnowwhenotherweather/clearweatherremainsSnow; escalationonlywhenalreadySnow. The approvedfinite5/8turnweatherdurationframeworkremains; no specialhaildurationorstackedtimerisapproved. User specifiedMOVES; do not silently extend escalationtoAbilities,helditems,overworldweather,orusingSnow-settingmoveswhilealreadyHail. SnowWarning's baselineHailversusSnowtriggerisstillunanswered,andwhetheritparticipatesinescalationrequiresseparateclarification. Recording approval does not implement gameplay mechanics.
+- Snow escalation scope expanded by explicit user correction: applies to EVERYTHING that SETS Snow, not only moves. Any actualSnow-settingeventfromamove,Ability,orothereligibleweathersourcewhilecurrentweatherisSnowchangesittoHailinstead. Treatability-basedSnowsetters,suchasSnowWarningwhenusingitsmodernSnowtrigger,underthesamerule;do notexcludethembecausetheyarenotmoves. This doesnotmakepassiveweatherobservation,extensionorUIrefreshintoafreshsettingevent:donotescalateSnowimmediatelyjustbecauseitisactive. SnowandHailremainseparate,notcombined;approved5/8turnordinarydurationframeworkremains. User'sscopeanswerdoesnotexplicitlychooseSnowWarning'shistoricalbaselineweather,thoughitsmodernSnowsettingpathmustobeytheuniversalruleifused. BehaviorofanotherSnow-settingeventwhilealreadyHailisstillunspecified:askwhetheritkeepsHailoresetsbacktoSnow,ratherthaninferanescalatedweatherlock. Recordingapprovaldoesnotimplementweathermechanics.
+- Snow-settingduringHailresponse"theygetcombined"approved:ifcurrentweatherisHAILandanactualsourceattemptstosetSNOW,enteraCOMBINEDHAIL+SNOWstatewithbothstandardcomponents(hailchipagainsteligible non-IcePokemonandSnowIceDefense*1.5,withapplicableimmunities/interactions). StandaloneHailandstandaloneSnowremainseparateexistingconditions;theearliercorrectiondoesnotforbidthisexplicitlyrequestedcombination. PreservepreviousescalationstepSnow-settingduringSnow->Hail;thusrepeatedSnowsettingcanprogressSnow->Hail->combinedHail+Snow. AllactualSnowsettingsourcesparticipate,notjustmoves. Do notapplythecombinedeffectatthefirstSnow->Hailsteporcreateunapprovedfurtherstrengthtiers. Useapprovedordinaryweatherdurationframeworkunlesslaterchanged;exactcombinedtimerimplementationmustavoidduplicatechip/stackedDefensebonuses. Recordingapprovaldoesnotimplementweathermechanics.
+- Sandstormcoreeffectsresponse2approved:eligiblePokemonlose1/16maximumHPeachturn,andRock-typePokemonreceive1.5xSpecialDefensewhileSandstormisactive.PreservestandardRock/Ground/SteeldamageimmunitiesandeligibleAbility/itemprotections.Previouslyapprovedordinaryweatherduration5turns/8withmatchingSmoothRockunchanged.ThischoicespecificallyresolveschipfractionandRockSpecialDefense;do notsilentlyimportdifferenthistoricalSolarBeam/healingrulesfromit.Recordingapprovaldoesnotimplementbattlemechanics.
+- Response-code addition:7means the THIRD EFFECT/VERSION OPTION when one is available. Keep1Original,2New,3Custom,4Later,6BothOriginal/New. Preserve all earlier explicit5selections as the effect options presented at the time; do not reinterpret historical choices or silently migrate their meaning. The user has not explicitly redefined future5, so use7for third effect options in subsequent questions and clarify other codes only if needed.
+- Terrainpowerfollow-up: user requests the three reviewed terrains "should do+40power". This is a custom requested boost, but units are UNRESOLVED: clarify+40%matchingmovepower(1.4x) versus+40flatbasepowerpoints. Do not silently infer40%merelybecausepreviousoptionswere50%/30%, and do not interpret thenewresponsecode7asselectingadisabled/unavailablethirdhistoricalterrainversion. Noofficialthird+40versionwaspresented;recordasusercustomamountafterunitsconfirmed. PreserveElectric/Grass/Psychicmatchingmovetypesandgrounded-usereligibility;nootherterrainruleschanged. Recordingintentdoesnotimplementterrainmechanics.
+- Terrainpowerunitsclarified("thesamepoweryouweretalkingabout"):approveCUSTOM+40%MOVE POWER(1.4x),not+40flatbasepower,forallthreeElectric/Grassy/PsychicTerrainmatchingtypeboosts. ApplytoElectric/Grass/PsychicmovesrespectivelywhenUSERisgrounded;matchmovetype,notuser'sspecies type. PreserveotherstandardterrainfeaturesanddonotaddapowerboosttoMistyTerrain. Thisresolvesthependingamountquestion. Response7remainsthethirdeffectoptioncodewhenavailable;this40%isanexplicitcustomvalue,notanunresearchedclaimedofficialversion. Recordingapprovaldoesnotimplementbattlemechanics.
+- MistyTerrainprotectionresponse2approved:newerGenVII+behaviorpreventsmajorstatusconditionsANDconfusionforgroundedPokemon.PreservestandardeligibilityandDragon-damagehalving;thispreventiondoesnotautomaticallycurepreexistingconditionsorblockalltemporarystatus/statstagechanges. Theapproved+40%matchingmovepowerappliesonlyElectric/Grassy/PsychicTerrain,notMisty.Recordingapprovaldoesnotimplementterrainmechanics.
+- Combinedcoldweatherreplacementapproved:whenRain,SunorSandstormissetduringcombinedHail+Snow,REPLACEBOTHcoldweathercomponentsandactivateonlythenewweather. RemovebothHailchipandSnowIceDefenseboost;donotcarryeithercomponentintoRain/Sun/Sandstormorstackextraweather. Preserveapproved5/8ordinaryweatherduration,standardimmunitiesandtheSnow->Hail->combinedescalationchainforallactualSnowsettingsources. Thisresolvestheother-weatherreplacementquestion. RepeatedSnowsettingwhilealreadyincombinedHail+Snowstillneedsatransition/timerruleifnotcoveredbylaterapproval;donotinfinitelystackdamage/Defenseorcreateanewstrengthtier.Recordingapprovaldoesnotimplementweathermechanics.
+- RepeatedSnowsettingwhilecombinedHail+Snowtimerquestionanswered"yesitshould":approveREFRESHingthecombinedweatherdurationto5turns,or8whentheactualSnowsetterholdstheapplicableIcyRock. Keepthecombinedstateanditsstandardcomponentmagnitudes;donotstackextraHailchiporadditionalSnowDefensemultipliersanddonotaddnewturnstotheexistingremainingtimer. AllactualSnowsettingsourcesusetheapprovedtransition/refreshrules;passivechecksandUIrefreshesdonotcountasnewweathertriggers. Rain/Sun/Sandstormstillreplacebothcomponents. SnowWarning'sbaselineweatherinaclearfieldwasnotexplicitlyselectedearlier;askaconcretesnow-firstbaselineconfirmationwithoutreopeningduration/escalationrules.Recordingapprovaldoesnotimplementweathermechanics.
+- SnowWarningclear-weatherbaselineexplicitlyapproved(yes):SnowWarningsetsSNOWwhenweatherisclear.ThenitsactualSnowsettingeventsfollowthesameuniversalrulesasothersources:Snow->Hail;Hail->combinedHail+Snow;combined->keepcombinedandrefreshduration. Useordinary5turns/8ifsetterholdsmatchingIcyRock. Rain/Sun/Sandstormreplacebothcombinedcomponents. ThisresolvestheSnowWarningbaselinequestionandallcurrentlypresentedweatherquestions.Recordingapprovaldoesnotimplementweathermechanics.
+- Responsecode8explicitlyapproved:FOURTHeffect/versionoptionwhenavailable.Use7forthirdand8forfourth;preserveallhistoricalnumberedselectionsastheywerepresented.
+- Fourstatus-versionresponsesALL2approved:Confusionself-hitchance=1/3(GenVIIrule);paralysisSpeedmultiplier=0.5;burnendturnchip=1/16maximumHP;poisoncausesNOoutside-battleHPdamage(GenV-through-SVfieldrule). Theseanswersresolvethepresentedspecificscopesonly:confusionduration/selfhitpower,paralysisturnskipchance,burnphysicaldamage/Facade/confusioninteractions,andbattlepoison/badpoisonarenotautomaticallychangedorapprovedasentiregenerationpackages. Preserveexistingapprovedcuring/preventionitemeffects.Recordingapprovaldoesnotimplementstatusmechanics.
+- Status response 1,1,1 approved: paralysis prevents acting with 25% probability per turn (approved Speed multiplier remains 0.5); natural freeze recovery is 20% each turn with no maximum frozen duration; switching out resets the sleep counter to its originally assigned amount, including Rest as in Generation V. These scopes do not select sleep duration or other freeze interactions. Documentation approval only, not gameplay implementation.
+
+- Critical/binding batch responses 1,1,1 approved: critical-hit damage multiplier 2x (Gen II-V scope); critical stages 0/1/2/3/4+ probabilities 1/16,1/8,1/4,1/3,1/2 (Gen III-V table); ordinary binding end-turn damage without Binding Band is 1/16 maximum HP. Preserve approved item critical-stage modifiers, Binding Band 1/6 maximum HP and Grip Claw seven turns. No implementation or export implied.
+
+- Leech Seed/Protect responses 1 and 1 approved: Leech Seed drains 1/16 target maximum HP each turn; each consecutive successful Protect use halves the next-use success probability (100%,50%,25%,12.5%...). Scope excludes historical Toxic-counter interactions, probability overflow bugs, Gen IV chance floor and unrelated Protect counters/exceptions. Recording approval only.
+
+- Knock Off custom and Rapid Spin response 2 approved: Knock Off has 20 base power and a 50% power boost ONLY when the target holds an item eligible to be knocked off (effective boosted base power 30); retain eligible item removal. Mere possession of an unremovable item does not grant the boost. Rapid Spin uses 50 base power and raises user Speed one stage when it inflicts damage, retaining clearing utility. No gameplay implementation implied.
+
+- Knock Off/Rapid Spin responses 2 and 2 approved: Knock Off has 65 base power with 50% power boost against targets holding an item eligible for removal; Rapid Spin has 50 base power and raises user Speed one stage when inflicting damage, retaining clearing utility. Scope as presented in CURRENT_ITEM_REVIEW_BATCH; no implementation/export implied.
+
+- Defog responses 2 and 2 approved: removes entry hazards on both user's and target's sides and removes active terrain. This does not clear weather or imply screens are removed on both sides. Other Defog effects remain outside these scoped choices. Recording approval only; no gameplay implementation/export implied.
+
+- Teleport/sound responses 2 and 2 approved: Teleport can switch user to a chosen eligible teammate in Trainer battles at priority -6; Gen VI onward sound-based moves except Howl bypass Substitute. Soundproof and other immunities remain applicable. User reaffirms large batches; restore 50 choices per batch where researched differences are available. No gameplay implementation implied.
+
+- All 50 move base-power choices in the Air Cutter-through-Sucker Punch batch approved as option 2. Exact values below are approved base powers only; no PP/accuracy/secondary effects inferred. Documentation approval, not gameplay implementation.
+
+# Active batch: 50 move base-power choices
+ALL 2 APPROVED. These are moves, not inventory items. Scope BASE POWER ONLY, not PP, accuracy, secondary effects or entire generation packages. Rows1-46 compare Gen V to VI; rows47-50 compare Gen VI to VII. Codes1 earlier,2 newer,3 custom,4 later,6 both (numeric conflict requires definition).7/8 only when additional alternatives actually offered.
+| # | Move | 1 earlier power | 2 newer power |
+|---|---|---|---|
+| 1 | Air Cutter | 55 | 60 |
+| 2 | Assurance | 50 | 60 |
+| 3 | Aura Sphere | 90 | 80 |
+| 4 | Blizzard | 120 | 110 |
+| 5 | Bubble | 20 | 40 |
+| 6 | Chatter | 60 | 65 |
+| 7 | Crabhammer | 90 | 100 |
+| 8 | Draco Meteor | 140 | 130 |
+| 9 | Dragon Pulse | 90 | 85 |
+| 10 | Energy Ball | 80 | 90 |
+| 11 | Fire Blast | 120 | 110 |
+| 12 | Fire Pledge | 50 | 80 |
+| 13 | Flamethrower | 95 | 90 |
+| 14 | Frost Breath | 40 | 60 |
+| 15 | Grass Pledge | 50 | 80 |
+| 16 | Heat Wave | 100 | 95 |
+| 17 | Hex | 50 | 65 |
+| 18 | Hurricane | 120 | 110 |
+| 19 | Hydro Pump | 120 | 110 |
+| 20 | Ice Beam | 95 | 90 |
+| 21 | Incinerate | 30 | 60 |
+| 22 | Leaf Storm | 140 | 130 |
+| 23 | Lick | 20 | 30 |
+| 24 | Low Sweep | 60 | 65 |
+| 25 | Magma Storm | 120 | 100 |
+| 26 | Meteor Mash | 100 | 90 |
+| 27 | Muddy Water | 95 | 90 |
+| 28 | Overheat | 140 | 130 |
+| 29 | Pin Missile | 14 | 25 |
+| 30 | Power Gem | 70 | 80 |
+| 31 | Rock Tomb | 50 | 60 |
+| 32 | Skull Bash | 100 | 130 |
+| 33 | Smelling Salts | 60 | 70 |
+| 34 | Smog | 20 | 30 |
+| 35 | Snore | 40 | 50 |
+| 36 | Storm Throw | 40 | 60 |
+| 37 | Struggle Bug | 30 | 50 |
+| 38 | Surf | 95 | 90 |
+| 39 | Synchronoise | 70 | 120 |
+| 40 | Techno Blast | 85 | 120 |
+| 41 | Thief | 40 | 60 |
+| 42 | Thunder | 120 | 110 |
+| 43 | Thunderbolt | 95 | 90 |
+| 44 | Vine Whip | 35 | 45 |
+| 45 | Wake-Up Slap | 60 | 70 |
+| 46 | Water Pledge | 50 | 80 |
+| 47 | Flying Press | 80 | 100 |
+| 48 | Mystical Fire | 65 | 75 |
+| 49 | Parabolic Charge | 50 | 65 |
+| 50 | Sucker Punch | 80 | 70 |
+Source: https://bulbapedia.bulbagarden.net/wiki/List_of_modified_moves
+
+
+- All 50 accuracy/base-PP choices in the Blizzard-through-Soft-Boiled batch approved as option 2. Exact selected accuracy and PP values below; previously approved move powers unchanged. Documentation only, no gameplay implementation.
+
+# Active next batch: 50 accuracy and base-PP choices
+ALL 2 APPROVED. Rows1-30 ACCURACY ONLY; rows31-50 BASE PP ONLY. Arrow is option1 earlier -> option2 newer. No change to previously approved base power. Third/fourth alternatives not offered here. Glare compares GenIV75 to GenVI100; Poison Gas GenIV55 to GenVI90, intermediate options not implicitly selected. Blizzard GenI->II; RockThrow GenI->II; LowKick/RazorWind GenII->III; Flash GenIII->IV; most remaining accuracy GenIV->V or V->VI; ThunderWave VI->VII. PP rows31-46 GenV->VI;47-50 VIII->IX.
+1. Blizzard: 90% → 70%
+2. Rock Throw: 65% → 90%
+3. Low Kick: 90% → 100%
+4. Razor Wind: 75% → 100%
+5. Flash: 70% → 100%
+6. Bind: 75% → 85%
+7. Bone Rush: 80% → 90%
+8. Clamp: 75% → 85%
+9. Cotton Spore: 85% → 100%
+10. Crabhammer: 85% → 90%
+11. Disable: 80% → 100%
+12. Doom Desire: 85% → 100%
+13. Fire Spin: 70% → 85%
+14. Future Sight: 90% → 100%
+15. Glare: 75% → 100%
+16. Magma Storm: 70% → 75%
+17. Poison Gas: 55% → 90%
+18. Rock Blast: 80% → 90%
+19. Sand Tomb: 70% → 85%
+20. Scary Face: 90% → 100%
+21. Tackle: 95% → 100%
+22. Toxic: 85% → 90%
+23. Whirlpool: 70% → 85%
+24. Wrap: 85% → 90%
+25. Gunk Shot: 70% → 80%
+26. Meteor Mash: 85% → 90%
+27. Pin Missile: 85% → 95%
+28. Rock Tomb: 80% → 95%
+29. Will-O-Wisp: 75% → 85%
+30. Thunder Wave: 100% → 90%
+31. Acid Armor: 40 → 20
+32. Air Slash: 20 → 15
+33. Barrier: 30 → 20
+34. Covet: 40 → 25
+35. Extrasensory: 30 → 20
+36. Growth: 40 → 20
+37. Minimize: 20 → 10
+38. Rock Tomb: 10 → 15
+39. Sacred Sword: 20 → 15
+40. Skull Bash: 15 → 10
+41. Submission: 25 → 20
+42. Swords Dance: 30 → 20
+43. Synchronoise: 15 → 10
+44. Tailwind: 30 → 15
+45. Thief: 10 → 25
+46. Vine Whip: 15 → 25
+47. Rest: 10 → 5
+48. Roost: 10 → 5
+49. Slack Off: 10 → 5
+50. Soft-Boiled: 10 → 5
+Source: https://bulbapedia.bulbagarden.net/wiki/List_of_modified_moves
+
+
+- GLOBAL MOVE-VERSION POLICY: user says "for all the moves, just do the newer one." Use the newest applicable standard turn-based main-series move version by default, including base power, accuracy, PP, additional effects and move-specific interactions. All 50 currently presented Dig-through-Shore Up questions resolve as option 2; no further routine earlier-versus-newer move questions are needed. This supersedes earlier ORIGINAL standard move selections (including Leech Seed drain, now 1/8 maximum HP, and Protect's consecutive-success multiplier, now 1/3). Preserve explicitly customized systems and moves, including Natural Gift/Unnatural Gift and the universal Snow->Hail->combined escalation; do not silently erase custom designs. Global status/critical-hit/binding/terrain systems and approved item effects are separate from move-version defaults and retain their decisions. Use latest applicable standard turn-based rules rather than importing incompatible Legends action/combat systems or historical bugs. Research actual latest values during implementation; "newer" is not frozen to a previously shown older newer column if later applicable updates exist. This is a recorded design decision, not completed gameplay implementation or an exported build.
+- Ability batch partial response approved. EARLIER option1 for questions 1,2,3,4,6,12,19,20,22,23,24,25: Aerilate/Pixilate/Refrigerate converted-move power boost 30%; Gale Wings priority at any HP; Parental Bond second-hit damage 50%; Disguise break costs no HP; Battle Bond transforms eligible Greninja into Ash-Greninja after applicable knockout; Dauntless Shield and Intrepid Sword activate on each entry; Libero and Protean can activate repeatedly before moves; Transistor Electric power multiplier1.5. NEWER option2 for 5,7,8,9,10,11,13,15,16,17,18,21: Prankster-boosted status moves fail against Dark opponents; Weak Armor Defense-1/Speed+2; Infiltrator bypasses Substitute; Keen Eye ignores opponent evasion boosts as well as protecting accuracy; Oblivious prevents Taunt; Overcoat protects from powder as well as weather; Inner Focus, Oblivious, Own Tempo and Scrappy block Intimidate; Rattled also activates from Intimidate; Illuminate prevents accuracy reductions. Preserve other standard effects and scoped exclusions from the presented questions. Question14 Moody and questions26-50 standard Ability availability UNANSWERED; do not infer approval. No custom choice made. Documentation approval only; no gameplay implementation/export implied.
+- Remaining Ability batch responses ALL2 approved: question14 Moody excludes accuracy and evasion from its random stat changes. Questions26-50 approve the listed additional standard Ability options alongside original normal Abilities: Pidgeot Tangled Feet; Nidoking Rivalry; Clefable Magic Guard; Parasect Dry Skin; Venomoth Tinted Lens; Persian Technician; Primeape Anger Point; Machamp No Guard; Dewgong Hydration; Cloyster Skill Link; Hypno Forewarn; Hitmonlee Reckless; Hitmonchan Iron Fist; Hitmontop Technician; Tangela Leaf Guard; Kangaskhan Scrappy; Kingdra Sniper; Mr. Mime Filter; Scizor Technician; Pinsir Mold Breaker; Tauros Anger Point; Eevee Adaptability; Porygon2 Download; Murkrow Super Luck; Breloom Poison Heal. These are available alternative standard Ability slots, not simultaneous active Abilities; Hidden Abilities remain separate. All50 Ability batch questions resolved; preserve previously chosen earlier/newer effects. Documentation approval only, no implementation/export implied.
+- Ability batch (Aerilate-through-Breloom) complete response reconfirmed: EARLIER 1,2,3,4,6,12,19,20,22,23,24,25; NEWER all other questions (5,7,8,9,10,11,13,14,15,16,17,18,21,26-50). "And then the rest" includes Moody14. Earlier means Aerilate/Pixilate/Refrigerate +30%; Gale Wings any HP; Parental Bond second hit50%; Disguise no break HP cost; Battle Bond Ash-Greninja transformation; Dauntless Shield/Intrepid Sword trigger each entry; Libero/Protean repeated type changes; Transistor1.5. Newer scoped effects as presented, including Moody excluding accuracy/evasion and all25 presented species gaining second standard Ability options. All50 resolved, no Custom pending. This response concerns the Aerilate-through-Breloom batch, NOT the separate following Pidgey-through-Illumise batch. No gameplay implementation/export implied.
+- ALL 2 approved for the Pidgey-through-Illumise 50-species standard Ability availability batch. Each species keeps original standard Ability and gains listed second standard option; one active Ability per individual, Hidden Ability rules separate. Exact approved options below. No gameplay implementation/export implied.
+
+# Active next batch: 50 further standard Ability availability choices
+ALL 2 APPROVED. 1 GenIII original standard Ability only;2 GenIV adds second standard Ability alongside original;3 custom;4 later. Hidden Abilities separate. Applies ordinary original forms, not regional forms or Megas. Each Pokemon has one active Ability, not both simultaneously. Earlier choices for evolved/related species do not imply unasked species decisions. No forced reroll of saved Pokemon or encounter probabilities approved.
+| # | Pokemon | 1 original normal Ability | 2 also allow |
+|---|---|---|---|
+| 1 | Pidgey | Keen Eye | Tangled Feet |
+| 2 | Pidgeotto | Keen Eye | Tangled Feet |
+| 3 | Nidoran♀ | Poison Point | Rivalry |
+| 4 | Nidorina | Poison Point | Rivalry |
+| 5 | Nidoqueen | Poison Point | Rivalry |
+| 6 | Nidoran♂ | Poison Point | Rivalry |
+| 7 | Nidorino | Poison Point | Rivalry |
+| 8 | Cleffa | Cute Charm | Magic Guard |
+| 9 | Clefairy | Cute Charm | Magic Guard |
+| 10 | Paras | Effect Spore | Dry Skin |
+| 11 | Venonat | Compound Eyes | Tinted Lens |
+| 12 | Meowth | Pickup | Technician |
+| 13 | Mankey | Vital Spirit | Anger Point |
+| 14 | Machop | Guts | No Guard |
+| 15 | Machoke | Guts | No Guard |
+| 16 | Seel | Thick Fat | Hydration |
+| 17 | Shellder | Shell Armor | Skill Link |
+| 18 | Drowzee | Insomnia | Forewarn |
+| 19 | Tyrogue | Guts | Steadfast |
+| 20 | Horsea | Swift Swim | Sniper |
+| 21 | Seadra | Poison Point | Sniper |
+| 22 | Scyther | Swarm | Technician |
+| 23 | Smoochum | Oblivious | Forewarn |
+| 24 | Jynx | Oblivious | Forewarn |
+| 25 | Porygon | Trace | Download |
+| 26 | Hoppip | Chlorophyll | Leaf Guard |
+| 27 | Skiploom | Chlorophyll | Leaf Guard |
+| 28 | Jumpluff | Chlorophyll | Leaf Guard |
+| 29 | Sunkern | Chlorophyll | Solar Power |
+| 30 | Sunflora | Chlorophyll | Solar Power |
+| 31 | Granbull | Intimidate | Quick Feet |
+| 32 | Shuckle | Sturdy | Gluttony |
+| 33 | Teddiursa | Pickup | Quick Feet |
+| 34 | Ursaring | Guts | Quick Feet |
+| 35 | Swinub | Oblivious | Snow Cloak |
+| 36 | Piloswine | Oblivious | Snow Cloak |
+| 37 | Remoraid | Hustle | Sniper |
+| 38 | Octillery | Suction Cups | Sniper |
+| 39 | Stantler | Intimidate | Frisk |
+| 40 | Smeargle | Own Tempo | Technician |
+| 41 | Miltank | Thick Fat | Scrappy |
+| 42 | Poochyena | Run Away | Quick Feet |
+| 43 | Mightyena | Intimidate | Quick Feet |
+| 44 | Zigzagoon | Pickup | Gluttony |
+| 45 | Linoone | Pickup | Gluttony |
+| 46 | Shroomish | Effect Spore | Poison Heal |
+| 47 | Skitty | Cute Charm | Normalize |
+| 48 | Delcatty | Cute Charm | Normalize |
+| 49 | Sableye | Keen Eye | Stall |
+| 50 | Illumise | Oblivious | Tinted Lens |
+
+- ALL 2 approved for Numel-through-Blue-Striped-Basculin 50-choice Ability availability batch. Questions1-44 add listed standard/Hidden options;45-50 replace indicated Ability slots. Preserve separately chosen Ability EFFECTS, custom weather and one active Ability per individual. No forced save rerolls or encounter distribution approved. Exact batch follows; documentation approval only, not completed gameplay or Windows export.
+
+# Active next batch: 50 more Ability availability choices
+ALL 2 APPROVED. 1 keep earlier availability;2 allow newer listed additions for1-44, or replacement in indicated slot for45-50;3 custom;4 later. Each individual still has one active Ability. Ordinary original forms only, except explicit Basculin form. Hidden indicated. Koffing/Weezing2 adds both second standard Neutralizing Gas and Hidden Stench. Other slots remain unchanged. No forced save rerolls, distribution/odds or automatic migration of existing individuals approved. Previously selected Ability EFFECTS remain (e.g.Protean older repeated use), irrespective of species availability. Snow Warning/weather already decided and not reopened.
+| # | Pokemon | 2 also allow |
+|---|---|---|
+| 1 | Numel | Simple |
+| 2 | Camerupt | Solid Rock |
+| 3 | Spinda | Tangled Feet |
+| 4 | Barboach | Anticipation |
+| 5 | Whiscash | Anticipation |
+| 6 | Shuppet | Frisk |
+| 7 | Banette | Frisk |
+| 8 | Tropius | Solar Power |
+| 9 | Absol | Super Luck |
+| 10 | Snorunt | Ice Body |
+| 11 | Glalie | Ice Body |
+| 12 | Spheal | Ice Body |
+| 13 | Sealeo | Ice Body |
+| 14 | Walrein | Ice Body |
+| 15 | Jigglypuff | Competitive |
+| 16 | Wigglytuff | Competitive |
+| 17 | Igglybuff | Competitive |
+| 18 | Plusle | Lightning Rod (Hidden) |
+| 19 | Minun | Volt Absorb (Hidden) |
+| 20 | Feebas | Oblivious |
+| 21 | Milotic | Competitive |
+| 22 | Kecleon | Protean (Hidden) |
+| 23 | Duskull | Frisk (Hidden) |
+| 24 | Dusclops | Frisk (Hidden) |
+| 25 | Starly | Reckless (Hidden) |
+| 26 | Dusknoir | Frisk (Hidden) |
+| 27 | Gothita | Competitive |
+| 28 | Gothorita | Competitive |
+| 29 | Gothitelle | Competitive |
+| 30 | Ferrothorn | Anticipation (Hidden) |
+| 31 | Wingull | Hydration |
+| 32 | Pelipper | Drizzle |
+| 33 | Torkoal | Drought |
+| 34 | Roggenrola | Weak Armor |
+| 35 | Boldore | Weak Armor |
+| 36 | Gigalith | Sand Stream |
+| 37 | Vanillite | Snow Cloak |
+| 38 | Vanillish | Snow Cloak |
+| 39 | Vanilluxe | Snow Warning |
+| 40 | Cubchoo | Slush Rush |
+| 41 | Beartic | Slush Rush |
+| 42 | Koffing | Neutralizing Gas + Stench (Hidden) |
+| 43 | Weezing | Neutralizing Gas + Stench (Hidden) |
+| 44 | Gallade | Sharpness |
+| # | Pokemon/slot | 1 earlier | 2 newer replacement |
+|---|---|---|---|
+| 45 | Gengar | Levitate | Cursed Body |
+| 46 | Shiftry (second standard slot) | Early Bird | Wind Rider |
+| 47 | Piplup (Hidden) | Defiant | Competitive |
+| 48 | Prinplup (Hidden) | Defiant | Competitive |
+| 49 | Empoleon (Hidden) | Defiant | Competitive |
+| 50 | Blue-Striped Basculin (first slot) | Reckless | Rock Head |
+Sources: https://bulbapedia.bulbagarden.net/wiki/List_of_modified_Ability_access ; https://www.serebii.net/xy/pokemonabilities.shtml (15-30).
+
+
+- ALL 2 approved for Butterfree-through-Beartic 50-choice base-stat batch. Use each row's newer listed base stats, in the specified species/form only. These are species base stats, not fixed additions to displayed individual stats; preserve IVs, EVs, nature and level. Prior Ability and move decisions unchanged. This approves the presented50, not all unreviewed base-stat changes. Exact batch follows. Documentation approval only; no gameplay/export implied.
+
+# Active next batch: 50 Pokemon base-stat version choices
+ALL 2 APPROVED. Scope only listed species/form BASE STATS, not actual individual stat gains or entire generation mechanics. 1 earlier,2 newer,3 custom,4 later. Multiple listed stats in one row selected together unless custom. First25 GenV->VI; next25 GenVI->VII. Ordinary original regional forms (Kantonian Raichu,Dugtrio,Farfetch'd,Electrode,Exeggutor,Qwilfish,Corsola etc), no partner Pikachu and no Mega except explicitly Mega Alakazam. Prior Ability effects/availability and all-newer moves policy unchanged. No immediate gameplay edits/export; do not overwrite individual IVs/EVs/natures or assert fixed displayed-stat increases.
+| # | Pokemon | Base stat(s) in order | 1 earlier | 2 newer |
+|---|---|---|---|---|
+| 1 | Butterfree | Sp. Atk | 80 | 90 |
+| 2 | Beedrill | Attack | 80 | 90 |
+| 3 | Pidgeot | Speed | 91 | 101 |
+| 4 | Pikachu | Defense / Sp. Def | 30 / 40 | 40 / 50 |
+| 5 | Raichu | Speed | 100 | 110 |
+| 6 | Nidoqueen | Attack | 82 | 92 |
+| 7 | Nidoking | Attack | 92 | 102 |
+| 8 | Clefable | Sp. Atk | 85 | 95 |
+| 9 | Wigglytuff | Sp. Atk | 75 | 85 |
+| 10 | Vileplume | Sp. Atk | 100 | 110 |
+| 11 | Poliwrath | Attack | 85 | 95 |
+| 12 | Alakazam | Sp. Def | 85 | 95 |
+| 13 | Victreebel | Sp. Def | 60 | 70 |
+| 14 | Golem | Attack | 110 | 120 |
+| 15 | Ampharos | Defense | 75 | 85 |
+| 16 | Bellossom | Defense | 85 | 95 |
+| 17 | Azumarill | Sp. Atk | 50 | 60 |
+| 18 | Jumpluff | Sp. Def | 85 | 95 |
+| 19 | Beautifly | Sp. Atk | 90 | 100 |
+| 20 | Exploud | Sp. Def | 63 | 73 |
+| 21 | Staraptor | Sp. Def | 50 | 60 |
+| 22 | Roserade | Defense | 55 | 65 |
+| 23 | Stoutland | Attack | 100 | 110 |
+| 24 | Unfezant | Attack | 105 | 115 |
+| 25 | Gigalith | Sp. Def | 70 | 80 |
+| 26 | Arbok | Attack | 85 | 95 |
+| 27 | Dugtrio | Attack | 80 | 100 |
+| 28 | Mega Alakazam | Sp. Def | 95 | 105 |
+| 29 | Farfetch'd | Attack | 65 | 90 |
+| 30 | Dodrio | Speed | 100 | 110 |
+| 31 | Electrode | Speed | 140 | 150 |
+| 32 | Exeggutor | Sp. Def | 65 | 75 |
+| 33 | Noctowl | Sp. Atk | 76 | 86 |
+| 34 | Ariados | Sp. Def | 60 | 70 |
+| 35 | Qwilfish | Defense | 75 | 85 |
+| 36 | Magcargo | HP / Sp. Atk | 50 / 80 | 60 / 90 |
+| 37 | Corsola | HP / Defense / Sp. Def | 55 / 85 / 85 | 65 / 95 / 95 |
+| 38 | Mantine | HP | 65 | 85 |
+| 39 | Swellow | Sp. Atk | 50 | 75 |
+| 40 | Pelipper | Sp. Atk | 85 | 95 |
+| 41 | Masquerain | Sp. Atk / Speed | 80 / 60 | 100 / 80 |
+| 42 | Delcatty | Speed | 70 | 90 |
+| 43 | Volbeat | Defense / Sp. Def | 55 / 75 | 75 / 85 |
+| 44 | Illumise | Defense / Sp. Def | 55 / 75 | 75 / 85 |
+| 45 | Lunatone | HP | 70 | 90 |
+| 46 | Solrock | HP | 70 | 90 |
+| 47 | Chimecho | HP / Defense / Sp. Def | 65 / 70 / 80 | 75 / 80 / 90 |
+| 48 | Woobat | HP | 55 | 65 |
+| 49 | Crustle | Attack | 95 | 105 |
+| 50 | Beartic | Attack | 110 | 130 |
+Sources: https://www.serebii.net/xy/updatedstats.shtml (1-25); https://www.serebii.net/sunmoon/updatedstats.shtml (26-50).
+
+
+- Mixed50 batch response ALL2 EXCEPT PLUS/MINUS approved: questions1-45 and48-50 use newer listed versions;46 Plus and47 Minus use earlier partner eligibility. Plus gets its standard50% Special Attack boost only alongside an active ally with Minus; Minus only alongside an active ally with Plus. Same-Ability pairs do not activate this boost. No amount change or simultaneous Ability stacking approved. All50 resolved; no Custom pending. Exact batch follows. Preserve custom Natural Gift/Unnatural Gift type exception and other prior decisions. Documentation approval only; no gameplay implementation/export implied.
+
+# Active next batch: 50 remaining stats, types and Ability scopes
+APPROVED: option2 for1-45 and48-50; option1 for46 Plus and47 Minus. 1 earlier,2 newer,3 custom,4 later. No extra7/8 options offered. Types concern ordinary named forms only; retyping not evolution/form-switch approval. Stats are base stats only; IV/EV/level/nature untouched. Move policy remains newest applicable; Ability-specific scopes not automatically selected by it. Preserve all custom exceptions and earlier Ability decisions.
+| # | Species/form | Base stats in order | 1 | 2 |
+|---|---|---|---|---|
+| 1 | Seismitoad | Attack | 85 | 95 |
+| 2 | Leavanny | Sp. Def | 70 | 80 |
+| 3 | Scolipede | Attack | 90 | 100 |
+| 4 | Krookodile | Defense | 70 | 80 |
+| 5 | Cryogonal | HP/Defense | 70/30 | 80/50 |
+| 6 | Aegislash Shield | Defense/Sp. Def | 150/150 | 140/140 |
+| 7 | Aegislash Blade | Attack/Sp. Atk | 150/150 | 140/140 |
+| 8 | Cresselia | Defense/Sp. Def | 120/130 | 110/120 |
+| 9 | Zacian Hero | Attack | 130 | 120 |
+| 10 | Zacian Crowned | Attack | 170 | 150 |
+| 11 | Zamazenta Hero | Attack | 130 | 120 |
+| 12 | Zamazenta Crowned | Attack/Defense/Sp. Def | 130/145/145 | 120/140/140 |
+| # | Species/form | 1 earlier type | 2 newer type |
+|---|---|---|---|
+| 13 | Magnemite | Electric | Electric/Steel |
+| 14 | Magneton | Electric | Electric/Steel |
+| 15 | Heat Rotom | Electric/Ghost | Electric/Fire |
+| 16 | Wash Rotom | Electric/Ghost | Electric/Water |
+| 17 | Frost Rotom | Electric/Ghost | Electric/Ice |
+| 18 | Fan Rotom | Electric/Ghost | Electric/Flying |
+| 19 | Mow Rotom | Electric/Ghost | Electric/Grass |
+| 20 | Cleffa | Normal | Fairy |
+| 21 | Clefairy | Normal | Fairy |
+| 22 | Clefable | Normal | Fairy |
+| 23 | Igglybuff | Normal | Normal/Fairy |
+| 24 | Jigglypuff | Normal | Normal/Fairy |
+| 25 | Wigglytuff | Normal | Normal/Fairy |
+| 26 | Mime Jr. | Psychic | Psychic/Fairy |
+| 27 | Mr. Mime | Psychic | Psychic/Fairy |
+| 28 | Togepi | Normal | Fairy |
+| 29 | Togetic | Normal/Flying | Fairy/Flying |
+| 30 | Togekiss | Normal/Flying | Fairy/Flying |
+| 31 | Azurill | Normal | Normal/Fairy |
+| 32 | Marill | Water | Water/Fairy |
+| 33 | Azumarill | Water | Water/Fairy |
+| 34 | Snubbull | Normal | Fairy |
+| 35 | Granbull | Normal | Fairy |
+| 36 | Ralts | Psychic | Psychic/Fairy |
+| 37 | Kirlia | Psychic | Psychic/Fairy |
+| 38 | Gardevoir | Psychic | Psychic/Fairy |
+| 39 | Mawile | Steel | Steel/Fairy |
+| 40 | Cottonee | Grass | Grass/Fairy |
+| 41 | Whimsicott | Grass | Grass/Fairy |
+| # | Ability scope | 1 earlier | 2 newer |
+|---|---|---|---|
+| 42 | Sturdy | Only blocks one-hit-KO moves | Also survives a fatal move hit at full HP with 1 HP |
+| 43 | Lightning Rod | Redirects Electric moves; no added immunity/boost | Also grants Electric immunity and +1 Sp. Atk on absorption |
+| 44 | Storm Drain | Redirects Water moves; no added immunity/boost | Also grants Water immunity and +1 Sp. Atk on absorption |
+| 45 | Frisk | Reveals one random opponent's item | Reveals all opponents' items |
+| 46 | Plus | Sp. Atk boost requires ally with Minus | Ally with Plus OR Minus qualifies |
+| 47 | Minus | Sp. Atk boost requires ally with Plus | Ally with Plus OR Minus qualifies |
+| 48 | Normalize power boost | No added power boost | Converted damaging moves gain +20% power |
+| 49 | Skill Link / Triple Kick | Triple Kick checks accuracy for each hit | One accuracy check for all three hits |
+| 50 | Pickup in battle | No in-battle effect | Empty-handed user can recover eligible used items |
+Stats1-4 V->VI,5 VI->VII,6-7 VII->VIII,8-12 VIII->IX. Types13-14 I->II,15-19 IV->V,20-41 V->VI. Abilities42-44 preV->V;45 preVI->VI;46-47 preV->V;48 IV-VI->VII, preserve NaturalGift/UnnaturalGift immunity to Normalize type changes as already approved;49 IV->V TripleKick-specific, not entire other multi-hit system;50 III-IV->V battle-only scope, preserve standard eligibility/endturn recovery, not arbitrary item duplication/inventory pickups or new loot rates. Plus/Minus boost remains50%, only eligible partner changes. Sturdy subsequent hits may still faint target; not multi-hit blanket protection.
+Sources: https://www.serebii.net/xy/updatedstats.shtml ; https://www.serebii.net/sunmoon/updatedstats.shtml ; https://www.serebii.net/swordshield/updatedstats.shtml ; https://www.serebii.net/scarletviolet/updatedstats.shtml ; https://bulbapedia.bulbagarden.net/wiki/Draft:List_of_modified_Pok%C3%A9mon%27s_type ; https://pokemondb.net/ability/sturdy ; https://pokemondb.net/ability/lightning-rod ; https://pokemondb.net/ability/storm-drain ; https://bulbapedia.bulbagarden.net/wiki/Frisk_(Ability) ; https://pokemondb.net/ability/plus ; https://pokemondb.net/ability/minus ; https://pokemondb.net/ability/normalize ; https://bulbapedia.bulbagarden.net/wiki/Skill_Link_(Ability) ; https://pokemondb.net/ability/pickup . Documentation only, no gameplay/export.
+
+
 ## Remaining stages
 
 1. Status conditions and battle stats.

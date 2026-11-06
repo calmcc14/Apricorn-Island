@@ -24,6 +24,19 @@ static func run(game: Control) -> void:
 	results.medicine = ItemCatalog.apply(GameData.ITEMS.item_antidote,game.state.party[0])
 	game.state.party[0].pp.tackle = 0
 	results.pp = PendingItems.pp_use(GameData.ITEMS.item_leppa_berry,game.state.party[0],"tackle",true)
+	results.standard_moves = GameData.MOVES.quick_attack.priority == 1 and GameData.MOVES.vine_whip.pp == 25
+	var weather_check := {}
+	var setter: Dictionary = game.state.party[0].duplicate(true)
+	setter.held_item = "item_icy_rock"
+	for attempt in 3: MoveEffects.set_weather(weather_check,"snow",setter)
+	results.combined_weather = weather_check.weather == "hail_snow" and weather_check.weather_turns == 8
+	results.gift_data = FileAccess.file_exists("res://data/natural_gift.json")
+	results.weather_rocks = ItemMechanics.held_kind(GameData.ITEMS.item_icy_rock)
+	setter.encore_move = ""
+	results.empty_encore = PendingItems.move_allowed(setter,"tackle")
+	setter.pp.struggle = 0
+	var fallback_messages: Array[String] = []
+	results.struggle = MoveEffects.can_act(setter,"struggle",game.rng,fallback_messages)
 	var passed := true
 	for value in results.values():
 		if not value: passed = false

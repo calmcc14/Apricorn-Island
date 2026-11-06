@@ -39,12 +39,14 @@ static func species(pokemon: Dictionary) -> Dictionary:
 	var name := str(pokemon.get("form",pokemon.get("species","")))
 	var original: Dictionary = ItemProgression.info(name).duplicate(true)
 	if name == str(pokemon.get("species","")): original.merge(data().species.get(name,{}),true)
+	if pokemon.has("battle_types"): original.types = pokemon.battle_types
 	return original
 
 static func initialize(pokemon: Dictionary) -> void:
 	var info := species(pokemon)
 	if not pokemon.has("ability_slot"): pokemon.ability_slot = "1"
 	if not pokemon.has("ability"): pokemon.ability = str(info.get("abilities",{}).get(str(pokemon.ability_slot),""))
+	pokemon.ability = str(pokemon.ability).replace("-","_")
 	var defaults := {"held_item":"", "status_condition":"", "confusion_turns":0, "nature":"hardy", "friendship":int(info.get("base_friendship",70)), "level":5, "experience":0, "evs":{}, "stat_experience":{}, "special_attack":int(pokemon.get("attack",10)), "special_defense":int(pokemon.get("defense",10)), "speed":int(info.get("base_speed",50)), "gender":"genderless"}
 	if not pokemon.has("gender"):
 		var rate := int(info.get("gender_rate",-1))
@@ -55,6 +57,7 @@ static func initialize(pokemon: Dictionary) -> void:
 	if not pokemon.has("pp"): pokemon.pp = {}
 	for move_id in pokemon.moves:
 		if not pokemon.pp.has(move_id): pokemon.pp[move_id] = int(GameData.MOVES[move_id].get("pp",35))
+		pokemon.pp[move_id] = clampi(int(pokemon.pp[move_id]),0,PendingItems.max_pp(pokemon,str(move_id)))
 	if not pokemon.has("experience") or int(pokemon.experience) == 0: pokemon.experience = experience_at(int(pokemon.level),int(info.get("growth_rate",2)))
 	if not pokemon.has("base_progression"):
 		pokemon.base_progression = {}
@@ -78,6 +81,8 @@ static func reset_battle(pokemon: Dictionary) -> void:
 		pokemon.ability = pokemon.original_ability
 		pokemon.erase("original_ability")
 	initialize(pokemon)
+	if pokemon.get("status_condition","") == "sleep" and pokemon.has("sleep_initial"): pokemon.sleep_turns = pokemon.sleep_initial
+	for key in ["battle_types","entry_ability_done","seed_source"]: pokemon.erase(key)
 	if pokemon.has("original_moves"):
 		pokemon.moves = pokemon.original_moves
 		pokemon.erase("original_moves")
@@ -105,6 +110,10 @@ static func stat(pokemon: Dictionary, name: String) -> int:
 static func raise_stat(pokemon: Dictionary, name: String, amount: int, external: bool = false) -> bool:
 	if PendingItems.held(pokemon) == "item_pure_incense": return false
 	if external and amount < 0 and PendingItems.held(pokemon) == "item_clear_amulet": return false
+	var ability := str(pokemon.get("ability",""))
+	if external and amount < 0 and (ability in ["clear_body","white_smoke","full_metal_body"] or (name == "accuracy" and ability in ["keen_eye","illuminate"]) or (name == "attack" and ability == "hyper_cutter")): return false
+	if ability == "simple": amount *= 2
+	if ability == "contrary": amount = -amount
 	var key := name+"_stage"
 	var old := int(pokemon.get(key,0))
 	pokemon[key] = clampi(old+amount,-6,6)

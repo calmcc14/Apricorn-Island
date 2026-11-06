@@ -26,12 +26,12 @@ static var MOVES: Dictionary = build_moves()
 static func build_moves() -> Dictionary:
 	var result: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/machine_moves.json"))
 	for move in result.values(): move.power = float(move.power)/4.0
-	for id in LEGACY_MOVES:
+	for id in ["flame_tail","focus","shell_rest"]:
 		var entry: Dictionary = result.get(id,{}).duplicate(true)
 		entry.merge(LEGACY_MOVES[id],true)
 		entry.merge({"pp":35,"target":7 if entry.kind in ["heal","buff"] else 10,"priority":0},false)
 		result[id] = entry
-	for id in LEGACY_MOVES:
+	for id in ["flame_tail","focus","shell_rest"]:
 		if result[id].kind == "damage": result[id].effect_id = int(result[id].get("effect_id",1))
 	result.ember.merge({"meta_ailment_id":4,"ailment_chance":10},true)
 	result.thunder_shock.merge({"meta_ailment_id":1,"ailment_chance":10},true)
@@ -41,9 +41,9 @@ static func build_moves() -> Dictionary:
 	result.flame_tail.merge({"effect_id":5,"meta_ailment_id":4,"ailment_chance":10},true)
 	result.gust.type = "flying"
 	result.bite.type = "dark"
-	for id in LEGACY_MOVES:
+	for id in ["flame_tail","focus","shell_rest"]:
 		result[id].move_index = int(PendingItems.data().get("move_ids",{}).get(id,0))
-		result[id].damage_class = 3 if id in ["ember","flame_tail","water_gun","bubble","absorb","thunder_shock"] else 2
+		result[id].damage_class = 3 if id == "flame_tail" else 1
 	return result
 
 const LEGACY_SPECIES := {

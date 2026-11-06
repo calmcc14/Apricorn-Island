@@ -1,6 +1,6 @@
 extends Control
 
-enum Screen { TITLE, INTRO, MAP, BATTLE, PARTY, INVENTORY, SETTINGS, ENDING, UPGRADE, RUN_END, CHEST, DEBUG, FUN_EVENT, SECRET_HALL, BOX, STARTER, SUMMARY }
+enum Screen { TITLE, INTRO, MAP, BATTLE, PARTY, INVENTORY, SETTINGS, ENDING, UPGRADE, RUN_END, CHEST, DEBUG, FUN_EVENT, SECRET_HALL, BOX, STARTER, SUMMARY, POKEDEX }
 
 const STARTERS := ["bulbasaur", "charmander", "squirtle", "pikachu", "eevee"]
 
@@ -8,6 +8,8 @@ const SecretHall = preload("res://scripts/secret_hall.gd")
 const FunRules = preload("res://scripts/fun_rules.gd")
 const RUN_SAVE_PATH := "user://apricorn_endless_save.json"
 const SAVE_PATH := "user://apricorn_island_save.json"
+const SETTINGS_PATH := "user://apricorn_settings.cfg"
+const DEFAULT_SETTINGS := {"volume":0.8,"fullscreen":false,"difficulty":"normal","animations":true}
 const MAP_RECT := Rect2(0, 330, 480, 290)
 const COLOR_INK := Color("#203d45")
 const COLOR_CREAM := Color("#fff9e9")
@@ -68,7 +70,12 @@ var inventory_category := "All categories"
 var inventory_owned_only := false
 var box_page := 0
 var box_inspect := false
+var dex_query := ""
+var dex_filter := 0
 var summary_return := Screen.PARTY
+const TrainerStyle = preload("res://scripts/trainer_style.gd")
+var trainer_style := TrainerStyle.new()
+var character_customization_open := false
 
 func _ready() -> void:
 	rng.randomize()
@@ -83,7 +90,11 @@ func _ready() -> void:
 				sprites[key] = load("res://assets/sprites/" + key + ".png")
 	route_background = load("res://assets/route_pixel_background.png")
 	trainer_texture = load("res://assets/trainer_player.png")
+	trainer_style.load_profile()
+	trainer_texture = trainer_style.make_texture()
 	configure_theme()
+	load_preferences()
+	apply_settings()
 	# Leave the drawn map available to unhandled input; panel controls still consume clicks.
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -126,6 +137,12 @@ func configure_theme() -> void:
 	var pressed := button_style.duplicate()
 	pressed.bg_color = Color("#24645f")
 	theme.set_stylebox("pressed", "Button", pressed)
+	var focus := StyleBoxFlat.new()
+	focus.bg_color = Color.TRANSPARENT
+	focus.border_color = COLOR_GOLD
+	focus.set_border_width_all(3)
+	focus.set_corner_radius_all(8)
+	theme.set_stylebox("focus", "Button", focus)
 	var disabled := button_style.duplicate()
 	disabled.bg_color = Color("#a8a8a0")
 	theme.set_stylebox("disabled", "Button", disabled)
@@ -134,10 +151,24 @@ func configure_theme() -> void:
 
 func clear_ui() -> void:
 	get_window().content_scale_size = Vector2i(720,900) if screen in [Screen.INVENTORY,Screen.CHEST] else Vector2i(480,900) if screen == Screen.MAP else Vector2i(480,854) if screen in [Screen.TITLE,Screen.UPGRADE,Screen.RUN_END,Screen.STARTER] else Vector2i(1280,720)
+	fit_window_to_screen()
 	for child in ui.get_children():
 		ui.remove_child(child)
 		child.queue_free()
 	queue_redraw()
+
+func fit_window_to_screen() -> void:
+	if DisplayServer.get_name() == "headless" or DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_WINDOWED: return
+	var landscape := get_window().content_scale_size.x > get_window().content_scale_size.y
+	var current := DisplayServer.window_get_size()
+	if (current.x > current.y) == landscape: return
+	var available := DisplayServer.screen_get_usable_rect()
+	var target := Vector2(1152,648) if landscape else Vector2(480,854)
+	var limit := Vector2(available.size) - Vector2(40,80)
+	var scale_factor := minf(1.0,minf(limit.x / target.x,limit.y / target.y))
+	var fitted := Vector2i(target * maxf(0.25,scale_factor))
+	DisplayServer.window_set_size(fitted)
+	DisplayServer.window_set_position(available.position + (available.size-fitted)/2)
 
 func add_label(parent: Node, text_value: String, size := 20, color := COLOR_INK) -> Label:
 	if parent.name == "ItemDetailsBody": color = Color("#f3ece3")
@@ -191,14 +222,31 @@ func show_title(message := "") -> void:
 	add_label(box,"Apricorn Island",42)
 	add_label(box,"A new route. A stronger team.
 How far can you go?",23)
-	add_button(box,"New Endless Run  →",start_endless)
+	add_button(box,"New Endless Run  →",request_new_game.bind(true))
 	add_button(box,"Continue Endless Run",continue_endless,not FileAccess.file_exists(RUN_SAVE_PATH))
-	add_button(box,"New Island Adventure",start_new_game)
+	add_button(box,"New Island Adventure",request_new_game.bind(false))
 	add_button(box,"Continue Island Adventure",continue_game,not FileAccess.file_exists(SAVE_PATH))
 	add_button(box,"Settings",func(): open_settings(Screen.TITLE))
 	add_button(box,"Quit",func(): get_tree().quit())
 	add_label(box,"Endless: random encounters, upgrades and a fresh start when your team falls.",17)
 	if message != "": add_label(box,message,16,COLOR_CORAL)
+	add_label(box,"Tab / arrows to navigate • Enter to choose",14,Color("#647b71"))
+
+func request_new_game(endless: bool) -> void:
+	var path := RUN_SAVE_PATH if endless else SAVE_PATH
+	if not FileAccess.file_exists(path):
+		show_starter_selection(endless)
+		return
+	var dialog := ConfirmationDialog.new()
+	dialog.title = "Start a new expedition?"
+	dialog.dialog_text = "Choosing a new partner will replace your saved %s.\nYour other game mode will be kept." % ("endless run" if endless else "island adventure")
+	dialog.ok_button_text = "Choose a new partner"
+	dialog.cancel_button_text = "Keep my save"
+	dialog.confirmed.connect(func(): show_starter_selection(endless))
+	dialog.confirmed.connect(dialog.queue_free)
+	dialog.canceled.connect(dialog.queue_free)
+	add_child(dialog)
+	dialog.popup_centered(Vector2i(420,180))
 
 func show_starter_selection(endless: bool) -> void:
 	screen = Screen.STARTER
@@ -242,6 +290,7 @@ func start_new_game(starter := "") -> void:
 	}
 	FunRules.initialize(state)
 	state.settings = preferences
+	battle = {}
 	save_game()
 	intro_page = 0
 	map_pan = Vector2.ZERO
@@ -300,6 +349,9 @@ func show_map(message := "") -> void:
 	var box_button := add_box_button(ui)
 	box_button.position = Vector2(20, 786)
 	box_button.size = Vector2(96, 96)
+	var dex_button := add_pokedex_button(ui)
+	dex_button.position = Vector2(128, 786)
+	dex_button.size = Vector2(96, 96)
 	add_button(tools,"Bag",show_inventory).size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	add_button(tools,"Menu",func(): open_settings(Screen.MAP)).size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var heading := VBoxContainer.new()
@@ -411,6 +463,7 @@ func open_chest(node: Dictionary) -> void:
 	show_chest_contents(rewards,id)
 
 func chest_loot(id: String, depth: int, supplies: Dictionary) -> Dictionary:
+	sync_pokedex()
 	ItemCatalog.migrate(state)
 	FunRules.initialize(state)
 	if not state.chest_rewards.has(id):
@@ -519,6 +572,27 @@ func add_box_button(parent: Node) -> Button:
 		button.add_theme_stylebox_override(style_name, style)
 	button.add_theme_color_override("font_color", Color.WHITE)
 	button.tooltip_text = "Box • Open Pokémon storage"
+	return button
+
+func add_pokedex_button(parent: Node) -> Button:
+	var button := add_button(parent, "", show_pokedex)
+	button.name = "PokedexButton"
+	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	button.icon = load("res://assets/pokedex_icon.png")
+	button.expand_icon = true
+	button.add_theme_constant_override("icon_max_width", 60)
+	button.custom_minimum_size = Vector2(96, 96)
+	for style_name in ["normal", "hover", "pressed"]:
+		var style: StyleBoxFlat = theme.get_stylebox(style_name, "Button").duplicate()
+		style.bg_color = Color("#b6e881") if style_name == "normal" else Color("#ccf2a2") if style_name == "hover" else Color("#8fc65e")
+		style.content_margin_left = 16
+		style.content_margin_right = 16
+		style.content_margin_top = 16
+		style.content_margin_bottom = 16
+		style.set_corner_radius_all(48)
+		button.add_theme_stylebox_override(style_name, style)
+	button.add_theme_color_override("font_color", Color.WHITE)
+	button.tooltip_text = "Pokédex • View seen and caught Pokémon"
 	return button
 
 func show_box(message := "") -> void:
@@ -778,6 +852,7 @@ func use_heal_item(item_id: String, party_index: int) -> void:
 	show_inventory()
 
 func open_settings(return_screen: Screen) -> void:
+	character_customization_open = false
 	settings_return = return_screen
 	screen = Screen.SETTINGS
 	clear_ui()
@@ -785,8 +860,10 @@ func open_settings(return_screen: Screen) -> void:
 		state = {"settings":{"volume":0.8,"fullscreen":false}}
 	if not state.has("settings"):
 		state.settings = {"volume":0.8,"fullscreen":false}
-	var box := make_panel(Rect2(390, 120, 500, 500), Color("#fff4d6fa"))
+	var box := make_panel(Rect2(360, 15, 560, 690), Color("#fff4d6fa"))
+	box.add_theme_constant_override("separation",4)
 	add_label(box, "Settings", 34)
+	add_button(box, "Customize character", show_character_customization)
 	add_label(box, "Adventure difficulty", 18)
 	var difficulty := OptionButton.new()
 	difficulty.add_item("Easy — a relaxed island trip")
@@ -795,7 +872,10 @@ func open_settings(return_screen: Screen) -> void:
 	var difficulty_ids := ["easy", "normal", "hard"]
 	var selected_difficulty := difficulty_ids.find(state.settings.get("difficulty", "normal"))
 	difficulty.selected = selected_difficulty if selected_difficulty >= 0 else 1
-	difficulty.item_selected.connect(func(index: int): state.settings.difficulty = difficulty_ids[index])
+	difficulty.item_selected.connect(func(index: int):
+		state.settings.difficulty = difficulty_ids[index]
+		save_preferences()
+	)
 	box.add_child(difficulty)
 	add_label(box, "Master Volume", 18)
 	var slider := HSlider.new()
@@ -806,6 +886,8 @@ func open_settings(return_screen: Screen) -> void:
 	slider.value_changed.connect(func(value: float):
 		state.settings.volume = value
 		AudioServer.set_bus_volume_db(0, linear_to_db(max(0.001,value)))
+		AudioServer.set_bus_mute(0,value <= 0.0)
+		save_preferences()
 	)
 	box.add_child(slider)
 	var full := CheckButton.new()
@@ -814,14 +896,55 @@ func open_settings(return_screen: Screen) -> void:
 	full.toggled.connect(func(value: bool):
 		state.settings.fullscreen = value
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if value else DisplayServer.WINDOW_MODE_WINDOWED)
+		save_preferences()
 	)
 	box.add_child(full)
-	add_label(box, "Controls: mouse to choose actions • drag map to pan • wheel to zoom • Esc to pause", 16, Color("#536b77"))
-	add_button(box, "Done", func():
-		if state.has("party"): save_game()
-		if settings_return == Screen.MAP: show_map()
-		else: show_title()
+	var animations := CheckButton.new()
+	animations.text = "Battle animations"
+	animations.button_pressed = bool(state.settings.get("animations",true))
+	animations.toggled.connect(func(value: bool):
+		state.settings.animations = value
+		animation_enabled = value and DisplayServer.get_name() != "headless"
+		save_preferences()
 	)
+	box.add_child(animations)
+	add_label(box, "Turn animations off for quicker battles and reduced motion.",16,Color("#536b77"))
+	add_label(box, "Mouse: choose • Drag / wheel: scroll map\nTab: navigate • Enter: choose • E: bag • Esc: back", 16, Color("#536b77"))
+	add_button(box, "Done", close_settings)
+	if return_screen == Screen.MAP:
+		add_button(box,"Save & return to title",func():
+			if save_game(): show_title("Progress saved. Your expedition will be waiting.")
+			else:
+				var warning := AcceptDialog.new()
+				warning.dialog_text = "Your progress could not be saved. Please try again before leaving."
+				add_child(warning)
+				warning.confirmed.connect(warning.queue_free)
+				warning.canceled.connect(warning.queue_free)
+				warning.popup_centered()
+		)
+
+func close_settings() -> void:
+	save_preferences()
+	if state.has("party"): save_game()
+	if settings_return == Screen.MAP: show_map()
+	else: show_title()
+
+func save_preferences() -> void:
+	var config := ConfigFile.new()
+	for key in DEFAULT_SETTINGS:
+		config.set_value("settings",key,state.get("settings",{}).get(key,DEFAULT_SETTINGS[key]))
+	config.save(SETTINGS_PATH)
+
+func load_preferences() -> void:
+	var config := ConfigFile.new()
+	config.load(SETTINGS_PATH)
+	var preferences := DEFAULT_SETTINGS.duplicate()
+	for key in DEFAULT_SETTINGS:
+		var value = config.get_value("settings",key,DEFAULT_SETTINGS[key])
+		if typeof(value) == typeof(DEFAULT_SETTINGS[key]): preferences[key] = value
+	preferences.volume = clampf(float(preferences.volume),0.0,1.0)
+	if preferences.difficulty not in ["easy","normal","hard"]: preferences.difficulty = "normal"
+	state.settings = preferences
 
 func start_battle(encounter_id: String, node_id: String) -> void:
 	var encounter: Dictionary = RogueRules.encounter(int(state.run.seed),int(get_node_data(node_id).floor)) if is_endless() else GameData.ENCOUNTERS[encounter_id]
@@ -833,7 +956,9 @@ func start_battle(encounter_id: String, node_id: String) -> void:
 		enemies.append(species_id.duplicate(true) if is_endless() else GameData.make_pokemon(species_id))
 	for p in state.party:
 		ItemMechanics.reset_battle(p)
-	for p in enemies: ItemMechanics.reset_battle(p)
+	for p in enemies:
+		register_dex(str(p.species), false)
+		ItemMechanics.reset_battle(p)
 	for p in state.party+enemies: ItemProgression.form(p,true)
 	battle = {"encounter_id":encounter_id,"node_id":node_id,"return_node":state.current_node,"enemies":enemies,"actions":[],"rewards":encounter.rewards}
 	var hour := int(Time.get_time_dict_from_system().hour)
@@ -843,6 +968,7 @@ func start_battle(encounter_id: String, node_id: String) -> void:
 	action_index = 0
 	pending_action = {}
 	battle_log = ["Wild Pokémon appeared! Choose one action for each teammate."]
+	MoveEffects.start_abilities(battle,state,battle_log)
 	for pokemon in state.party+enemies: ItemMechanics.activate_berry(pokemon,GameData.ITEMS,battle_log)
 	battle_finished = false
 	visual_party.clear()
@@ -851,6 +977,7 @@ func start_battle(encounter_id: String, node_id: String) -> void:
 	if is_endless(): save_game()
 
 func show_battle() -> void:
+	for pokemon in battle.get("enemies",[]): register_dex(str(pokemon.species), false)
 	screen = Screen.BATTLE
 	clear_ui()
 	if battle_busy:
@@ -900,11 +1027,15 @@ func show_battle() -> void:
 				add_button(grid, "%s  %d/%d HP" % [GameData.SPECIES[enemy.species].name, enemy.hp, enemy.max_hp], confirm_target.bind(enemy_index))
 		add_button(grid, "← Cancel", func(): pending_action = {}; show_battle())
 	elif battle_menu == "fight":
+		var usable := false
 		for move_id in ally.get("moves",GameData.SPECIES[ally.species].moves):
 			var move: Dictionary = GameData.MOVES[move_id]
 			var pp := int(ally.get("pp",{}).get(move_id,35))
-			var button := add_button(grid, "%s  ·  %s · %d PP" % [move.name, str(move.type).to_upper(),pp], choose_move.bind(ally_index, str(move_id)),pp <= 0 or not PendingItems.move_allowed(ally,str(move_id)))
+			var has_pp: bool = pp > 0 or ally.get("charging_move","") == move_id
+			if has_pp and PendingItems.move_allowed(ally,str(move_id)): usable = true
+			var button := add_button(grid, "%s  ·  %s · %d PP" % [move.name, str(move.type).to_upper(),pp], choose_move.bind(ally_index, str(move_id)),not has_pp or not PendingItems.move_allowed(ally,str(move_id)))
 			button.tooltip_text = "Power %d • Accuracy %d%%" % [move.power, int(move.accuracy * 100)] + (" | STAB x1.5" if MoveEffects.stab(ally,str(move.type)) > 1 and move.kind == "damage" else "")
+		if not usable: add_button(grid,"STRUGGLE",choose_move.bind(ally_index,"struggle"))
 		add_button(commands, "← Back", func(): battle_menu = "main"; show_battle())
 	elif battle_menu == "bag":
 		var bag_scroll := ScrollContainer.new()
@@ -996,8 +1127,8 @@ func resolve_round() -> void:
 			if targets.is_empty(): break
 			var choices: Array = []
 			for move in enemy.moves:
-				if int(enemy.pp.get(move,0)) > 0 and PendingItems.move_allowed(enemy,str(move)): choices.append(move)
-			if choices.is_empty(): continue
+				if (int(enemy.pp.get(move,0)) > 0 or enemy.get("charging_move","") == move) and PendingItems.move_allowed(enemy,str(move)): choices.append(move)
+			if choices.is_empty(): choices.append("struggle")
 			actions.append({"player_side":false,"actor":enemy_index,"target":targets[rng.randi_range(0,targets.size()-1)],"kind":"move","move":choices[rng.randi_range(0,choices.size()-1)]})
 	for pokemon in state.party+battle.enemies:
 		PendingItems.activate(pokemon,battle,rng)
@@ -1029,7 +1160,7 @@ func resolve_round() -> void:
 		for pokemon in state.party+battle.enemies: PendingItems.activate(pokemon,battle,rng)
 		queue_battle_effect(action,player_side,before_party,before_enemies,messages.slice(message_start))
 	for pokemon in state.party+battle.enemies:
-		MoveEffects.end_turn(pokemon,battle,rng,messages)
+		MoveEffects.end_turn(pokemon,battle,rng,messages,state)
 		ItemMechanics.activate_berry(pokemon,GameData.ITEMS,messages)
 	for key in ["weather_turns","terrain_turns","trick_room","wonder_room","magic_room","gravity"]:
 		if int(battle.get(key,0)) > 0: battle[key] = int(battle[key])-1
@@ -1074,7 +1205,7 @@ func resolve_move(actor: Dictionary, target: Dictionary, move_id: String, messag
 		actor.metronome_count = 0
 		ItemMechanics.activate_berry(actor,GameData.ITEMS,messages)
 		return
-	if check_action and actor.has("pp") and actor.get("charging_move","") != move_id:
+	if check_action and move_id != "struggle" and actor.has("pp") and actor.get("charging_move","") != move_id:
 		actor.pp[move_id] = maxi(0,int(actor.pp.get(move_id,35))-1)
 	actor.acted_this_turn = true
 	if move.has("effect_id") or move.kind in ["damage","heal","buff","debuff"]:
@@ -1157,6 +1288,7 @@ func resolve_ball_action(action: Dictionary, messages: Array[String]) -> void:
 			state.reserve.append(caught)
 		if not state.has("caught_species"): state.caught_species = []
 		if str(target.species) not in state.caught_species: state.caught_species.append(str(target.species))
+		register_dex(str(target.species), true)
 		target.captured = true
 		target.hp = 0
 		messages.append("Click... sparkle! %s joined your reserve box!" % name)
@@ -1338,6 +1470,7 @@ func save_game() -> bool:
 		state.battle_checkpoint.actions = []
 		state.battle_checkpoint.finished = battle_finished
 	if not state.has("party"): return false
+	sync_pokedex()
 	ItemCatalog.migrate(state)
 	FunRules.initialize(state)
 	var path := RUN_SAVE_PATH if is_endless() else SAVE_PATH
@@ -1358,6 +1491,7 @@ func load_game() -> bool:
 	if typeof(parsed) != TYPE_DICTIONARY: return false
 	if not parsed.has("party") or not parsed.has("inventory") or not parsed.has("current_node"): return false
 	state = parsed
+	sync_pokedex()
 	ItemCatalog.migrate(state)
 	FunRules.initialize(state)
 	return true
@@ -1365,6 +1499,8 @@ func load_game() -> bool:
 func apply_settings() -> void:
 	if not state.has("settings"): return
 	AudioServer.set_bus_volume_db(0,linear_to_db(max(0.001,float(state.settings.get("volume",0.8)))))
+	AudioServer.set_bus_mute(0,float(state.settings.get("volume",0.8)) <= 0.0)
+	animation_enabled = bool(state.settings.get("animations",true)) and DisplayServer.get_name() != "headless"
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if bool(state.settings.get("fullscreen",false)) else DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _input(event: InputEvent) -> void:
@@ -1403,14 +1539,28 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("pause_menu"):
 		if screen == Screen.MAP: open_settings(Screen.MAP)
+		elif screen == Screen.SETTINGS:
+			if character_customization_open: open_settings(settings_return)
+			else: close_settings()
+		elif screen == Screen.STARTER: show_title()
+		elif screen == Screen.BATTLE and not battle_finished:
+			pending_action = {}
+			battle_menu = "main"
+			show_battle()
 		elif screen == Screen.SUMMARY: close_pokemon_summary()
-		elif screen in [Screen.PARTY,Screen.INVENTORY,Screen.BOX]: show_map()
+		elif screen in [Screen.PARTY,Screen.INVENTORY,Screen.BOX,Screen.POKEDEX]: show_map()
 		return
 	if screen == Screen.SUMMARY and event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_LEFT: ui.get_child(0).browse(-1)
 		elif event.keycode == KEY_RIGHT: ui.get_child(0).browse(1)
 		return
 	if screen != Screen.MAP: return
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_HOME:
+			focus_current_stop()
+			queue_redraw()
+		elif event.keycode == KEY_P: show_party()
+		elif event.keycode == KEY_D: show_pokedex()
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			scroll_route(110)
@@ -1527,6 +1677,11 @@ func draw_map_background() -> void:
 			point.y -= abs(sin(elapsed*12.0))*3.0 if trainer_slide < 1.0 else sin(elapsed*2.5)*1.0
 			var extent := Vector2(70,94)*map_zoom
 			draw_texture_rect(trainer_texture,Rect2(point+Vector2(-35,-90)*map_zoom,extent),false)
+			var trainer_name := str(trainer_style.profile.name)
+			var font := ThemeDB.fallback_font
+			var name_point := point + Vector2(-font.get_string_size(trainer_name,HORIZONTAL_ALIGNMENT_LEFT,-1,14).x/2.0,20)
+			draw_string_outline(font,name_point,trainer_name,HORIZONTAL_ALIGNMENT_LEFT,-1,14,4,COLOR_CREAM)
+			draw_string(font,name_point,trainer_name,HORIZONTAL_ALIGNMENT_LEFT,-1,14,COLOR_INK)
 
 func draw_battle_background() -> void:
 	var ocean_boss: bool = battle.get("orb_item","") == "item_blue_orb"
@@ -1637,7 +1792,7 @@ func use_heal_in_battle(action: Dictionary, messages: Array[String]) -> void:
 
 func action_speed(action: Dictionary, player_side: bool) -> float:
 	var actor: Dictionary = state.party[int(action.actor)] if player_side else battle.enemies[int(action.actor)]
-	var priority := 6 if action.kind in ["ball","heal_item"] else int(GameData.MOVES[str(action.move)].get("priority",0))
+	var priority := 6 if action.kind in ["ball","heal_item"] else MoveEffects.move_priority(actor,GameData.MOVES[str(action.move)])
 	var speed := float(ItemMechanics.stat(actor,"speed"))
 	if actor.get("quashed",false): return -100000000.0
 	if int(actor.get("tailwind",0)) > 0: speed *= 2
@@ -1729,7 +1884,7 @@ func start_endless(starter := "") -> void:
 	state = {"version":2,"mode":"endless","current_node":"run_0","cleared":[],"opened_chests":[],"party":[GameData.make_pokemon(starter)],"reserve":[],"inventory":{"potion":3,"super_potion":1,"berry":2,"apricorn_ball":6,"great_apricorn_ball":1},"settings":preferences,"run":{"seed":rng.randi_range(1,2000000000),"depth":0,"best":best,"ended":false,"pending_upgrade":false}}
 	battle = {}
 	focus_current_stop()
-	show_map("HP carries over. Camps heal. Defeat ends the run.")
+	show_map("HP carries over. Use your supplies wisely. Defeat ends the run.")
 	save_game()
 
 func continue_endless() -> void:
@@ -1739,6 +1894,7 @@ func continue_endless() -> void:
 		show_title("This run could not be loaded.")
 		return
 	state = saved
+	sync_pokedex()
 	ItemCatalog.migrate(state)
 	FunRules.initialize(state)
 	apply_settings()
@@ -1767,7 +1923,7 @@ func show_upgrade() -> void:
 	add_button(box,"Power charm\n+2 attack for the whole team",apply_upgrade.bind("power"))
 	add_button(box,"Vitality charm\n+8 max HP and heal 25%",apply_upgrade.bind("vitality"))
 	add_button(box,"Supply pack\n2 super potions + 3 great balls",apply_upgrade.bind("supplies"))
-	add_label(box,"Camps at areas 5, 15, 25… Chests before areas 10, 20, 30…",17)
+	add_label(box,"Supply chests at areas 10, 20, 30… Choose vitality to recover HP between battles.",17)
 
 func apply_upgrade(choice: String) -> void:
 	if not is_endless() or not state.run.pending_upgrade: return
@@ -1794,7 +1950,7 @@ func show_run_end() -> void:
 	var box := make_panel(Rect2(20,170,440,480))
 	add_label(box,"EXPEDITION COMPLETE",18,Color("#3b8176"))
 	add_label(box,"Depth %d" % int(state.run.depth),46)
-	add_label(box,"Best depth: %d\nFriends caught: %d" % [state.run.best,state.reserve.size()],23)
+	add_label(box,"Best depth: %d\nFriends caught: %d" % [state.run.best,maxi(0,state.party.size()-1)+state.reserve.size()],23)
 	add_label(box,"Your team gave it everything. A fresh route and a new chance await.",20)
 	add_button(box,"New Endless Run  →",start_endless)
 	add_button(box,"Title Screen",show_title)
@@ -2305,3 +2461,201 @@ func apply_level_choice(index: int, move: String, replacement: int) -> void:
 		pokemon.pending_moves.erase(move)
 	if not save_game(): state = before
 	show_level_choices(index)
+
+# Per-adventure records retain species even after they leave the party.
+func register_dex(id: String, caught: bool) -> void:
+	if not GameData.SPECIES.has(id): return
+	if not state.get("pokedex", null) is Dictionary: state.pokedex = {}
+	var entry: Dictionary = state.pokedex.get(id, {"seen":true,"caught":false})
+	entry.seen = true
+	entry.caught = bool(entry.get("caught",false)) or caught
+	state.pokedex[id] = entry
+
+func sync_pokedex() -> void:
+	for pokemon in state.get("party",[]) + state.get("reserve",[]):
+		register_dex(str(pokemon.get("species","")), true)
+	for id in state.get("caught_species",[]): register_dex(str(id), true)
+	for pokemon in state.get("battle_checkpoint",{}).get("enemies",[]):
+		register_dex(str(pokemon.get("species","")), false)
+
+func show_pokedex() -> void:
+	sync_pokedex()
+	screen = Screen.POKEDEX
+	clear_ui()
+	var panel := make_panel(Rect2(30,20,1220,680), Color.WHITE)
+	var seen := 0
+	var caught := 0
+	for entry in state.get("pokedex",{}).values():
+		if entry.get("seen",false): seen += 1
+		if entry.get("caught",false): caught += 1
+	add_label(panel,"POKÉDEX • %d seen / %d caught / %d species" % [seen,caught,GameData.SPECIES.size()],28)
+	add_label(panel,"Records belong to this adventure. Meet Pokémon to reveal their entries.",17)
+	var row := HBoxContainer.new()
+	panel.add_child(row)
+	var search := LineEdit.new()
+	search.placeholder_text = "Search discovered Pokémon"
+	search.text = dex_query
+	search.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var search_style := StyleBoxFlat.new()
+	search_style.bg_color = Color.WHITE
+	search_style.border_color = Color("#c5cdd5")
+	search_style.set_border_width_all(2)
+	search_style.content_margin_left = 12
+	search.add_theme_stylebox_override("normal",search_style)
+	search.add_theme_color_override("font_color",COLOR_INK)
+	search.add_theme_color_override("font_placeholder_color",Color("#687480"))
+	row.add_child(search)
+	var filter := OptionButton.new()
+	for label in ["All species","Seen","Caught","Seen, not caught"]: filter.add_item(label)
+	filter.select(dex_filter)
+	row.add_child(filter)
+	var back := add_button(row,"Back to map",show_map.bind(""))
+	for control in [filter,back]:
+		for style_name in ["normal","hover","pressed"]:
+			var neutral: StyleBoxFlat = theme.get_stylebox(style_name,"Button").duplicate()
+			neutral.bg_color = Color.WHITE if style_name == "normal" else Color("#edf2f5")
+			control.add_theme_stylebox_override(style_name,neutral)
+	var scroll := ScrollContainer.new()
+	scroll.custom_minimum_size.y = 480
+	panel.add_child(scroll)
+	var list := GridContainer.new()
+	list.name = "PokedexGrid"
+	list.columns = 7
+	list.add_theme_constant_override("h_separation", 10)
+	list.add_theme_constant_override("v_separation", 10)
+	list.custom_minimum_size.x = 1140
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(list)
+	populate_pokedex(list)
+	search.text_changed.connect(func(value: String): dex_query = value; populate_pokedex(list))
+	filter.item_selected.connect(func(index: int): dex_filter = index; populate_pokedex(list))
+
+func populate_pokedex(list: GridContainer) -> void:
+	for child in list.get_children():
+		list.remove_child(child)
+		child.queue_free()
+	var ids: Array = GameData.SPECIES.keys()
+	ids.sort_custom(func(a, b):
+		var first := int(ItemProgression.info(str(a)).get("dex_id",9999))
+		var second := int(ItemProgression.info(str(b)).get("dex_id",9999))
+		return str(a) < str(b) if first == second else first < second
+	)
+	var matches := 0
+	for id in ids:
+		var entry: Dictionary = state.get("pokedex",{}).get(id,{})
+		var seen: bool = entry.get("seen",false)
+		var caught: bool = entry.get("caught",false)
+		var species: Dictionary = GameData.SPECIES[id]
+		if dex_filter == 1 and not seen: continue
+		if dex_filter == 2 and not caught: continue
+		if dex_filter == 3 and (not seen or caught): continue
+		if not dex_query.strip_edges().is_empty() and (not seen or not str(species.name).to_lower().contains(dex_query.strip_edges().to_lower())): continue
+		matches += 1
+		var card := PanelContainer.new()
+		card.name = "Dex_" + str(id)
+		card.custom_minimum_size = Vector2(154,164)
+		var style := StyleBoxFlat.new()
+		style.bg_color = Color("#f3fff3") if caught else Color.WHITE
+		style.border_color = Color("#80bd82") if caught else Color("#d6dce2")
+		style.set_border_width_all(2)
+		style.set_corner_radius_all(10)
+		style.content_margin_left = 8
+		style.content_margin_right = 8
+		style.content_margin_top = 6
+		style.content_margin_bottom = 6
+		card.add_theme_stylebox_override("panel",style)
+		list.add_child(card)
+		var body := VBoxContainer.new()
+		body.add_theme_constant_override("separation",2)
+		card.add_child(body)
+		var number := int(ItemProgression.info(str(id)).get("dex_id",0))
+		var heading := add_label(body,"#%04d" % number,14,Color("#687480"))
+		heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		if not seen:
+			var mystery := add_label(body,"?",50,Color("#89939e"))
+			mystery.name = "UnknownPortrait"
+			mystery.custom_minimum_size = Vector2(96,76)
+			mystery.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			mystery.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		else:
+			var picture := TextureRect.new()
+			picture.name = "PokemonPortrait"
+			picture.custom_minimum_size = Vector2(96,76)
+			picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			var image_id: String = "giratina-altered" if id == "giratina" else str(id)
+			picture.texture = sprites.get(image_id+"_front")
+			if not caught:
+				var silhouette := Shader.new()
+				silhouette.code = "shader_type canvas_item; void fragment() { vec4 pixel = texture(TEXTURE, UV); COLOR = vec4(vec3(0.57), pixel.a); }"
+				var material := ShaderMaterial.new()
+				material.shader = silhouette
+				picture.material = material
+			body.add_child(picture)
+		var title := add_label(body,str(species.name) if seen else "???",17)
+		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		var status := add_label(body,"● Caught" if caught else "Seen" if seen else "Undiscovered",14,Color("#387847") if caught else Color("#687480"))
+		status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		if seen:
+			var habitats: Array[String] = []
+			for node in GameData.NODES:
+				if id in GameData.ENCOUNTERS.get(node.get("encounter",""),{}).get("enemies",[]): habitats.append(str(node.name))
+			card.tooltip_text = "%s • %s\nIsland habitat: %s" % [species.name,str(species.type).capitalize(),", ".join(habitats) if not habitats.is_empty() else "Explore, evolve, or discover special encounters"]
+	if matches == 0: add_label(list,"No entries match this search.",20)
+
+func show_character_customization() -> void:
+	# Stay in SETTINGS so Escape returns through the same menu path.
+	character_customization_open = true
+	clear_ui()
+	var draft: Dictionary = trainer_style.profile.duplicate(true)
+	var box := make_panel(Rect2(200,35,880,650))
+	add_label(box,"YOUR TRAINER",32)
+	add_label(box,"Make yourself at home on Apricorn Island. Your look follows you in both modes.",18)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation",40)
+	box.add_child(row)
+	var preview := TextureRect.new()
+	preview.custom_minimum_size = Vector2(270,420)
+	preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	preview.texture = trainer_texture
+	row.add_child(preview)
+	var choices := VBoxContainer.new()
+	choices.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(choices)
+	add_label(choices,"Trainer name",18)
+	var name_field := LineEdit.new()
+	name_field.text = str(draft.name)
+	name_field.max_length = 20
+	name_field.custom_minimum_size.y = 42
+	choices.add_child(name_field)
+	name_field.text_changed.connect(func(value: String): draft.name = value)
+	for key in TrainerStyle.OPTIONS:
+		add_label(choices,str(key).capitalize(),18)
+		var picker := OptionButton.new()
+		picker.custom_minimum_size.y = 42
+		for title in TrainerStyle.OPTIONS[key]: picker.add_item(title)
+		picker.selected = int(draft[key])
+		picker.item_selected.connect(func(index: int):
+			draft[key] = index
+			var style := TrainerStyle.new()
+			style.profile = draft.duplicate(true)
+			preview.texture = style.make_texture()
+		)
+		choices.add_child(picker)
+	var feedback := add_label(box,"Changes appear on your map character. Choose Save look when ready.",16)
+	var buttons := HBoxContainer.new()
+	box.add_child(buttons)
+	add_button(buttons,"Save look",func():
+		var before: Dictionary = trainer_style.profile.duplicate(true)
+		draft.name = str(draft.name).strip_edges()
+		if str(draft.name).is_empty(): draft.name = "Trainer"
+		trainer_style.profile = draft.duplicate(true)
+		if trainer_style.save_profile() != OK:
+			trainer_style.profile = before
+			feedback.text = "Could not save your look. Please try again."
+			return
+		trainer_texture = trainer_style.make_texture()
+		open_settings(settings_return)
+	)
+	add_button(buttons,"Cancel",func(): open_settings(settings_return))

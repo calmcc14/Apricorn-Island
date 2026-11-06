@@ -33,12 +33,18 @@ static func stat_multiplier(pokemon: Dictionary, stat: String) -> float:
 	return value
 
 static func move_allowed(pokemon: Dictionary, move_id: String) -> bool:
+	if move_id == "struggle": return true
+	if int(pokemon.get("taunted",0)) > 0 and GameData.MOVES[move_id].kind == "status": return false
+	if pokemon.get("disabled_move","") == move_id: return false
+	if pokemon.get("encore_move","") != "" and pokemon.encore_move != move_id: return false
+	if pokemon.get("tormented",false) and pokemon.get("last_move","") == move_id: return false
 	if pokemon.get("charging_move",move_id) != move_id: return false
 	var id := held(pokemon)
 	if id == "item_assault_vest" and GameData.MOVES[move_id].kind != "damage": return false
 	return not (id in ["item_choice_band","item_choice_specs","item_choice_scarf"] and pokemon.get("choice_move",move_id) != move_id)
 
 static func select_move(pokemon: Dictionary, move_id: String) -> void:
+	if move_id == "struggle": return
 	if held(pokemon) in ["item_choice_band","item_choice_specs","item_choice_scarf"] and not pokemon.has("choice_move"): pokemon.choice_move = move_id
 
 static func boosted_secondary(actor: Dictionary, move: Dictionary) -> bool:
@@ -51,6 +57,7 @@ static func before_action(pokemon: Dictionary, random: RandomNumberGenerator) ->
 static func survival(target: Dictionary, damage: int, random: RandomNumberGenerator, band_active: bool = false, confusion: bool = false) -> int:
 	if damage < int(target.hp) or int(target.hp) <= 0: return damage
 	if band_active: return maxi(0,int(target.hp)-1)
+	if not confusion and target.get("ability","") == "sturdy" and int(target.hp) == int(target.max_hp): return maxi(0,int(target.hp)-1)
 	if held(target) == "item_focus_sash" and not confusion and int(target.hp) == int(target.max_hp):
 		consume(target)
 		return maxi(0,int(target.hp)-1)

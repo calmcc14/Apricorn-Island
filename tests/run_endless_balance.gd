@@ -17,7 +17,9 @@ func run() -> void:
 	var reached_guardian := 0
 	var longest := 0
 	for run_seed in 30:
-		game.start_endless()
+		game.start_endless("bulbasaur")
+		# This simulation evaluates the original three-partner baseline.
+		game.state.party = [GameData.make_pokemon("bulbasaur"),GameData.make_pokemon("charmander"),GameData.make_pokemon("squirtle")]
 		game.state.run.seed = run_seed+1
 		game.rng.seed = run_seed+1
 		game.defeated = false
@@ -39,11 +41,11 @@ func run() -> void:
 							game.battle.actions.append({"actor":actor_index,"kind":"heal_item","item":"potion"})
 							continue
 						var target_index: int = game.living_enemy_indices()[0]
-						var best := "tackle"
+						var best := "struggle"
 						var score := -1.0
 						for move_id in GameData.SPECIES[actor.species].moves:
 							var move: Dictionary = GameData.MOVES[move_id]
-							if move.kind != "damage": continue
+							if move.kind != "damage" or int(actor.pp.get(move_id,0)) <= 0 or not PendingItems.move_allowed(actor,str(move_id)): continue
 							var value: float = move.power*move.accuracy*GameRules.effectiveness(move.type,GameData.SPECIES[game.battle.enemies[target_index].species].type)
 							if value > score: score = value; best = move_id
 						game.battle.actions.append({"actor":actor_index,"kind":"move","move":best,"target":target_index})
