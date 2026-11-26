@@ -7,7 +7,7 @@ const TEAL := Color("#159c9c")
 const STATS := ItemMechanics.IV_STATS
 const NAMES := ItemMechanics.IV_NAMES
 var collection: Array = []
-var sprites: Dictionary = {}
+var pokemon_sprite: Callable
 var index := 0
 var tab := "Overview"
 var body: VBoxContainer
@@ -74,9 +74,9 @@ func panel(rect: Rect2) -> VBoxContainer:
 	frame.add_child(content)
 	return content
 
-func setup(pokemon: Array, sprite_cache: Dictionary, selected: int) -> void:
+func setup(pokemon: Array, resolve_sprite: Callable, selected: int) -> void:
 	collection = pokemon
-	sprites = sprite_cache
+	pokemon_sprite = resolve_sprite
 	index = clampi(selected,0,collection.size()-1)
 	rebuild()
 
@@ -91,22 +91,27 @@ func rebuild() -> void:
 	var pokemon: Dictionary = collection[index]
 	ItemMechanics.initialize(pokemon)
 	var species: Dictionary = GameData.SPECIES[pokemon.species]
-	var left := panel(Rect2(24,24,352,672))
-	label(left,"POKÉMON DETAILS",14,TEAL)
-	label(left,str(species.name),32)
-	label(left,"Lv.%d  •  %s" % [pokemon.level,str(pokemon.gender).capitalize()],19)
+	var header := panel(Rect2(16,16,448,266))
+	var row := HBoxContainer.new()
+	header.add_child(row)
+	var info := VBoxContainer.new()
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	label(info,str(species.name),28)
+	var details := "Lv.%d  •  %s" % [pokemon.level,str(pokemon.gender).capitalize()]
+	if pokemon.get("shiny", false): details += "  •  ★ Shiny"
+	label(info,details,18)
 	var art := TextureRect.new()
-	var art_species := str(pokemon.get("form",pokemon.species))
-	if art_species == "giratina": art_species = "giratina-altered"
-	art.texture = sprites.get(art_species+"_front")
-	art.custom_minimum_size = Vector2(240,220)
+	art.name = "PokemonPortrait"
+	art.texture = pokemon_sprite.call(pokemon)
+	art.custom_minimum_size = Vector2(124,132)
 	art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	art.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	left.add_child(art)
+	row.add_child(art)
+	row.add_child(info)
 	var types: Array = ItemMechanics.species(pokemon).get("types",[species.type])
-	label(left," / ".join(types).to_upper(),18,TEAL)
-	label(left,"HP  %d / %d" % [pokemon.hp,pokemon.max_hp],23)
+	label(info," / ".join(types).to_upper(),17,TEAL)
+	label(info,"HP  %d / %d" % [pokemon.hp,pokemon.max_hp],20)
 	var hp := ProgressBar.new()
 	hp.max_value = pokemon.max_hp
 	hp.value = pokemon.hp
@@ -116,27 +121,29 @@ func rebuild() -> void:
 	hp_fill.bg_color = Color("#53b990")
 	hp_fill.set_corner_radius_all(6)
 	hp.add_theme_stylebox_override("fill",hp_fill)
-	left.add_child(hp)
-	label(left,str(ItemMechanics.level_progress(pokemon).label),16)
-	var spacer := Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	left.add_child(spacer)
+	info.add_child(hp)
+	label(info,str(ItemMechanics.level_progress(pokemon).label),15)
 	var navigation := HBoxContainer.new()
-	left.add_child(navigation)
+	header.add_child(navigation)
+	button(navigation,"Back",func(): closed.emit())
 	button(navigation,"←",browse.bind(-1)).disabled = collection.size() < 2
 	label(navigation,"%d / %d" % [index+1,collection.size()],18).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	button(navigation,"→",browse.bind(1)).disabled = collection.size() < 2
-	button(left,"Back",func(): closed.emit())
-	var right := panel(Rect2(392,24,864,672))
+	var details_panel := panel(Rect2(16,294,448,590))
 	var tabs := HBoxContainer.new()
-	right.add_child(tabs)
+	details_panel.add_child(tabs)
 	for title in ["Overview","Stats","IV Judge","Moves"]:
 		var choice := button(tabs,title,func(): tab = title; rebuild())
+		choice.add_theme_font_size_override("font_size",16)
 		if title == tab: choice.modulate = Color("#a3e8dc")
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	details_panel.add_child(scroll)
 	body = VBoxContainer.new()
-	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	body.add_theme_constant_override("separation",16)
-	right.add_child(body)
+	scroll.add_child(body)
 	match tab:
 		"Overview": overview(pokemon)
 		"Stats": stats(pokemon,false)
@@ -164,22 +171,19 @@ func overview(pokemon: Dictionary) -> void:
 func stats(pokemon: Dictionary, judge: bool) -> void:
 	label(body,"Individual values" if judge else "Battle stats",30)
 	label(body,"IVs are fixed natural potential, from 0 to 31 per stat." if judge else "Current stats include level growth, IV bonuses and expedition upgrades.",18)
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation",20)
-	body.add_child(row)
 	var radar := StatRadar.new()
-	radar.custom_minimum_size = Vector2(340,330)
+	radar.custom_minimum_size = Vector2(320,285)
 	var values: Array = []
 	for stat_name in STATS: values.append(int(pokemon.ivs[stat_name]) if judge else int(pokemon.get("max_hp" if stat_name == "hp" else stat_name,0)))
 	radar.values = values
 	if not judge: radar.cap = maxf(1,float(values.max()))
-	row.add_child(radar)
+	body.add_child(radar)
 	var grid := GridContainer.new()
 	grid.columns = 3
 	grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	grid.add_theme_constant_override("h_separation",16)
 	grid.add_theme_constant_override("v_separation",16)
-	row.add_child(grid)
+	body.add_child(grid)
 	for heading in (["Stat","IV","Judge"] if judge else ["Stat","Value","EV"]): label(grid,heading,17,TEAL)
 	var total := 0
 	for i in 6:

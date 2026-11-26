@@ -54,7 +54,7 @@ static func entry_ability(pokemon: Dictionary, battle: Dictionary, state: Dictio
 	if ability == "frisk":
 		for foe in foes:
 			var item := str(foe.get("held_item",""))
-			if int(foe.hp) > 0 and item != "": messages.append("Frisk revealed %s's %s." % [GameData.SPECIES[foe.species].name,GameData.ITEMS.get(item,{"name":item}).name])
+			if int(foe.hp) > 0 and item != "": messages.append("Frisk revealed %s's %s." % [GameData.pokemon_name(foe),GameData.ITEMS.get(item,{"name":item}).name])
 	if ability == "intimidate":
 		for foe in foes:
 			if int(foe.hp) <= 0 or foe.get("ability","") in ["inner_focus","oblivious","own_tempo","scrappy"]: continue
@@ -76,7 +76,7 @@ static func accuracy(actor: Dictionary, target: Dictionary, move: Dictionary) ->
 	return minf(1.0,float(move.accuracy)*ItemMechanics.stage_multiplier(stage,true)*multiplier)
 
 static func can_act(actor: Dictionary, move_id: String, random: RandomNumberGenerator, messages: Array[String]) -> bool:
-	var name := str(GameData.SPECIES[actor.species].name)
+	var name := GameData.pokemon_name(actor)
 	if int(actor.hp) <= 0: return false
 	if not PendingItems.move_allowed(actor,move_id):
 		messages.append(name+" cannot select that move with its held item.")
@@ -164,26 +164,26 @@ static func inflict(target: Dictionary, ailment: String, random: RandomNumberGen
 		target.sleep_initial = target.sleep_turns
 	return true
 
-static func resolve(actor: Dictionary, target: Dictionary, move_id: String, battle: Dictionary, state: Dictionary, random: RandomNumberGenerator, messages: Array[String], damage_scale: float = 1.0, perfect: bool = false, one_hit: bool = false, invincible: bool = false, recursion: int = 0) -> void:
+static func resolve(actor: Dictionary, target: Dictionary, move_id: String, battle: Dictionary, state: Dictionary, random: RandomNumberGenerator, messages: Array[String], damage_scale: float = 1.0, perfect: bool = false, one_hit: bool = false, invincible: bool = false, recursion: int = 0) -> Dictionary:
 	var move: Dictionary = GameData.MOVES[move_id].duplicate(true)
 	var source_type := str(move.type)
 	var ability := str(actor.get("ability",""))
 	if move_id == "struggle": move.type = "typeless"
 	elif ability == "normalize" and move_id != "natural_gift": move.type = "normal"
 	elif source_type == "normal" and ability in ["aerilate","pixilate","refrigerate"]: move.type = {"aerilate":"flying","pixilate":"fairy","refrigerate":"ice"}[ability]
-	var name := str(GameData.SPECIES[actor.species].name)
+	var name := GameData.pokemon_name(actor)
 	if not self_or_ally(actor,target,state,battle) and move.kind == "status" and ability == "prankster" and "dark" in ItemMechanics.species(target).get("types",[]):
 		messages.append("The Dark-type target resisted Prankster.")
-		return
+		return {"target":target,"kind":"no_effect"}
 	if move.kind in ["heal","buff","debuff"]:
 		if move.kind == "heal": PendingItems.heal(actor,int(move.power))
 		elif move.kind == "buff": ItemMechanics.raise_stat(actor,"attack",1)
 		else: ItemMechanics.raise_stat(target,"attack",-1,true)
 		messages.append(name+" used "+str(move.name)+".")
-		return
+		return {}
 	if recursion > 1:
 		messages.append(name+"'s called move failed.")
-		return
+		return {}
 	var metronome_previous := int(actor.get("metronome_count",0)) if actor.get("metronome_move","") == move_id else 0
 	actor.metronome_count = 0
 	actor.last_move = move_id
@@ -193,7 +193,7 @@ static func resolve(actor: Dictionary, target: Dictionary, move_id: String, batt
 		var berry: Dictionary = gift_berries.get(PendingItems.held(actor),{})
 		if berry.is_empty():
 			messages.append("Natural Gift needs a usable held berry.")
-			return
+			return {}
 		unnatural = random.randf() < 0.15
 		move.type = berry.type
 		move.power = (float(berry.power)+20.0 if unnatural else float(berry.power))/4.0
@@ -222,42 +222,46 @@ static func resolve(actor: Dictionary, target: Dictionary, move_id: String, batt
 				actor.charging_move = move_id
 				actor.semi_invulnerable = 1 if move_id in ["dig","fly","dive","bounce"] else 0
 				messages.append(name+" is preparing "+str(move.name)+".")
-				return
+				return {}
 		actor.erase("charging_move")
 		actor.erase("semi_invulnerable")
 	# Accuracy bypass is checked only after independent failure and immunity rules.
 	if not self_target and (target.get("protected",false) or int(target.get("semi_invulnerable",0)) > 0):
 		messages.append(name+" used %s, but the target was protected." % move.name)
-		return
+		return {"target":target,"kind":"blocked"}
 	if ohko and (int(actor.get("level",5)) < int(target.get("level",5)) or target.get("ability","") == "sturdy" or (move_id == "sheer_cold" and "ice" in types) or effectiveness(str(move.type),target) == 0):
 		messages.append(name+"'s one-hit knockout move failed.")
-		return
+		return {"target":target,"kind":"no_effect"}
 	if move_id == "snore" and actor.get("status_condition","") != "sleep":
 		messages.append("Snore failed: the user is awake.")
-		return
+		return {}
 	if move.kind == "status" and int(actor.get("taunted",0)) > 0:
 		messages.append(name+" cannot use a status move while taunted.")
-		return
+		return {}
 	for opponent in (battle.enemies if actor in state.party else state.party):
 		if int(opponent.hp) > 0 and opponent.get("imprison",false) and move_id in opponent.get("moves",[]):
 			messages.append("The move was sealed by Imprison.")
-			return
+			return {}
 	if PendingItems.flag(move,"powder") and PendingItems.held(target) == "item_safety_goggles":
 		messages.append("Safety Goggles blocked the powder move.")
-		return
+		return {"target":target,"kind":"blocked"}
 	if move.kind == "damage" and move.type == "ground" and PendingItems.held(target) == "item_air_balloon" and int(battle.get("gravity",0)) <= 0:
 		messages.append("Air Balloon kept the target above the Ground move.")
-		return
+		return {"target":target,"kind":"no_effect"}
 	if not self_target and ((str(move.type) == "electric" and target.get("ability","") in ["lightning_rod","volt_absorb","motor_drive"]) or (str(move.type) == "water" and target.get("ability","") in ["storm_drain","water_absorb","dry_skin"])):
 		if target.get("ability","") in ["lightning_rod","storm_drain"]: ItemMechanics.raise_stat(target,"special_attack",1)
 		elif target.get("ability","") == "motor_drive": ItemMechanics.raise_stat(target,"speed",1)
 		else: PendingItems.heal(target,int(target.max_hp)/4)
 		messages.append("The target absorbed "+str(move.name)+".")
-		return
-	if not self_target and PendingItems.flag(move,"sound") and target.get("ability","") == "soundproof": return
-	if not self_target and PendingItems.flag(move,"powder") and (target.get("ability","") == "overcoat" or "grass" in types): return
-	if move.kind == "damage" and move.type == "ground" and not grounded(target,battle): return
-	if grounded(target,battle) and battle.get("terrain","") == "psychic_terrain" and not self_or_ally(actor,target,state,battle) and move_priority(actor,move) > 0: return
+		return {"target":target,"kind":"absorbed"}
+	if not self_target and PendingItems.flag(move,"sound") and target.get("ability","") == "soundproof":
+		return {"target":target,"kind":"no_effect"}
+	if not self_target and PendingItems.flag(move,"powder") and (target.get("ability","") == "overcoat" or "grass" in types):
+		return {"target":target,"kind":"no_effect"}
+	if move.kind == "damage" and move.type == "ground" and not grounded(target,battle):
+		return {"target":target,"kind":"no_effect"}
+	if grounded(target,battle) and battle.get("terrain","") == "psychic_terrain" and not self_or_ally(actor,target,state,battle) and move_priority(actor,move) > 0:
+		return {"target":target,"kind":"blocked"}
 	var hit_chance := accuracy(actor,target,move)
 	if ability == "no_guard" or target.get("ability","") == "no_guard": hit_chance = 1.0
 	if ohko: hit_chance = clampf((30.0+int(actor.get("level",5))-int(target.get("level",5)))/100.0,0,1)
@@ -267,33 +271,32 @@ static func resolve(actor: Dictionary, target: Dictionary, move_id: String, batt
 	if not self_target and PendingItems.held(target) == "item_dark_powder" and random.randi_range(0,255) < 20:
 		messages.append("Dark Powder made the move miss!")
 		actor.metronome_count = 0
-		return
+		return {"target":target,"kind":"miss"}
 	if not self_target and not move.get("always_hit",false) and not actor.get("accuracy_bypass",false) and not perfect and random.randf() > hit_chance:
 		actor.metronome_count = 0
 		messages.append(name+" used %s, but missed!" % move.name)
-		return
+		return {"target":target,"kind":"miss"}
 	if move.kind == "status":
 		if not self_target and int(target.get("substitute_hp",0)) > 0 and not bypass_substitute(actor,move):
 			messages.append("The substitute blocked "+str(move.name)+".")
-			return
+			return {"target":target,"kind":"substitute"}
 		if self_target:
 			for opponent in (battle.enemies if actor in state.party else state.party):
 				if int(opponent.hp) > 0 and opponent.get("snatch",false):
 					opponent.erase("snatch")
-					status_move(opponent,opponent,move_id,battle,state,random,messages,recursion)
-					return
-		status_move(actor,target,move_id,battle,state,random,messages,recursion)
+					return status_move(opponent,opponent,move_id,battle,state,random,messages,recursion)
+		var result := status_move(actor,target,move_id,battle,state,random,messages,recursion)
 		PendingItems.activate(actor,battle,random)
 		PendingItems.activate(target,battle,random)
-		return
+		return result
 	var effect := 1.0 if move_id == "struggle" else effectiveness(str(move.type),target)
 	if str(move.type) in ["normal","fighting"] and "ghost" in types and ability == "scrappy":
 		effect = 1.0
 		for type in types:
 			if type != "ghost": effect *= float(ItemMechanics.data().type_chart.get(str(move.type),{}).get(str(type),1.0))
 	if effect == 0:
-		messages.append("%s has no effect on %s." % [move.name,GameData.SPECIES[target.species].name])
-		return
+		messages.append("%s has no effect on %s." % [move.name,GameData.pokemon_name(target)])
+		return {"target":target,"kind":"no_effect"}
 	var special := int(move.get("damage_class",2)) == 3
 	var attack_stat := "special_attack" if special else "attack"
 	var defense_stat := "special_defense" if special else "defense"
@@ -399,6 +402,7 @@ static func resolve(actor: Dictionary, target: Dictionary, move_id: String, batt
 	if target.get("endure",false) or move_id in ["false_swipe","hold_back"]: damage = mini(damage,maxi(0,int(target.hp)-1))
 	var dealt := 0
 	var hp_dealt := 0
+	var target_max_hp := int(target.max_hp)
 	target.erase("band_active")
 	var contact := PendingItems.flag(move,"contact")
 	for hit in hits:
@@ -459,22 +463,25 @@ static func resolve(actor: Dictionary, target: Dictionary, move_id: String, batt
 		battle.erase("player_hazards" if actor in state.party else "enemy_hazards")
 	if effect > 1: messages.append("It's super effective!")
 	elif effect < 1: messages.append("It's not very effective.")
-	if inflicted: messages.append("%s is now %s!" % [GameData.SPECIES[target.species].name,ailment])
-	if int(target.hp) <= 0: messages.append(str(GameData.SPECIES[target.species].name)+" fainted!")
+	if inflicted: messages.append("%s is now %s!" % [GameData.pokemon_name(target),ailment])
+	if int(target.hp) <= 0: messages.append(GameData.pokemon_name(target)+" fainted!")
+	if hp_dealt == 0 and dealt > 0: return {"target":target,"kind":"substitute"}
+	return {"target":target,"kind":"hit","damage":hp_dealt,"max_hp":target_max_hp}
 
-static func status_move(actor: Dictionary, target: Dictionary, id: String, battle: Dictionary, state: Dictionary, random: RandomNumberGenerator, messages: Array[String], recursion: int) -> void:
+static func status_move(actor: Dictionary, target: Dictionary, id: String, battle: Dictionary, state: Dictionary, random: RandomNumberGenerator, messages: Array[String], recursion: int) -> Dictionary:
 	var move: Dictionary = GameData.MOVES[id]
 	var pure := PendingItems.held(target) == "item_pure_incense"
 	if PendingItems.held(target) == "item_cleanse_tag" and id in ["taunt","encore","torment","attract","embargo","heal_block","telekinesis","nightmare","curse","disable","leech_seed","yawn"]:
 		messages.append("Cleanse Tag prevented the harmful status effect.")
-		return
+		return {"target":target,"kind":"blocked"}
 	if target.get("ability","") == "oblivious" and id in ["taunt","attract"]:
 		messages.append("Oblivious prevented "+str(move.name)+".")
-		return
+		return {"target":target,"kind":"no_effect"}
 	if pure and int(move.get("healing",0)) == 0 and id not in ["rest","pain_split","rain_dance","sunny_day","sandstorm","hail","snowscape","electric_terrain","grassy_terrain","misty_terrain","psychic_terrain","trick_room","wonder_room","magic_room","gravity","spikes","toxic_spikes","stealth_rock","trick","teleport","roar","whirlwind","metronome","nature_power","sleep_talk","defog","recycle","spite"]:
 		messages.append("Pure Incense prevented the temporary effect.")
-		return
+		return {"target":target,"kind":"blocked"}
 	var success := false
+	var result := {}
 	var allies: Array = state.party if actor in state.party else battle.enemies
 	var foes: Array = battle.enemies if actor in state.party else state.party
 	match id:
@@ -553,7 +560,7 @@ static func status_move(actor: Dictionary, target: Dictionary, id: String, battl
 			var locked := {"item_red_orb":"groudon","item_blue_orb":"kyogre","item_griseous_orb":"giratina"}
 			if locked.get(str(actor.get("held_item","")),"") == actor.species or locked.get(str(target.get("held_item","")),"") == target.species:
 				messages.append("The form item cannot be exchanged during battle.")
-				return
+				return {"target":target,"kind":"blocked"}
 			var held := str(actor.get("held_item",""))
 			actor.held_item = str(target.get("held_item",""))
 			target.held_item = held
@@ -561,7 +568,7 @@ static func status_move(actor: Dictionary, target: Dictionary, id: String, battl
 		"skill_swap":
 			if PendingItems.held(actor) == "item_ability_shield" or PendingItems.held(target) == "item_ability_shield":
 				messages.append("Ability Shield prevented Skill Swap.")
-				return
+				return {"target":target,"kind":"blocked"}
 			var ability := str(actor.get("ability",""))
 			if not actor.has("original_ability"): actor.original_ability = ability
 			if not target.has("original_ability"): target.original_ability = str(target.get("ability",""))
@@ -624,11 +631,14 @@ static func status_move(actor: Dictionary, target: Dictionary, id: String, battl
 			if id == "sleep_talk" and actor.get("status_condition","") != "sleep": choices = []
 			choices.erase(id)
 			if called == "" and not choices.is_empty(): called = str(choices[random.randi_range(0,choices.size()-1)])
-			if called != "" and GameData.MOVES.has(called): resolve(actor,target,called,battle,state,random,messages,1,false,false,false,recursion+1); success = true
+			if called != "" and GameData.MOVES.has(called):
+				result = resolve(actor,target,called,battle,state,random,messages,1,false,false,false,recursion+1)
+				success = true
 		"teleport":
-			if actor in state.party: battle.escaped = true
-			else: actor.hp = 0; actor.fled = true
-			success = true
+			if not battle.get("glitch",false):
+				if actor in state.party: battle.escaped = true
+				else: actor.hp = 0; actor.fled = true
+				success = true
 		"ally_switch":
 			var index := allies.find(actor)
 			if allies.size() > 1:
@@ -650,7 +660,11 @@ static func status_move(actor: Dictionary, target: Dictionary, id: String, battl
 				actor.erase("choice_move")
 				PendingItems.entry_hazards(actor,battle,true,random)
 				success = true
-		"roar","whirlwind": target.hp = 0; target.fled = true; success = true
+		"roar","whirlwind":
+			if not target.has("glitch_shape"):
+				target.hp = 0
+				target.fled = true
+				success = true
 		"defog":
 			ItemMechanics.raise_stat(target,"evasion",-1)
 			battle.erase("player_hazards")
@@ -678,7 +692,8 @@ static func status_move(actor: Dictionary, target: Dictionary, id: String, battl
 			if ailment != "": success = terrain_inflict(target,ailment,battle,random) or success
 	if success and PendingItems.flag(move,"sound") and PendingItems.held(actor) == "item_throat_spray":
 		if ItemMechanics.raise_stat(actor,"special_attack",1): PendingItems.consume(actor)
-	messages.append("%s used %s%s." % [GameData.SPECIES[actor.species].name,move.name,"" if success else ", but it failed"])
+	messages.append("%s used %s%s." % [GameData.pokemon_name(actor),move.name,"" if success else ", but it failed"])
+	return result
 
 static func end_turn(pokemon: Dictionary, battle: Dictionary, random: RandomNumberGenerator, messages: Array[String], state: Dictionary = {}) -> void:
 	if int(pokemon.hp) <= 0: return
@@ -700,7 +715,7 @@ static func end_turn(pokemon: Dictionary, battle: Dictionary, random: RandomNumb
 	if pokemon.get("ability","") == "magic_guard": damage = 0
 	if damage > 0:
 		pokemon.hp = maxi(0,int(pokemon.hp)-damage)
-		messages.append("%s lost %d HP to ongoing effects." % [GameData.SPECIES[pokemon.species].name,damage])
+		messages.append("%s lost %d HP to ongoing effects." % [GameData.pokemon_name(pokemon),damage])
 	if int(pokemon.hp) > 0 and battle.get("terrain","") == "grassy_terrain" and grounded(pokemon,battle): pokemon.hp = mini(int(pokemon.max_hp),int(pokemon.hp)+maxi(1,int(pokemon.max_hp)/16))
 	if int(pokemon.hp) > 0 and pokemon.get("seeded",false):
 		var before := int(pokemon.hp)

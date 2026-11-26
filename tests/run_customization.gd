@@ -16,7 +16,7 @@ func run() -> void:
 		picker.selected = 2
 		picker.item_selected.emit(2)
 	var original = game.trainer_texture.get_image()
-	var changed = picks[0].get_parent().get_parent().get_child(0).texture.get_image()
+	var changed = game.ui.find_child("TrainerPreview",true,false).texture.get_image()
 	assert(original.get_data() != changed.get_data())
 	if "--capture" in OS.get_cmdline_user_args():
 		await process_frame

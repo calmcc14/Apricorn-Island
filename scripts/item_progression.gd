@@ -8,6 +8,12 @@ const CORES := {"item_griseous_core":"giratina","item_adamant_crystal":"dialga",
 static func data() -> Dictionary:
 	if reference.is_empty():
 		reference = JSON.parse_string(FileAccess.get_file_as_string("res://data/item_species.json"))
+		var roster: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/species_roster.json"))
+		reference.dex = roster.species.keys()
+		var curated: Dictionary = reference.species.duplicate()
+		reference.species.merge(roster.species)
+		for row in roster.evolutions:
+			if not curated.has(row.from): reference.evolutions.append(row)
 		for row in reference.species.values():
 			for slot in row.get("abilities",{}): row.abilities[slot] = str(row.abilities[slot]).replace("-","_")
 	return reference
@@ -27,7 +33,11 @@ static func extend_species(original: Dictionary) -> Dictionary:
 			if int(entry.level) <= 5 and GameData.MOVES.has(entry.move) and entry.move not in moves: moves.append(entry.move)
 		if moves.is_empty(): moves = ["tackle"]
 		while moves.size() > 4: moves.pop_front()
-		result[name] = {"name":name.replace("-"," ").capitalize(),"type":str(row.types[0]),"max_hp":40+int(row.stats.hp)/2,"attack":8+int(row.stats.attack)/8,"defense":8+int(row.stats.defense)/8,"color":"#869dc2","accent":"#e3ddc2","moves":moves}
+		var species := {"name":row.get("name",name.replace("-"," ").capitalize()),"type":str(row.types[0]),"max_hp":40+int(row.stats.hp)/2,"attack":8+int(row.stats.attack)/8,"defense":8+int(row.stats.defense)/8,"color":"#869dc2","accent":"#e3ddc2","moves":moves}
+		if row.has("name"):
+			species.special_attack = 8+int(row.stats.special_attack)/8
+			species.special_defense = 8+int(row.stats.special_defense)/8
+		result[name] = species
 	return result
 
 static func form(pokemon: Dictionary, in_battle: bool) -> void:
@@ -67,6 +77,7 @@ static func evolution(pokemon: Dictionary, context: Dictionary = {}) -> String:
 	var hour := int(context.get("hour",Time.get_time_dict_from_system().hour))
 	for row in data().evolutions:
 		if row.from != pokemon.species or int(row.evolution_trigger_id) != 1 or not GameData.SPECIES.has(row.to): continue
+		if not Cartridge.has_species(str(pokemon.get("cartridge", "")), str(row.to)): continue
 		# Do not silently replace location, item, affection or special-action requirements.
 		var unsupported := false
 		for key in ["location_id","trigger_item_id","held_item_id","minimum_beauty","minimum_affection","party_species_id","party_type_id","trade_species_id","known_move_type_id","used_move_id","minimum_steps","minimum_damage_taken","nature_bitmask","condition_expression","required_pokemon_form_id"]:
@@ -75,16 +86,16 @@ static func evolution(pokemon: Dictionary, context: Dictionary = {}) -> String:
 			if int(row.get(key,0)) != 0: unsupported = true
 		if unsupported: continue
 		if str(row.minimum_level) != "" and int(pokemon.level) < int(row.minimum_level): continue
-		if str(row.minimum_happiness) != "" and int(pokemon.get("friendship",70)) < int(row.minimum_happiness): continue
-		if row.time_of_day == "day" and (hour < 6 or hour >= 18): continue
-		if row.time_of_day == "night" and hour >= 6 and hour < 18: continue
-		if str(row.gender_id) != "" and pokemon.get("gender","") != ("female" if int(row.gender_id) == 1 else "male"): continue
-		if str(row.known_move_id) != "": continue
+		if str(row.get("minimum_happiness", "")) != "" and int(pokemon.get("friendship",70)) < int(row.minimum_happiness): continue
+		if row.get("time_of_day", "") == "day" and (hour < 6 or hour >= 18): continue
+		if row.get("time_of_day", "") == "night" and hour >= 6 and hour < 18: continue
+		if str(row.get("gender_id", "")) != "" and pokemon.get("gender","") != ("female" if int(row.gender_id) == 1 else "male"): continue
+		if str(row.get("known_move_id", "")) != "": continue
 		return str(row.to)
 	return ""
 
 static func evolve(pokemon: Dictionary, target: String) -> bool:
-	if target == "" or not GameData.SPECIES.has(target): return false
+	if target == "" or not GameData.SPECIES.has(target) or not Cartridge.has_species(str(pokemon.get("cartridge", "")), target): return false
 	var old: Dictionary = info(str(pokemon.species)).get("stats",{})
 	var next: Dictionary = info(target).get("stats",{})
 	for stat in ItemMechanics.IV_STATS:

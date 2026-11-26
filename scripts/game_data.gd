@@ -65,7 +65,15 @@ const LEGACY_SPECIES := {
 	"eevee": {"name":"Eevee", "type":"normal", "max_hp":54, "attack":13, "defense":11, "color":"#b98558", "accent":"#f0d5aa", "moves":["tackle","quick_attack","bite"]}
 }
 
-static var SPECIES: Dictionary = ItemProgression.extend_species(LEGACY_SPECIES)
+const GlitchDimension = preload("res://scripts/glitch_dimension.gd")
+static var SPECIES: Dictionary = GlitchDimension.add_species(ItemProgression.extend_species(LEGACY_SPECIES))
+static var DEX_SPECIES: Array = ItemProgression.data().dex
+
+static func pokemon_name(pokemon: Dictionary) -> String:
+	if pokemon.has("glitch_signal"):
+		var record := GlitchDimension.Signals.get_entry(str(pokemon.glitch_signal))
+		if not record.is_empty(): return str(record.name)
+	return str(SPECIES[pokemon.species].name)
 
 const ENCOUNTERS := {
 	"meadow_1": {"enemies":["caterpie"], "rewards":{"potion":1,"apricorn_ball":2}},
@@ -86,6 +94,7 @@ const LEGACY_ITEMS := {
 }
 
 static var ITEMS: Dictionary = ItemCatalog.build(LEGACY_ITEMS)
+static var GLITCH_ITEMS: Dictionary = GlitchDimension.build_items(ITEMS)
 static var DLC_ITEMS: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/spinoff_dlc_items.json")).items
 
 const NODES := [
@@ -103,9 +112,13 @@ const NODES := [
 	{"id":"lookout","name":"Champion Lookout","kind":"finish","pos":Vector2(1148,590),"links":["summit"],"prereq":["summit"]}
 ]
 
+const SHINY_ODDS := 512
+
 static func make_pokemon(species_id: String, metadata_rng: RandomNumberGenerator = null) -> Dictionary:
 	var data: Dictionary = SPECIES[species_id]
 	var pokemon := {"species":species_id,"hp":int(data.max_hp),"max_hp":int(data.max_hp),"attack":int(data.attack),"defense":int(data.defense),"attack_stage":0,"defense_stage":0}
+	for stat in ["special_attack", "special_defense"]:
+		if data.has(stat): pokemon[stat] = int(data[stat])
 	var rate := int(ItemMechanics.species(pokemon).get("gender_rate",-1))
 	var gender_roll := metadata_rng.randi_range(0,7) if metadata_rng != null else randi_range(0,7)
 	pokemon.gender = "genderless" if rate < 0 else ("female" if gender_roll < rate else "male")
@@ -113,8 +126,21 @@ static func make_pokemon(species_id: String, metadata_rng: RandomNumberGenerator
 	if metadata_rng != null: iv_random.seed = hash("ivs:%d:%d" % [metadata_rng.seed,metadata_rng.state])
 	else: iv_random.randomize()
 	pokemon.ivs = ItemMechanics.roll_ivs(iv_random)
+	pokemon.shiny = not data.has("glitch_shape") and iv_random.randi_range(1, SHINY_ODDS) == 1
 	ItemMechanics.initialize(pokemon)
 	var nature_roll := metadata_rng.randi_range(0,ItemMechanics.data().natures.size()-1) if metadata_rng != null else randi_range(0,ItemMechanics.data().natures.size()-1)
 	pokemon.nature = str(ItemMechanics.data().natures[nature_roll].identifier)
 	return pokemon
+
+static func scale_wild(pokemon: Dictionary, level: int, hp_factor: float, attack_factor: float, defense_factor: float) -> void:
+	var factors := {"max_hp": hp_factor, "attack": attack_factor, "special_attack": attack_factor,
+		"defense": defense_factor, "special_defense": defense_factor}
+	for stat in factors:
+		var iv_key: String = "hp" if stat == "max_hp" else stat
+		var iv_bonus := int(pokemon.iv_stat_bonuses.get(iv_key, 0))
+		pokemon[stat] = maxi(1, roundi((int(pokemon[stat]) - iv_bonus) * factors[stat])) + iv_bonus
+	pokemon.level = clampi(level, 1, 100)
+	pokemon.experience = ItemMechanics.experience_at(pokemon.level, int(ItemMechanics.species(pokemon).get("growth_rate", 2)))
+	ItemMechanics.apply_iv_bonuses(pokemon)
+	pokemon.hp = pokemon.max_hp
 

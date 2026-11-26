@@ -7,7 +7,9 @@ func run() -> void:
 	var game = load("res://scenes/Main.tscn").instantiate()
 	root.add_child(game)
 	await process_frame
-	game.start_new_game()
+	if game.screen == game.Screen.CARTRIDGE:
+		game.choose_first_cartridge(Cartridge.RED)
+	game.start_new_game("bulbasaur")
 	game.show_map()
 	if "--capture" in OS.get_cmdline_user_args():
 		await process_frame

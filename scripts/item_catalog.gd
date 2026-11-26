@@ -5,6 +5,7 @@ const VERSION := 1
 const TIERS := ["common", "uncommon", "rare", "epic", "legendary"]
 static var catalog: Dictionary = {}
 static var pools: Dictionary = {}
+static var cartridge_pools: Dictionary = {}
 
 static func data() -> Dictionary:
 	if catalog.is_empty():
@@ -31,22 +32,32 @@ static func tier_odds(depth: int) -> Array:
 	for i in TIERS.size(): result.append(lerpf(from[i], to[i], t))
 	return result
 
-static func tier_pools() -> Dictionary:
+static func tier_pools(version := "") -> Dictionary:
 	if pools.is_empty():
 		for tier in TIERS: pools[tier] = []
 		for item in data().items:
 			if item.id != "item_sacred_ash_ketchum": pools[str(item.rarity)].append(str(item.id))
 		for tier in TIERS: pools[tier].sort()
-	return pools
+	if version == "": return pools
+	if not cartridge_pools.has(version):
+		var available := {}
+		for tier in TIERS:
+			available[tier] = pools[tier].filter(func(id): return Cartridge.has_item(version, id))
+		if version == Cartridge.YELLOW:
+			available.common.append("star_berry")
+			var extras := Cartridge.read_dictionary("res://data/spinoff_dlc_items.json")
+			for item in extras.items.values(): available[item.rarity].append(item.id)
+		cartridge_pools[version] = available
+	return cartridge_pools[version]
 
-static func item_probability(id: String, depth: int) -> float:
-	if id == "item_sacred_ash_ketchum": return item_probability("item_sacred_ash",depth)/99.0
+static func item_probability(id: String, depth: int, version := "") -> float:
+	if id == "item_sacred_ash_ketchum": return item_probability("item_sacred_ash",depth,version)/99.0
 	for i in TIERS.size():
-		var pool: Array = tier_pools()[TIERS[i]]
+		var pool: Array = tier_pools(version)[TIERS[i]]
 		if id in pool: return float(tier_odds(depth)[i]) / pool.size() * (0.99 if id == "item_sacred_ash" else 1.0)
 	return 0.0
 
-static func chest_rewards(seed_value: int, chest_id: String, depth: int, supplies: Dictionary) -> Dictionary:
+static func chest_rewards(seed_value: int, chest_id: String, depth: int, supplies: Dictionary, version := "") -> Dictionary:
 	# Stable hash independent of Godot's Dictionary ordering and global battle RNG.
 	var stable_seed := seed_value
 	for c in chest_id.to_utf8_buffer(): stable_seed = (stable_seed * 31 + c) & 0x7fffffff
@@ -63,7 +74,7 @@ static func chest_rewards(seed_value: int, chest_id: String, depth: int, supplie
 			if value < total:
 				index = i
 				break
-		var pool: Array = tier_pools()[TIERS[index]]
+		var pool: Array = tier_pools(version)[TIERS[index]]
 		var id := str(pool[random.randi_range(0, pool.size() - 1)])
 		rewards[id] = int(rewards.get(id, 0)) + 1
 	return rewards

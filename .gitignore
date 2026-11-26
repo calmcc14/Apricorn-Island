@@ -8,6 +8,10 @@ build/
 /README.md
 /export_templates/
 
+# Local web export and Godot import sidecars for the GitHub Pages build.
+/Apricorn Island.*
+/docs/*.png.import
+
 # Separate ABS engine project and distribution; preserved locally.
 /ABS-Engine-Nathen/
 /ApricornIslandABS/

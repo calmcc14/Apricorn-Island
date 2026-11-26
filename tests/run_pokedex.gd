@@ -5,24 +5,27 @@ func run() -> void:
 	var game = load("res://scenes/Main.tscn").instantiate()
 	root.add_child(game)
 	await process_frame
+	if game.screen == game.Screen.CARTRIDGE:
+		game.choose_first_cartridge(Cartridge.RED)
 	game.start_new_game("bulbasaur")
 	assert(game.state.pokedex.bulbasaur.caught)
 	game.start_battle("meadow_1","meadow")
-	assert(game.state.pokedex.caterpie.seen)
-	assert(not game.state.pokedex.caterpie.caught)
+	var encountered: String = game.battle.enemies[0].species
+	assert(game.state.pokedex[encountered].seen)
+	assert(not game.state.pokedex[encountered].caught)
 	game.show_pokedex()
 	var portraits = game.ui.find_child("PokedexGrid",true,false)
 	assert(portraits.find_child("Dex_charmander",true,false).find_child("UnknownPortrait",true,false) != null)
 	assert(portraits.find_child("Dex_charmander",true,false).find_child("PokemonPortrait",true,false) == null)
-	assert(portraits.find_child("Dex_caterpie",true,false).find_child("PokemonPortrait",true,false).material != null)
+	assert(portraits.find_child("Dex_" + encountered,true,false).find_child("PokemonPortrait",true,false).material != null)
 	assert(portraits.find_child("Dex_bulbasaur",true,false).find_child("PokemonPortrait",true,false).material == null)
 	if "--capture" in OS.get_cmdline_user_args():
 		await process_frame
 		await process_frame
 		root.get_texture().get_image().save_png("res://build/pokedex-discovery.png")
-	game.register_dex("caterpie",true)
-	game.register_dex("caterpie",false)
-	assert(game.state.pokedex.caterpie.caught)
+	game.register_dex(encountered,true)
+	game.register_dex(encountered,false)
+	assert(game.state.pokedex[encountered].caught)
 	game.show_pokedex()
 	var grid = game.ui.find_child("PokedexGrid",true,false)
 	assert(grid.get_child(0).name == "Dex_bulbasaur")
@@ -34,7 +37,7 @@ func run() -> void:
 	assert(game.save_game())
 	game.state = {}
 	assert(game.load_game())
-	assert(game.state.pokedex.caterpie.caught)
+	assert(game.state.pokedex[encountered].caught)
 	game.state.erase("pokedex")
 	game.state.reserve.append(GameData.make_pokemon("eevee"))
 	game.sync_pokedex()

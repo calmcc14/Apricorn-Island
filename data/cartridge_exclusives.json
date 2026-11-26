@@ -1,0 +1,97 @@
+{
+  "species": [
+    {
+      "games": "Red / Blue",
+      "red": ["ekans", "arbok", "oddish", "gloom", "vileplume", "bellossom", "mankey", "primeape", "annihilape", "growlithe", "arcanine", "scyther", "scizor", "kleavor", "elekid", "electabuzz", "electivire"],
+      "blue": ["sandshrew", "sandslash", "vulpix", "ninetales", "meowth", "persian", "perrserker", "bellsprout", "weepinbell", "victreebel", "magby", "magmar", "magmortar", "pinsir"]
+    },
+    {
+      "games": "Gold / Silver",
+      "red": ["spinarak", "ariados", "gligar", "gliscor", "teddiursa", "ursaring", "ursaluna", "mantyke", "mantine"],
+      "blue": ["ledyba", "ledian", "delibird", "skarmory", "phanpy", "donphan"]
+    },
+    {
+      "games": "Ruby / Sapphire",
+      "red": ["seedot", "nuzleaf", "shiftry", "mawile", "zangoose", "solrock", "latios", "groudon"],
+      "blue": ["lotad", "lombre", "ludicolo", "sableye", "seviper", "lunatone", "latias", "kyogre"]
+    },
+    {
+      "games": "FireRed / LeafGreen",
+      "red": ["psyduck", "golduck", "shellder", "cloyster", "wooper", "quagsire", "murkrow", "honchkrow", "qwilfish"],
+      "blue": ["slowpoke", "slowbro", "slowking", "staryu", "starmie", "azurill", "marill", "azumarill", "misdreavus", "mismagius", "sneasel", "weavile", "remoraid", "octillery"]
+    },
+    {
+      "games": "Diamond / Pearl",
+      "red": ["seel", "dewgong", "larvitar", "pupitar", "tyranitar", "poochyena", "mightyena", "aron", "lairon", "aggron", "kecleon", "cranidos", "rampardos", "stunky", "skuntank", "dialga"],
+      "blue": ["houndour", "houndoom", "stantler", "wyrdeer", "spheal", "sealeo", "walrein", "bagon", "shelgon", "salamence", "shieldon", "bastiodon", "glameow", "purugly", "palkia"]
+    },
+    {
+      "games": "HeartGold / SoulSilver",
+      "red": ["omanyte", "omastar", "baltoy", "claydol", "anorith", "armaldo"],
+      "blue": ["kabuto", "kabutops", "gulpin", "swalot", "lileep", "cradily"]
+    },
+    {
+      "games": "Black / White",
+      "red": ["weedle", "kakuna", "beedrill", "shroomish", "breloom", "plusle", "cottonee", "whimsicott", "gothita", "gothorita", "gothitelle", "vullaby", "mandibuzz", "tornadus", "reshiram"],
+      "blue": ["caterpie", "metapod", "butterfree", "paras", "parasect", "minun", "petilil", "lilligant", "solosis", "duosion", "reuniclus", "rufflet", "braviary", "thundurus", "zekrom"]
+    },
+    {
+      "games": "Black 2 / White 2",
+      "red": ["bonsly", "sudowoodo", "spoink", "grumpig", "registeel", "buneary", "lopunny", "gible", "gabite", "garchomp"],
+      "blue": ["mime-jr", "mr-mime", "skitty", "delcatty", "numel", "camerupt", "regice"]
+    },
+    {
+      "games": "X / Y",
+      "red": ["sawk", "swirlix", "slurpuff", "clauncher", "clawitzer", "xerneas"],
+      "blue": ["heracross", "electrike", "manectric", "purrloin", "liepard", "throh", "spritzee", "aromatisse", "skrelp", "dragalge", "yveltal"]
+    },
+    {
+      "games": "Omega Ruby / Alpha Sapphire",
+      "red": ["ho-oh", "palkia", "reshiram"],
+      "blue": ["lugia", "dialga", "zekrom"]
+    },
+    {
+      "games": "Sun / Moon and Ultra Sun / Ultra Moon",
+      "red": ["cranidos", "rampardos", "cottonee", "whimsicott", "rufflet", "braviary", "tirtouga", "carracosta", "heatran", "golett", "golurk", "passimian", "turtonator", "solgaleo", "buzzwole", "kartana", "blacephalon"],
+      "blue": ["shieldon", "bastiodon", "petilil", "lilligant", "vullaby", "mandibuzz", "archen", "archeops", "regigigas", "oranguru", "drampa", "lunala", "pheromosa", "celesteela", "stakataka"]
+    },
+    {
+      "games": "Let's Go Pikachu / Let's Go Eevee",
+      "red": ["grimer", "muk"],
+      "blue": ["koffing", "weezing"]
+    },
+    {
+      "games": "Sword / Shield",
+      "red": ["farfetchd-galar", "sirfetchd", "scraggy", "scrafty", "deino", "zweilous", "hydreigon", "jangmo-o", "hakamo-o", "kommo-o", "flapple", "stonjourner", "zacian"],
+      "blue": ["cursola", "croagunk", "toxicroak", "goomy", "sliggoo", "goodra", "appletun", "eiscue", "zamazenta"]
+    },
+    {
+      "games": "Brilliant Diamond / Shining Pearl",
+      "red": ["raikou", "entei", "suicune", "caterpie", "metapod", "butterfree"],
+      "blue": ["articuno", "zapdos", "moltres", "weedle", "kakuna", "beedrill"]
+    },
+    {
+      "games": "Scarlet / Violet and The Hidden Treasure of Area Zero",
+      "red": ["drifloon", "drifblim", "armarouge", "great-tusk", "scream-tail", "brute-bonnet", "flutter-mane", "slither-wing", "sandy-shocks", "roaring-moon", "koraidon", "walking-wake", "cramorant", "glastrier", "gouging-fire", "raging-bolt"],
+      "blue": ["dreepy", "drakloak", "dragapult", "ceruledge", "iron-treads", "iron-bundle", "iron-hands", "iron-jugulis", "iron-moth", "iron-thorns", "iron-valiant", "miraidon", "iron-leaves", "aipom", "ambipom", "morpeko", "cobalion", "terrakion", "virizion", "spectrier", "iron-boulder", "iron-crown"]
+    }
+  ],
+  "items": {
+    "red": [
+      "item_red_orb", "item_skull_fossil", "item_adamant_daimond", "item_adamant_crystal",
+      "item_light_stone", "item_burn_drive", "item_shock_drive", "item_charizardite_x", "item_mewtwonite_x",
+      "item_pinsirite", "item_manectite", "item_tyranitarite", "item_sun_flute", "item_cover_fossil",
+      "item_rusted_sword", "item_tart_apple", "item_bob_s_food_tin", "item_auspicious_armor", "item_scarlet_book",
+      "item_larvitar_claw", "item_drifloon_gas", "item_stunky_fur", "item_deino_scales",
+      "item_skrelp_kelp", "item_oranguru_fur", "item_stonjourner_stone"
+    ],
+    "blue": [
+      "item_blue_orb", "item_armor_fossil", "item_lustrous_pearl", "item_lustrous_globe",
+      "item_dark_stone", "item_douse_drive", "item_chill_drive", "item_charizardite_y", "item_mewtwonite_y",
+      "item_heracronite", "item_houndoominite", "item_aggronite", "item_moon_flute", "item_plume_fossil",
+      "item_rusted_shield", "item_sweet_apple", "item_bach_s_food_tin", "item_malicious_armor", "item_violet_book",
+      "item_misdreavus_tears", "item_bagon_scales", "item_clauncher_claw", "item_passimian_fur",
+      "item_eiscue_down", "item_dreepy_powder", "item_gulpin_mucus"
+    ]
+  }
+}

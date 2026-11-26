@@ -45,8 +45,8 @@ func _ready() -> void:
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(shade)
 	var panel := PanelContainer.new()
-	panel.position = Vector2(40,20)
-	panel.custom_minimum_size = Vector2(640,0)
+	panel.position = Vector2(12,20)
+	panel.custom_minimum_size = Vector2(456,0)
 	var style = Bevel.new()
 	style.fill = Color("#c6c6c6")
 	panel.add_theme_stylebox_override("panel",style)
@@ -65,21 +65,22 @@ func _ready() -> void:
 	grid(box,"inventory",27,9,"HotbarSlots")
 	if bags.inventory.size() > 36:
 		var extra := ScrollContainer.new()
-		extra.custom_minimum_size.y = 64
+		extra.custom_minimum_size.y = 62
+		extra.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 		box.add_child(extra)
 		grid(extra,"inventory",36,bags.inventory.size()-36,"ExtraSlots")
 	label(box,"Drag to move / swap. Shift-click to transfer.",14)
 	var close := Button.new()
 	close.text = "Close [E / Esc]"
+	close.custom_minimum_size.y = 44
 	close.pressed.connect(game.show_map)
 	box.add_child(close)
 	if not with_chest:
 		var detail_panel := PanelContainer.new()
 		detail_panel.name = "ItemDetails"
-		var available := get_viewport_rect().size
-		var wide := available.x >= 1000
-		detail_panel.position = Vector2(720,20) if wide else Vector2(40,440)
-		detail_panel.size = Vector2(available.x-740,available.y-40) if wide else Vector2(640,maxf(180,available.y-460))
+		var top := 414.0 if bags.inventory.size() > 36 else 344.0
+		detail_panel.position = Vector2(12,top)
+		detail_panel.size = Vector2(456,880-top)
 		var detail_style := StyleBoxFlat.new()
 		detail_style.bg_color = Color("#201a2af0")
 		detail_style.set_content_margin_all(12)
@@ -113,7 +114,7 @@ func grid(parent: Node, area: String, start: int, count: int, title: String) -> 
 		slot.owner_ui = self
 		slot.area = area
 		slot.index = i
-		slot.custom_minimum_size = Vector2(68,60)
+		slot.custom_minimum_size = Vector2(47,54)
 		slot.add_theme_font_size_override("font_size",18)
 		slot.alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		slot.clip_text = true

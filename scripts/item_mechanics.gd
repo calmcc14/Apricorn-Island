@@ -39,6 +39,13 @@ static func species(pokemon: Dictionary) -> Dictionary:
 	var name := str(pokemon.get("form",pokemon.get("species","")))
 	var original: Dictionary = ItemProgression.info(name).duplicate(true)
 	if name == str(pokemon.get("species","")): original.merge(data().species.get(name,{}),true)
+	if original.is_empty() and name.begins_with("anomaly_"):
+		var anomaly: Dictionary = GameData.SPECIES[name]
+		original = {"types":[anomaly.type],"growth_rate":2,"base_speed":47,"base_experience":55,"stats":{}}
+	if pokemon.has("glitch_signal"):
+		var record := GameData.GlitchDimension.Signals.get_entry(str(pokemon.glitch_signal))
+		if record.has("profile") and not record.profile.get("types",[]).is_empty():
+			original.types = record.profile.types.duplicate()
 	if pokemon.has("battle_types"): original.types = pokemon.battle_types
 	return original
 

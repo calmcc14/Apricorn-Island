@@ -33,13 +33,16 @@ func _make_custom_tooltip(_value: String) -> Object:
 	label.add_theme_font_override("font",owner_ui.pixel_font)
 	label.add_theme_font_size_override("font_size",20)
 	label.add_theme_color_override("font_color",owner_ui.rarity_color(str(stack.id)))
+	if owner_ui.pixel_font.get_string_size(label.text, HORIZONTAL_ALIGNMENT_LEFT, -1, 20).x > 340:
+		label.custom_minimum_size.x = 340
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	panel.add_child(label)
 	return panel
 
 func _draw() -> void:
 	if stack.is_empty(): return
 	var item: Dictionary = owner_ui.game.item_definition(str(stack.id))
-	var origin := Vector2(18,10)
+	var origin := Vector2(9,6)
 	var tint: Color = owner_ui.rarity_color(str(stack.id))
 	var kind := str(item.get("kind",""))
 	if kind in ["heal","revive"]:
@@ -62,6 +65,9 @@ func _draw() -> void:
 		pixel(origin,Rect2(3,5,8,8),tint.darkened(0.25))
 		pixel(origin,Rect2(4,6,3,3),tint)
 		pixel(origin,Rect2(6,1,2,4),Color("#68a14c"))
+	if item.get("glitched",false):
+		pixel(origin,Rect2(0,5,13,2),Color("#a778c7"))
+		pixel(origin,Rect2(6,11,9,2),Color("#f0d8ff"))
 
 func pixel(origin: Vector2, rect: Rect2, color: Color) -> void:
 	draw_rect(Rect2(origin + rect.position * 2,rect.size * 2),color)
